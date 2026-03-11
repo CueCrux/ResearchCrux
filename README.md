@@ -2,9 +2,15 @@
 
 This repository contains the published research, protocol specifications, and benchmark evidence for the CueCrux platform. It includes whitepapers on retrieval quality measurement and the CROWN receipt protocol, the Crux Manifesto (product philosophy), and regulatory compliance mappings with benchmark citations.
 
-These documents are written for compliance engineers evaluating whether CueCrux satisfies EU AI Act and DORA obligations, standards participants assessing the CROWN protocol for IETF SCITT alignment, and technical evaluators who need to understand the architecture and its measured performance. There is no runnable code in this repository. The benchmark suite itself is published separately at [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux).
+This repository is for:
 
-**Citation format:**
+- **Compliance engineers** evaluating whether CueCrux satisfies EU AI Act (Article 13, Article 14) and DORA (Articles 8–11) obligations — start with `evidence/regulatory-mapping.md`
+- **Standards participants** assessing the CROWN receipt protocol for IETF SCITT alignment — start with `whitepapers/crown-receipt-protocol-v0.1.md`
+- **Technical evaluators** who need to understand the architecture and its measured performance — start with `whitepapers/retrieval-quality-benchmark-v1.md`
+
+There is no runnable code in this repository. The benchmark suite itself is published separately at [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux).
+
+## Citation
 
 > CueCrux. *Retrieval Quality Benchmarking for Enterprise Knowledge Systems.* ResearchCrux, v1.0. March 2026. https://github.com/CueCrux/ResearchCrux
 
