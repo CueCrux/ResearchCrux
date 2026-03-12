@@ -136,6 +136,10 @@ The v3 suite (run e782fbd0) measures retrieval recall stratified by MIME type. T
 
 **Retrieved recall is 100% across all formats.** The retrieval pipeline finds every document regardless of format. The pipeline does not have a format-dependent retrieval gap.
 
+**How 100% retrieved recall is achieved despite format diversity.** The ingest pipeline applies format-aware processing at ingest time rather than at chunking time. Structured documents (JSON, YAML) generate an LLM-annotated prose description stored as a supplementary `annotation` chunk alongside the source content. Informal documents (chat logs, meeting notes) undergo entity extraction that enriches the full-text search index with technical terms extracted from informal vocabulary. Both approaches produce embeddable and keyword-searchable representations without requiring structure-aware chunk boundaries. The annotation and entity-enriched chunks carry higher scoring weights in the retrieval pipeline to reflect their role as semantic proxies for the source content.
+
+This is the distinction between ingest-time semantic annotation (implemented) and chunk-boundary structure parsing (not yet implemented). The former is sufficient to achieve full retrieved recall. The latter would improve citation recall by producing more precisely bounded chunks that the LLM can cite with higher specificity.
+
 **Citation recall varies from 0% to 100%.** The language model strongly prefers citing prose-formatted documents (Markdown) over structured data (JSON, CSV) or informal formats (YAML, chat transcripts, meeting notes). This is a citation selection characteristic of the language model, not a pipeline defect. The distinction between retrieved recall and citation recall is what makes this attribution possible.
 
 The BM25 vs vector lane decomposition (also v3 run e782fbd0) confirms that the hybrid retrieval pipeline finds documents through both keyword matching (BM25) and semantic similarity (vector). K-class documents (rare unique terms) achieve 100% BM25 recall. V-class documents (paraphrased content with zero keyword overlap) achieve 100% vector retrieved recall but 0% citation recall — the language model does not cite documents lacking keyword anchors matching the query, even when they are semantically equivalent.
@@ -144,9 +148,11 @@ The BM25 vs vector lane decomposition (also v3 run e782fbd0) confirms that the h
 
 ## 5. Known Limitations
 
-**Embedding space.** The canonical runs use OpenAI `text-embedding-3-small` at 768 dimensions. The production engine deployment uses the same provider for the base lane. A local embedding provider (EmbedderCrux, running nomic-embed-text-v1.5) is deployed but not yet integrated into the benchmark suite. Switching embedding providers will require a new canonical run. The embedding cache is keyed by provider to prevent cross-contamination.
+**Embedding space.** Two canonical run sets are published. The primary runs use OpenAI `text-embedding-3-small` at 768 dimensions. Supplementary runs using the production embedding provider (EmbedderCrux, `nomic-embed-text-v1.5`, 768 dimensions) are published in AuditCrux `results/` with run IDs `a86b1733` (v1), `5b125495` (v2), `8dd5efff` (v3). The supplementary runs confirm all primary results: 40/40 categories passed with identical recall and ranking accuracy. Corpus degradation slope is -0.010 per 1K docs (nomic) vs -0.020 (OpenAI) — nomic degrades at half the rate, likely due to more distinctive embeddings under noise pressure. The embedding cache is keyed by provider to prevent cross-contamination.
 
-**Relation expansion not active.** The engine's `artifact_relations` graph is used for living state classification and MiSES composition, but not for retrieval candidate expansion. The v3 Cat 1 result documents this explicitly: a document linked by a `supersedes` relation but sharing zero vocabulary with the query is not retrieved via the relation graph. This is an architectural gap, documented as a baseline rather than obscured.
+**Relation expansion.** Relation-based candidate expansion is implemented behind a `FEATURE_RELATION_EXPANSION` flag. With the flag enabled, the pipeline fetches documents connected by `supersedes`, `derived_from`, and `elaborates` relation edges to retrieved candidates, adding them to the scoring pool. This closes the cross-format supersession gap documented in v2 Cat 1 results. The feature flag defaults to false for backward compatibility; the v3-relation-expansion canonical run (run `e26bf4ed`) documents behaviour with the flag enabled.
+
+**Structure-aware chunk boundaries.** Structured MIME types (JSON, YAML) are currently chunked at character boundaries, not structural boundaries (key-value pairs, array elements). The ingest pipeline compensates via LLM annotation: each structured document generates a prose description that embeds and retrieves correctly, achieving 100% retrieved recall for all formats (run `e782fbd0`). Structure-aware chunk boundaries would improve citation recall for structured formats by enabling the LLM to cite precise structural elements rather than the annotation proxy. This is a roadmap item triggered by the first customer requiring citation-level precision from JSON or YAML documents.
 
 **Fragility calibration range.** The current calibration covers the `minDomains=2` constraint only. The fragility score is binary-like under this constraint: 1.0 when the citation set is exactly at the domain minimum, 0.0 when redundant domain coverage exists. Full calibration across `minDomains=3` and variable citation set sizes is pending.
 
@@ -188,6 +194,10 @@ The benchmark suite is published at [CueCrux/AuditCrux](https://github.com/CueCr
 | 110ada93 | v1 — Baseline | 2026-03-10 | 12/12 | 9m 18s |
 | c85daff7 | v2 — Enterprise | 2026-03-11 | 12/12 | 20m 45s |
 | e782fbd0 | v3 — Capability Probes | 2026-03-11 | 16/16 | 5m 8s |
+| a86b1733 | v1 — Baseline (nomic) | 2026-03-12 | 12/12 | 9m 56s |
+| 5b125495 | v2 — Enterprise (nomic) | 2026-03-12 | 12/12 | 19m 32s |
+| 8dd5efff | v3 — Capability Probes (nomic) | 2026-03-12 | 16/16 | 4m 51s |
+| e26bf4ed | v3 — Capability Probes (relation expansion) | 2026-03-12 | 16/16 | 3m 47s |
 
 ### Environment
 
