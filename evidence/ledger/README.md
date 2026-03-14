@@ -4,7 +4,7 @@ Living index of all canonical audit runs. Each run page contains pass/fail matri
 
 Evidence is generated from [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) (MIT) canonical results.
 
-**7 canonical runs** | **96/96 categories passed** | [Changelog](changelog.md) | [Latest (JSON)](latest.json)
+**10 canonical runs** | **96/96 categories passed (v1-v3)** | **v4 isolation: diagnostic** | [Changelog](changelog.md) | [Latest (JSON)](latest.json)
 
 | Run ID | Suite | Embedding | Date | Duration | Pass Rate | Details |
 |---|---|---|---|---|---|---|
@@ -15,6 +15,9 @@ Evidence is generated from [CueCrux/AuditCrux](https://github.com/CueCrux/AuditC
 | `5b125495` | v2 | EmbedderCrux/nomic | 2026-03-12 | 18m 38s | **12/12** | [View](run-5b125495.md) |
 | `8dd5efff` | v3 | EmbedderCrux/nomic | 2026-03-12 | 4m 13s | **16/16** | [View](run-8dd5efff.md) |
 | `e26bf4ed` | v3 | OpenAI (relation-expansion) | 2026-03-12 | 3m 47s | **16/16** | [View](run-e26bf4ed.md) |
+| `iso-baseline` | v4-isolation | EmbedderCrux/nomic | 2026-03-14 | — | **1/2** | DQP off, cat7+8 only |
+| `iso-nosplit` | v4-isolation | EmbedderCrux/nomic | 2026-03-14 | — | **0/2** | DQP on (no-split fix) |
+| `iso-full` | v4-isolation | EmbedderCrux/nomic | 2026-03-14 | — | **0/2** | Full corpus (1025 docs) |
 
 ## Category Reference
 
@@ -26,6 +29,11 @@ Evidence is generated from [CueCrux/AuditCrux](https://github.com/CueCrux/AuditC
 | cat4 | Temporal Reconstruction / Scale Degradation | Point-in-time accuracy, recall under scale |
 | cat5 | Receipt Chain Verification | Chain depth, integrity, latency |
 | cat6 | Fragility Calibration | Leave-one-out analysis, domain diversity |
+| cat7 | Broad Recall (v4) | Thematic recall across 15+ docs, target ≥0.70 |
+| cat8 | Precision@1 (v4) | Exact top-1 retrieval accuracy, target ≥0.80 |
+| cat9 | DQP Semantic Chunking (v4) | Chunking quality on structured docs |
+| cat10 | DQP Quality Gating (v4) | Confidence-gated retrieval |
+| cat11 | Chunking Stress (v5) | Long-doc chunking (500-2000+ tokens) |
 
 ---
 

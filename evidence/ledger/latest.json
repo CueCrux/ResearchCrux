@@ -66,6 +66,39 @@
       "passed": 16,
       "failed": 0,
       "durationMs": 252787
+    },
+    "v4_iso_dqp_off": {
+      "runId": "iso-baseline",
+      "suite": "v4-isolation",
+      "embedding": "EmbedderCrux/nomic",
+      "date": "2026-03-14",
+      "passRate": "1/2",
+      "totalCategories": 2,
+      "passed": 1,
+      "failed": 1,
+      "notes": "DQP off, cat7+cat8 only (260 docs). Cat 8 P@1=0.850 PASS. Cat 7 broad recall=0.333 FAIL (corpus-limited)."
+    },
+    "v4_iso_dqp_on": {
+      "runId": "iso-nosplit",
+      "suite": "v4-isolation",
+      "embedding": "EmbedderCrux/nomic",
+      "date": "2026-03-14",
+      "passRate": "0/2",
+      "totalCategories": 2,
+      "passed": 0,
+      "failed": 2,
+      "notes": "DQP on (no-split fix), cat7+cat8 only. Cat 8 P@1=0.675 (content-format gap). Cat 7 recall=0.333 (unchanged)."
+    },
+    "v4_iso_full_corpus": {
+      "runId": "iso-full",
+      "suite": "v4-isolation",
+      "embedding": "EmbedderCrux/nomic",
+      "date": "2026-03-14",
+      "passRate": "0/2",
+      "totalCategories": 2,
+      "passed": 0,
+      "failed": 2,
+      "notes": "R0 baseline, full corpus (1025 docs). Cat 7 recall=0.133, Cat 8 P@1=0.488. Cross-category contamination degrades both by ~50%."
     }
   }
 }
