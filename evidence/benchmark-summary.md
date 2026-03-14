@@ -85,10 +85,11 @@ Both retrieval lanes contribute. V-class (semantic-only) docs are retrieved but 
 
 ## Known Limitations
 
-- **Embedding space:** Canonical runs use OpenAI text-embedding-3-small (768d). EmbedderCrux integration pending.
-- **Relation expansion:** Not active — relation graph used for state classification and MiSES, not candidate retrieval.
+- **Embedding space:** Canonical runs cover both OpenAI text-embedding-3-small (768d) and EmbedderCrux/nomic-embed-text-v1.5 (768d). See [embedding comparison](embedding-comparison.md).
+- **Relation expansion:** Not active in baseline — relation graph used for state classification and MiSES, not candidate retrieval. See relation-expansion canonical run in [ledger](ledger/README.md).
 - **Corpus:** Synthetic (reproducible but not ecologically validated).
 - **LLM nondeterminism:** Citation recall may vary ±0.1 between runs. Retrieved recall is deterministic.
+- **DQP:** Advanced retrieval techniques cause severe recall regression. See [DQP findings](dqp-findings.md).
 
 ---
 

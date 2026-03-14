@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CueCrux/ResearchCrux/proof-gallery/schema/crown-receipt.schema.json",
+  "title": "CROWN Receipt",
+  "description": "Full CROWN receipt as returned by CueCrux Engine API. Cryptographically signed proof of evidence retrieval.",
+  "type": "object",
+  "required": [
+    "receiptId",
+    "snapshotId",
+    "answerId",
+    "mode",
+    "queryHash",
+    "fusion",
+    "retrieval",
+    "selection",
+    "timings",
+    "receiptHash",
+    "evidence"
+  ],
+  "properties": {
+    "receiptId": {
+      "type": "string",
+      "description": "Unique receipt identifier"
+    },
+    "snapshotId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Snapshot UUID"
+    },
+    "answerId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Answer this receipt covers"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "light",
+        "verified",
+        "audit"
+      ],
+      "description": "Assurance mode applied"
+    },
+    "modeRequested": {
+      "type": "string",
+      "enum": [
+        "light",
+        "verified",
+        "audit"
+      ],
+      "description": "Assurance mode requested"
+    },
+    "queryHash": {
+      "type": "string",
+      "description": "BLAKE3 or SHA256 hash of the query, prefixed with algorithm"
+    },
+    "fusion": {
+      "type": "object",
+      "properties": {
+        "w_bm25": {
+          "type": "number",
+          "description": "BM25 weight in RRF fusion"
+        },
+        "w_vec": {
+          "type": "number",
+          "description": "Vector weight in RRF fusion"
+        },
+        "rrf_k": {
+          "type": "number",
+          "description": "RRF constant k"
+        }
+      },
+      "description": "Retrieval fusion configuration at time of answer"
+    },
+    "retrieval": {
+      "type": "object",
+      "properties": {
+        "topK": {
+          "type": "integer",
+          "description": "Number of documents returned to LLM"
+        },
+        "rerankK": {
+          "type": "integer",
+          "description": "Number of candidates before reranking"
+        },
+        "filters": {
+          "type": "object",
+          "description": "Active retrieval filters"
+        },
+        "audience": {
+          "type": "string",
+          "enum": [
+            "tenant",
+            "external_share"
+          ]
+        }
+      },
+      "required": [
+        "topK",
+        "rerankK"
+      ]
+    },
+    "selection": {
+      "type": "object",
+      "properties": {
+        "miSESSize": {
+          "type": "integer",
+          "description": "Minimum Sufficient Evidence Set size"
+        },
+        "citationIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "IDs of cited documents"
+        },
+        "coverage": {
+          "type": "object",
+          "description": "Domain → document IDs mapping"
+        },
+        "distinctDomains": {
+          "type": "integer",
+          "description": "Number of distinct source domains"
+        },
+        "fragilityScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Leave-one-out fragility score (0=robust, 1=fragile)"
+        },
+        "loadBearingCitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Citations whose removal changes the answer"
+        }
+      },
+      "required": [
+        "miSESSize",
+        "citationIds",
+        "coverage"
+      ]
+    },
+    "timings": {
+      "type": "object",
+      "properties": {
+        "retrieveMs": {
+          "type": "number"
+        },
+        "rerankMs": {
+          "type": "number"
+        },
+        "llmMs": {
+          "type": "number"
+        },
+        "totalMs": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "retrieveMs",
+        "totalMs"
+      ]
+    },
+    "receiptHash": {
+      "type": "string",
+      "description": "BLAKE3 hash of the canonical receipt payload"
+    },
+    "parentSnapId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid",
+      "description": "Previous receipt in chain (null if first)"
+    },
+    "triggerActionReceiptId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Action receipt that triggered this answer"
+    },
+    "signature": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "sigB64": {
+              "type": "string",
+              "description": "Base64-encoded ed25519 signature"
+            },
+            "kid": {
+              "type": "string",
+              "description": "Key ID: {keyName}:v{version}"
+            },
+            "pubB64": {
+              "type": "string",
+              "description": "Base64-encoded ed25519 public key"
+            },
+            "signedAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "sigB64",
+            "kid",
+            "pubB64"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Ed25519 signature via Vault Transit (null if unsigned)"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claimId": {
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "support",
+              "counterfactual"
+            ]
+          },
+          "quoteHash": {
+            "type": "string",
+            "description": "BLAKE3 hash of the quoted text"
+          },
+          "observedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "scoreComponents": {
+            "type": "object",
+            "description": "Per-lane retrieval scores"
+          },
+          "chunkId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "corpusId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "claimId",
+          "sourceId",
+          "role",
+          "quoteHash",
+          "observedAt"
+        ]
+      },
+      "description": "Evidence records supporting or counterfactual to the answer"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

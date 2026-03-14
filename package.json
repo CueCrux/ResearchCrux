@@ -1,0 +1,23 @@
+{
+  "name": "@cuecrux/researchcrux",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Public evidence and protocol layer for CueCrux",
+  "license": "CC-BY-4.0",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "ledger:generate": "tsx scripts/generate-ledger.ts",
+    "proof:generate": "tsx scripts/generate-proof-gallery.ts",
+    "contracts:generate": "tsx scripts/generate-contract-docs.ts",
+    "generate": "npm run ledger:generate && npm run proof:generate && npm run contracts:generate"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "zod": "^3.24.0",
+    "zod-to-json-schema": "^3.24.0"
+  }
+}

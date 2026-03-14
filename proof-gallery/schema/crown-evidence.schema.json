@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/CueCrux/ResearchCrux/proof-gallery/schema/crown-evidence.schema.json",
+  "title": "CROWN Evidence Record",
+  "description": "Individual evidence record within a CROWN receipt, linking a claim to its source.",
+  "type": "object",
+  "required": [
+    "claimId",
+    "sourceId",
+    "role",
+    "quoteHash",
+    "observedAt"
+  ],
+  "properties": {
+    "claimId": {
+      "type": "string",
+      "description": "Claim identifier"
+    },
+    "sourceId": {
+      "type": "string",
+      "description": "Source document identifier"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "support",
+        "counterfactual"
+      ],
+      "description": "Whether this evidence supports or contradicts the answer"
+    },
+    "quoteHash": {
+      "type": "string",
+      "description": "BLAKE3 hash of the quoted text from the source"
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this evidence was observed by the retrieval pipeline"
+    },
+    "scoreComponents": {
+      "type": "object",
+      "properties": {
+        "bm25": {
+          "type": "number"
+        },
+        "vector": {
+          "type": "number"
+        },
+        "rrf": {
+          "type": "number"
+        }
+      },
+      "description": "Per-lane retrieval scores"
+    },
+    "chunkId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Chunk identifier (if content was chunked)"
+    },
+    "corpusId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Corpus identifier"
+    }
+  }
+}

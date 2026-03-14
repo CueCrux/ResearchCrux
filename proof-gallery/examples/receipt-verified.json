@@ -1,0 +1,101 @@
+{
+  "receiptId": "crown-example-verified-001",
+  "snapshotId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "answerId": "f0e1d2c3-b4a5-6789-0abc-def123456789",
+  "mode": "verified",
+  "modeRequested": "verified",
+  "queryHash": "blake3:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+  "fusion": {
+    "w_bm25": 0.4,
+    "w_vec": 0.6,
+    "rrf_k": 60
+  },
+  "retrieval": {
+    "topK": 10,
+    "rerankK": 25,
+    "filters": {},
+    "audience": "tenant"
+  },
+  "selection": {
+    "miSESSize": 3,
+    "citationIds": [
+      "doc-meridian-policy-001",
+      "doc-meridian-policy-002",
+      "doc-meridian-audit-003"
+    ],
+    "coverage": {
+      "meridian.com": [
+        "doc-meridian-policy-001",
+        "doc-meridian-policy-002"
+      ],
+      "regulator.gov": [
+        "doc-meridian-audit-003"
+      ]
+    },
+    "distinctDomains": 2,
+    "fragilityScore": 0.33,
+    "loadBearingCitations": [
+      "doc-meridian-policy-001"
+    ]
+  },
+  "timings": {
+    "retrieveMs": 142,
+    "rerankMs": 38,
+    "llmMs": 1204,
+    "totalMs": 1384
+  },
+  "receiptHash": "blake3:3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+  "parentSnapId": null,
+  "triggerActionReceiptId": null,
+  "signature": {
+    "sigB64": "TUVBSUJBQ0tFTkQtU0lHTkFUVVJFLUVYQU1QTEU=",
+    "kid": "crown-signing:v1",
+    "pubB64": "TUVBSUJBQ0tFTkQtUFVCTElDLUtFWS1FWEFNUExF",
+    "signedAt": "2026-03-11T14:40:00.000Z"
+  },
+  "evidence": [
+    {
+      "claimId": "claim-001",
+      "sourceId": "doc-meridian-policy-001",
+      "role": "support",
+      "quoteHash": "blake3:a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+      "observedAt": "2026-03-11T14:39:58.000Z",
+      "scoreComponents": {
+        "bm25": 0.82,
+        "vector": 0.91,
+        "rrf": 0.87
+      },
+      "chunkId": "chunk-001-a",
+      "corpusId": "corpus-meridian-prod"
+    },
+    {
+      "claimId": "claim-002",
+      "sourceId": "doc-meridian-policy-002",
+      "role": "support",
+      "quoteHash": "blake3:b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3",
+      "observedAt": "2026-03-11T14:39:58.000Z",
+      "scoreComponents": {
+        "bm25": 0.71,
+        "vector": 0.88,
+        "rrf": 0.8
+      },
+      "chunkId": "chunk-002-a",
+      "corpusId": "corpus-meridian-prod"
+    },
+    {
+      "claimId": "claim-003",
+      "sourceId": "doc-meridian-audit-003",
+      "role": "support",
+      "quoteHash": "blake3:c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+      "observedAt": "2026-03-11T14:39:59.000Z",
+      "scoreComponents": {
+        "bm25": 0.65,
+        "vector": 0.79,
+        "rrf": 0.72
+      },
+      "chunkId": "chunk-003-a",
+      "corpusId": "corpus-meridian-prod"
+    }
+  ],
+  "generatedAt": "2026-03-11T14:40:00.000Z"
+}

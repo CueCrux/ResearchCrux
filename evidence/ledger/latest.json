@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-03-14T00:01:49.199Z",
+  "runs": {
+    "v1_openai": {
+      "runId": "110ada93",
+      "suite": "v1",
+      "embedding": "OpenAI",
+      "date": "2026-03-10",
+      "passRate": "12/12",
+      "totalCategories": 12,
+      "passed": 12,
+      "failed": 0,
+      "durationMs": 558448
+    },
+    "v2_openai": {
+      "runId": "c85daff7",
+      "suite": "v2",
+      "embedding": "OpenAI",
+      "date": "2026-03-11",
+      "passRate": "12/12",
+      "totalCategories": 12,
+      "passed": 12,
+      "failed": 0,
+      "durationMs": 1244370
+    },
+    "v3_openai": {
+      "runId": "e26bf4ed",
+      "suite": "v3",
+      "embedding": "OpenAI (relation-expansion)",
+      "date": "2026-03-12",
+      "passRate": "16/16",
+      "totalCategories": 16,
+      "passed": 16,
+      "failed": 0,
+      "durationMs": 227221
+    },
+    "v1_nomic": {
+      "runId": "a86b1733",
+      "suite": "v1",
+      "embedding": "EmbedderCrux/nomic",
+      "date": "2026-03-12",
+      "passRate": "12/12",
+      "totalCategories": 12,
+      "passed": 12,
+      "failed": 0,
+      "durationMs": 595594
+    },
+    "v2_nomic": {
+      "runId": "5b125495",
+      "suite": "v2",
+      "embedding": "EmbedderCrux/nomic",
+      "date": "2026-03-12",
+      "passRate": "12/12",
+      "totalCategories": 12,
+      "passed": 12,
+      "failed": 0,
+      "durationMs": 1118327
+    },
+    "v3_nomic": {
+      "runId": "8dd5efff",
+      "suite": "v3",
+      "embedding": "EmbedderCrux/nomic",
+      "date": "2026-03-12",
+      "passRate": "16/16",
+      "totalCategories": 16,
+      "passed": 16,
+      "failed": 0,
+      "durationMs": 252787
+    }
+  }
+}
