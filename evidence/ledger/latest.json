@@ -99,6 +99,42 @@
       "passed": 0,
       "failed": 2,
       "notes": "R0 baseline, full corpus (1025 docs). Cat 7 recall=0.133, Cat 8 P@1=0.488. Cross-category contamination degrades both by ~50%."
+    },
+    "v3_relexp_regression": {
+      "runId": "2df50997",
+      "suite": "v3",
+      "embedding": "EmbedderCrux/nomic",
+      "date": "2026-03-14",
+      "passRate": "16/22",
+      "totalCategories": 22,
+      "passed": 16,
+      "failed": 6,
+      "durationMs": 295700,
+      "notes": "v3 regression with FEATURE_RELATION_EXPANSION=true on prod. No regressions — Cat 7=0.750, Cat 8 P@1=0.333/0.500/0.333 (V1/V3.1/V4.1). Existing Cat 1 V3.1 and Cat 4 fails unchanged."
+    },
+    "v4_iso_pertenant_relexp": {
+      "runId": "47f31b67",
+      "suite": "v4-isolation",
+      "embedding": "EmbedderCrux/nomic",
+      "date": "2026-03-14",
+      "passRate": "0/2",
+      "totalCategories": 2,
+      "passed": 0,
+      "failed": 2,
+      "durationMs": 296400,
+      "notes": "Per-tenant isolation + relation expansion. Cat 7 avg_recall=0.306, Cat 8 P@1=0.625. Isolation improved Cat 8 by +25-88% vs full-corpus. Relations table empty — expansion code active but no data to expand."
+    },
+    "v4_iso_crossencoder_rerank": {
+      "runId": "7c8cdd9e",
+      "suite": "v4-isolation",
+      "embedding": "EmbedderCrux/nomic",
+      "date": "2026-03-14",
+      "passRate": "1/2",
+      "totalCategories": 2,
+      "passed": 1,
+      "failed": 1,
+      "durationMs": 97200,
+      "notes": "Clean isolated corpus + cross-encoder rerank (BGE-reranker-v2-m3 on GPU). Cat 8 P@1=0.887 PASS (71/80, +4.4% vs 0.850 baseline). Cat 7 avg_recall=0.234 FAIL (topK ceiling, not ranking). Relation expansion active with vector scoring but Cat 7 fundamentally limited by topK=20 vs 15 expected per theme."
     }
   }
 }
