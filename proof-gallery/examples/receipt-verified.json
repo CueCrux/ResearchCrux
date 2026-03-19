@@ -44,7 +44,7 @@
     "llmMs": 1204,
     "totalMs": 1384
   },
-  "receiptHash": "blake3:3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+  "receiptHash": "blake3:0b61dfe78cad182580c8237f2fe4df13d8f324476fd7a7348508234ce5bcc1d9",
   "parentSnapId": null,
   "triggerActionReceiptId": null,
   "signature": {
