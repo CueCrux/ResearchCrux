@@ -6,7 +6,7 @@
 
 > Public evidence layer: protocol specs, proof gallery, regulatory mappings, API contracts.
 
-Part of [CueCrux](../README.md) — where outsiders can verify claims without accessing the machinery.
+Part of [CueCrux](https://github.com/CueCrux) — where outsiders can verify claims without accessing the machinery.
 
 ResearchCrux is the **public evidence and protocol layer** for the CueCrux platform. It contains protocol specifications, living benchmark evidence, proof galleries, and published API/MCP contracts — all generated from or grounded in the platform itself.
 
@@ -83,6 +83,6 @@ CC BY 4.0. See [LICENSE](LICENSE).
 
 ## Key Links
 
-- Platform overview: [CueCrux README](../README.md)
-- Crux Manifesto v2.2: [PlanCrux/docs/master-plan/Crux-Manifesto-v2.2.md](../PlanCrux/docs/master-plan/Crux-Manifesto-v2.2.md)
-- Related repos: [Engine](../Engine/README.md) (retrieval implementation), [AuditCrux](../AuditCrux/README.md) (benchmark suite), [CoreCrux](../CoreCrux/README.md) (provenance spine)
+- Platform overview: [CueCrux](https://github.com/CueCrux)
+- Crux Manifesto v2.2: [manifesto/crux-manifesto-v2.2.md](manifesto/crux-manifesto-v2.2.md)
+- Related repos: [Engine](https://github.com/CueCrux/Engine) (retrieval implementation), [AuditCrux](https://github.com/CueCrux/AuditCrux) (benchmark suite), [CoreCrux](https://github.com/CueCrux/CoreCrux) (provenance spine)
