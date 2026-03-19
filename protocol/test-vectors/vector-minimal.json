@@ -1,0 +1,107 @@
+{
+  "_description": "Unsigned CROWN receipt test vector",
+  "_protocol": "CROWN Receipt Protocol v0.1",
+  "_section": "Section 5.5 — Independent Verification",
+  "receipt": {
+    "receiptId": "tv-minimal-001",
+    "snapshotId": "a0000001-0001-4000-8000-000000000001",
+    "answerId": "b0000001-0001-4000-8000-000000000001",
+    "mode": "light",
+    "modeRequested": "light",
+    "queryHash": "blake3:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+    "fusion": {
+      "w_bm25": 0.4,
+      "w_vec": 0.6,
+      "rrf_k": 60
+    },
+    "retrieval": {
+      "topK": 10,
+      "rerankK": 25
+    },
+    "selection": {
+      "miSESSize": 1,
+      "citationIds": [
+        "doc-test-policy-001"
+      ],
+      "coverage": {
+        "test.com": [
+          "doc-test-policy-001"
+        ]
+      },
+      "distinctDomains": 1
+    },
+    "timings": {
+      "retrieveMs": 100,
+      "rerankMs": 30,
+      "llmMs": 800,
+      "totalMs": 930
+    },
+    "receiptHash": "blake3:5ec59645ebee0059d5644bb7afc2153e507ce7ba48bdc4e238364b3ba91da347",
+    "parentSnapId": null,
+    "signature": null,
+    "evidence": [
+      {
+        "claimId": "claim-tv-001",
+        "sourceId": "doc-test-policy-001",
+        "role": "support",
+        "quoteHash": "blake3:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observedAt": "2026-03-15T10:00:00.000Z",
+        "scoreComponents": {
+          "bm25": 0.8,
+          "vector": 0.9,
+          "rrf": 0.85
+        },
+        "chunkId": "chunk-tv-001",
+        "corpusId": "corpus-test"
+      }
+    ],
+    "generatedAt": "2026-03-15T10:00:01.000Z"
+  },
+  "verification": {
+    "canonicalPayload": {
+      "answerId": "b0000001-0001-4000-8000-000000000001",
+      "citations": [
+        {
+          "id": "doc-test-policy-001",
+          "quoteHash": "blake3:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "counterfactual": null,
+      "fusion": {
+        "w_bm25": 0.4,
+        "w_vec": 0.6,
+        "rrf_k": 60
+      },
+      "generatedAt": "2026-03-15T10:00:01.000Z",
+      "mode": "light",
+      "modeRequested": "light",
+      "queryHash": "blake3:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+      "retrieval": {
+        "topK": 10,
+        "rerankK": 25
+      },
+      "selection": {
+        "miSESSize": 1,
+        "citationIds": [
+          "doc-test-policy-001"
+        ],
+        "coverage": {
+          "test.com": [
+            "doc-test-policy-001"
+          ]
+        },
+        "distinctDomains": 1
+      },
+      "timings": {
+        "retrieveMs": 100,
+        "rerankMs": 30,
+        "llmMs": 800,
+        "totalMs": 930
+      }
+    },
+    "canonicalJson": "{\"answerId\":\"b0000001-0001-4000-8000-000000000001\",\"citations\":[{\"id\":\"doc-test-policy-001\",\"quoteHash\":\"blake3:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"counterfactual\":null,\"fusion\":{\"rrf_k\":60,\"w_bm25\":0.4,\"w_vec\":0.6},\"generatedAt\":\"2026-03-15T10:00:01.000Z\",\"mode\":\"light\",\"modeRequested\":\"light\",\"queryHash\":\"blake3:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08\",\"retrieval\":{\"rerankK\":25,\"topK\":10},\"selection\":{\"citationIds\":[\"doc-test-policy-001\"],\"coverage\":{\"test.com\":[\"doc-test-policy-001\"]},\"distinctDomains\":1,\"miSESSize\":1},\"timings\":{\"llmMs\":800,\"rerankMs\":30,\"retrieveMs\":100,\"totalMs\":930}}",
+    "canonicalJsonHex": "7b22616e737765724964223a2262303030303030312d303030312d343030302d383030302d303030303030303030303031222c226369746174696f6e73223a5b7b226964223a22646f632d746573742d706f6c6963792d303031222c2271756f746548617368223a22626c616b65333a61616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161227d5d2c22636f756e7465726661637475616c223a6e756c6c2c22667573696f6e223a7b227272665f6b223a36302c22775f626d3235223a302e342c22775f766563223a302e367d2c2267656e6572617465644174223a22323032362d30332d31355431303a30303a30312e3030305a222c226d6f6465223a226c69676874222c226d6f6465526571756573746564223a226c69676874222c22717565727948617368223a22626c616b65333a39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038222c2272657472696576616c223a7b22726572616e6b4b223a32352c22746f704b223a31307d2c2273656c656374696f6e223a7b226369746174696f6e496473223a5b22646f632d746573742d706f6c6963792d303031225d2c22636f766572616765223a7b22746573742e636f6d223a5b22646f632d746573742d706f6c6963792d303031225d7d2c2264697374696e6374446f6d61696e73223a312c226d6953455353697a65223a317d2c2274696d696e6773223a7b226c6c6d4d73223a3830302c22726572616e6b4d73223a33302c2272657472696576654d73223a3130302c22746f74616c4d73223a3933307d7d",
+    "expectedHash": "blake3:5ec59645ebee0059d5644bb7afc2153e507ce7ba48bdc4e238364b3ba91da347",
+    "hashAlgorithm": "blake3"
+  }
+}

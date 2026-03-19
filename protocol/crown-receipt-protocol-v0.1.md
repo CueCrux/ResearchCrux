@@ -158,7 +158,9 @@ When the Vault Transit key is rotated to a new version, new receipts are signed 
 
 ### 4.4 Unsigned Receipts
 
-If Vault Transit is unavailable at receipt creation time (e.g., network partition, Vault sealed), the receipt is persisted without a signature. The `signature`, `signing_kid`, `signing_pub`, and `signed_at` fields are null. The receipt hash and chain linkage remain intact. Unsigned receipts can be signed retroactively if required.
+If Vault Transit is unavailable at receipt creation time (e.g., network partition, Vault sealed), the receipt is persisted without a signature. The `signature`, `signing_kid`, `signing_pub`, and `signed_at` fields are null. The receipt hash and chain linkage remain intact.
+
+Unsigned receipts MUST NOT be mutated after creation to add a signature. If the issuer wishes to attest to an unsigned receipt after signing capability is restored, it MUST emit a separate detached attestation referencing the original `receipt_hash`. See `security-considerations.md` §3 for operational requirements and verifier behavior.
 
 The system tracks the ratio of signed to unsigned receipts as an operational metric.
 

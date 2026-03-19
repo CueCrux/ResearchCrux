@@ -1,0 +1,161 @@
+{
+  "_description": "Signed CROWN receipt test vector",
+  "_protocol": "CROWN Receipt Protocol v0.1",
+  "_section": "Section 5.5 — Independent Verification",
+  "receipt": {
+    "receiptId": "tv-signed-001",
+    "snapshotId": "a0000002-0001-4000-8000-000000000001",
+    "answerId": "b0000002-0001-4000-8000-000000000001",
+    "mode": "verified",
+    "modeRequested": "verified",
+    "queryHash": "blake3:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "fusion": {
+      "w_bm25": 0.4,
+      "w_vec": 0.6,
+      "rrf_k": 60
+    },
+    "retrieval": {
+      "topK": 10,
+      "rerankK": 25,
+      "filters": {},
+      "audience": "tenant"
+    },
+    "selection": {
+      "miSESSize": 2,
+      "citationIds": [
+        "doc-test-policy-001",
+        "doc-test-regulation-002"
+      ],
+      "coverage": {
+        "test.com": [
+          "doc-test-policy-001"
+        ],
+        "regulator.gov": [
+          "doc-test-regulation-002"
+        ]
+      },
+      "distinctDomains": 2,
+      "fragilityScore": 0.5,
+      "loadBearingCitations": [
+        "doc-test-policy-001",
+        "doc-test-regulation-002"
+      ]
+    },
+    "timings": {
+      "retrieveMs": 120,
+      "rerankMs": 35,
+      "llmMs": 1100,
+      "totalMs": 1255
+    },
+    "receiptHash": "blake3:6024a5b2f2e6935a37248bf2d162e1dd57975530db915f61cacc27ca7fee63d9",
+    "parentSnapId": null,
+    "signature": {
+      "sigB64": "sIrywy54B7kfUqEGY6iyc+EosUQ0IzLX3oJlnGQyaWq42SrhjLs+YSXh5qdsBJTCAz1BC9mUEXvcfTRTJrLCCA==",
+      "kid": "crown-test-key:v1",
+      "pubB64": "lSeDZswguHg6GlB53SY2jPcrNqPN+Z2TLBKkGUtDUEE=",
+      "signedAt": "2026-03-15T10:00:01.000Z"
+    },
+    "evidence": [
+      {
+        "claimId": "claim-tv-001",
+        "sourceId": "doc-test-policy-001",
+        "role": "support",
+        "quoteHash": "blake3:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "observedAt": "2026-03-15T10:00:00.000Z",
+        "scoreComponents": {
+          "bm25": 0.8,
+          "vector": 0.9,
+          "rrf": 0.85
+        },
+        "chunkId": "chunk-tv-001",
+        "corpusId": "corpus-test"
+      },
+      {
+        "claimId": "claim-tv-002",
+        "sourceId": "doc-test-regulation-002",
+        "role": "support",
+        "quoteHash": "blake3:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "observedAt": "2026-03-15T10:00:00.500Z",
+        "scoreComponents": {
+          "bm25": 0.8,
+          "vector": 0.9,
+          "rrf": 0.85
+        },
+        "chunkId": "chunk-tv-002",
+        "corpusId": "corpus-test"
+      }
+    ],
+    "generatedAt": "2026-03-15T10:00:01.000Z"
+  },
+  "verification": {
+    "canonicalPayload": {
+      "answerId": "b0000002-0001-4000-8000-000000000001",
+      "citations": [
+        {
+          "id": "doc-test-policy-001",
+          "quoteHash": "blake3:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        {
+          "id": "doc-test-regulation-002",
+          "quoteHash": "blake3:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      ],
+      "counterfactual": null,
+      "fusion": {
+        "w_bm25": 0.4,
+        "w_vec": 0.6,
+        "rrf_k": 60
+      },
+      "generatedAt": "2026-03-15T10:00:01.000Z",
+      "mode": "verified",
+      "modeRequested": "verified",
+      "queryHash": "blake3:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retrieval": {
+        "topK": 10,
+        "rerankK": 25,
+        "filters": {},
+        "audience": "tenant"
+      },
+      "selection": {
+        "miSESSize": 2,
+        "citationIds": [
+          "doc-test-policy-001",
+          "doc-test-regulation-002"
+        ],
+        "coverage": {
+          "test.com": [
+            "doc-test-policy-001"
+          ],
+          "regulator.gov": [
+            "doc-test-regulation-002"
+          ]
+        },
+        "distinctDomains": 2,
+        "fragilityScore": 0.5,
+        "loadBearingCitations": [
+          "doc-test-policy-001",
+          "doc-test-regulation-002"
+        ]
+      },
+      "timings": {
+        "retrieveMs": 120,
+        "rerankMs": 35,
+        "llmMs": 1100,
+        "totalMs": 1255
+      }
+    },
+    "canonicalJson": "{\"answerId\":\"b0000002-0001-4000-8000-000000000001\",\"citations\":[{\"id\":\"doc-test-policy-001\",\"quoteHash\":\"blake3:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},{\"id\":\"doc-test-regulation-002\",\"quoteHash\":\"blake3:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}],\"counterfactual\":null,\"fusion\":{\"rrf_k\":60,\"w_bm25\":0.4,\"w_vec\":0.6},\"generatedAt\":\"2026-03-15T10:00:01.000Z\",\"mode\":\"verified\",\"modeRequested\":\"verified\",\"queryHash\":\"blake3:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"retrieval\":{\"audience\":\"tenant\",\"filters\":{},\"rerankK\":25,\"topK\":10},\"selection\":{\"citationIds\":[\"doc-test-policy-001\",\"doc-test-regulation-002\"],\"coverage\":{\"regulator.gov\":[\"doc-test-regulation-002\"],\"test.com\":[\"doc-test-policy-001\"]},\"distinctDomains\":2,\"fragilityScore\":0.5,\"loadBearingCitations\":[\"doc-test-policy-001\",\"doc-test-regulation-002\"],\"miSESSize\":2},\"timings\":{\"llmMs\":1100,\"rerankMs\":35,\"retrieveMs\":120,\"totalMs\":1255}}",
+    "canonicalJsonHex": "7b22616e737765724964223a2262303030303030322d303030312d343030302d383030302d303030303030303030303031222c226369746174696f6e73223a5b7b226964223a22646f632d746573742d706f6c6963792d303031222c2271756f746548617368223a22626c616b65333a61616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161227d2c7b226964223a22646f632d746573742d726567756c6174696f6e2d303032222c2271756f746548617368223a22626c616b65333a62626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262626262227d5d2c22636f756e7465726661637475616c223a6e756c6c2c22667573696f6e223a7b227272665f6b223a36302c22775f626d3235223a302e342c22775f766563223a302e367d2c2267656e6572617465644174223a22323032362d30332d31355431303a30303a30312e3030305a222c226d6f6465223a227665726966696564222c226d6f6465526571756573746564223a227665726966696564222c22717565727948617368223a22626c616b65333a65336230633434323938666331633134396166626634633839393666623932343237616534316534363439623933346361343935393931623738353262383535222c2272657472696576616c223a7b2261756469656e6365223a2274656e616e74222c2266696c74657273223a7b7d2c22726572616e6b4b223a32352c22746f704b223a31307d2c2273656c656374696f6e223a7b226369746174696f6e496473223a5b22646f632d746573742d706f6c6963792d303031222c22646f632d746573742d726567756c6174696f6e2d303032225d2c22636f766572616765223a7b22726567756c61746f722e676f76223a5b22646f632d746573742d726567756c6174696f6e2d303032225d2c22746573742e636f6d223a5b22646f632d746573742d706f6c6963792d303031225d7d2c2264697374696e6374446f6d61696e73223a322c2266726167696c69747953636f7265223a302e352c226c6f616442656172696e674369746174696f6e73223a5b22646f632d746573742d706f6c6963792d303031222c22646f632d746573742d726567756c6174696f6e2d303032225d2c226d6953455353697a65223a327d2c2274696d696e6773223a7b226c6c6d4d73223a313130302c22726572616e6b4d73223a33352c2272657472696576654d73223a3132302c22746f74616c4d73223a313235357d7d",
+    "expectedHash": "blake3:6024a5b2f2e6935a37248bf2d162e1dd57975530db915f61cacc27ca7fee63d9",
+    "hashAlgorithm": "blake3",
+    "signature": {
+      "algorithm": "ed25519",
+      "kid": "crown-test-key:v1",
+      "publicKeyHex": "95278366cc20b8783a1a5079dd26368cf72b36a3cdf99d932c12a4194b435041",
+      "publicKeyB64": "lSeDZswguHg6GlB53SY2jPcrNqPN+Z2TLBKkGUtDUEE=",
+      "signatureB64": "sIrywy54B7kfUqEGY6iyc+EosUQ0IzLX3oJlnGQyaWq42SrhjLs+YSXh5qdsBJTCAz1BC9mUEXvcfTRTJrLCCA==",
+      "signedMessage": "blake3:6024a5b2f2e6935a37248bf2d162e1dd57975530db915f61cacc27ca7fee63d9",
+      "_note": "Signature is over the receiptHash string (UTF-8 encoded), not the raw hash bytes"
+    }
+  }
+}

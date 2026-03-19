@@ -78,8 +78,11 @@ function main(): void {
     const data = JSON.parse(raw);
 
     if (data.chain && Array.isArray(data.chain)) {
-      // Chain file
-      const result = verifyChain(data as { chain: CrownReceipt[] });
+      // Chain file — may be bare receipts or test vector wrappers
+      const receipts = data.chain.map((item: Record<string, unknown>) =>
+        item.receipt ? item.receipt : item
+      ) as CrownReceipt[];
+      const result = verifyChain(receipts);
       printChainResult(result, path);
       total += result.depth;
       failures += result.breaks.length;
@@ -90,8 +93,11 @@ function main(): void {
       total += result.depth;
       failures += result.breaks.length;
     } else {
-      // Single receipt
-      const result = verifyReceipt(data as CrownReceipt);
+      // Single receipt or test vector wrapper
+      const receipt = (
+        data.receipt ? data.receipt : data
+      ) as CrownReceipt;
+      const result = verifyReceipt(receipt);
       const label = path === "-" ? "stdin" : path;
       console.log(
         `${result.valid ? "PASS" : "FAIL"}  ${label}`

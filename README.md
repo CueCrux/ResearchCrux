@@ -1,5 +1,9 @@
 # ResearchCrux
 
+[![CI](https://github.com/CueCrux/ResearchCrux/actions/workflows/ci.yml/badge.svg)](https://github.com/CueCrux/ResearchCrux/actions/workflows/ci.yml)
+[![Spec Quality](https://github.com/CueCrux/ResearchCrux/actions/workflows/spec-quality.yml/badge.svg)](https://github.com/CueCrux/ResearchCrux/actions/workflows/spec-quality.yml)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+
 > Public evidence layer: protocol specs, proof gallery, regulatory mappings, API contracts.
 
 Part of [CueCrux](../README.md) — where outsiders can verify claims without accessing the machinery.

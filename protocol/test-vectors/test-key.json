@@ -1,0 +1,8 @@
+{
+  "_warning": "TEST ONLY — DO NOT USE IN PRODUCTION",
+  "algorithm": "ed25519",
+  "privateKeyHex": "0f1f4bcf72c9ec256b59b45bdd94890957ee932b19c4eeaa15d7d8d296b3547b",
+  "publicKeyHex": "95278366cc20b8783a1a5079dd26368cf72b36a3cdf99d932c12a4194b435041",
+  "publicKeyB64": "lSeDZswguHg6GlB53SY2jPcrNqPN+Z2TLBKkGUtDUEE=",
+  "kid": "crown-test-key:v1"
+}
