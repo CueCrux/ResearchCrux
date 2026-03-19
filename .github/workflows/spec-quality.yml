@@ -53,6 +53,7 @@ jobs:
             --exclude-path node_modules
             --exclude "^mailto:"
             --exclude "^https://github.com/CueCrux/ResearchCrux/proof-gallery"
+            --exclude "^https://github.com/CueCrux/(Engine|CoreCrux)"
             "protocol/**/*.md"
             "README.md"
             "evidence/regulatory-mapping.md"
