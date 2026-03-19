@@ -1,9 +1,12 @@
 name: Spec Quality
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
+      - "README.md"
+      - ".github/workflows/spec-quality.yml"
       - "protocol/**"
       - "whitepapers/**"
       - "evidence/**"
@@ -13,6 +16,8 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - "README.md"
+      - ".github/workflows/spec-quality.yml"
       - "protocol/**"
       - "whitepapers/**"
       - "evidence/**"
