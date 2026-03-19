@@ -100,7 +100,7 @@ This canonicalisation is necessary because the receipt payload passes through Po
 
 The canonical receipt payload is constructed from the following fields, in this order after canonicalisation:
 
-```
+```jsonc
 {
   "answerId": UUID,
   "citations": [{ "id": string, "quoteHash": string }],

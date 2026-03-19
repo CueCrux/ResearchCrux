@@ -1,0 +1,55 @@
+name: Spec Quality
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "protocol/**"
+      - "whitepapers/**"
+      - "evidence/**"
+      - "contracts/**"
+      - "manifesto/**"
+      - "proof-gallery/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "protocol/**"
+      - "whitepapers/**"
+      - "evidence/**"
+      - "contracts/**"
+      - "manifesto/**"
+      - "proof-gallery/**"
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx markdownlint-cli2 "protocol/**/*.md" "whitepapers/**/*.md" "evidence/*.md" "contracts/**/*.md"
+
+  link-check:
+    name: Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --exclude-path node_modules
+            --exclude-mail
+            --exclude "^https://github.com/CueCrux/ResearchCrux/proof-gallery"
+            "protocol/**/*.md"
+            "README.md"
+            "evidence/regulatory-mapping.md"
+            "contracts/**/*.md"
+          fail: true

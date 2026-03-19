@@ -9,12 +9,20 @@
     "node": ">=20.0.0"
   },
   "scripts": {
+    "typecheck": "tsc --noEmit",
+    "validate:schemas": "tsx scripts/validate-schemas.ts",
+    "lint:md": "markdownlint-cli2 \"protocol/**/*.md\" \"whitepapers/**/*.md\" \"evidence/*.md\" \"contracts/**/*.md\"",
     "ledger:generate": "tsx scripts/generate-ledger.ts",
     "proof:generate": "tsx scripts/generate-proof-gallery.ts",
     "contracts:generate": "tsx scripts/generate-contract-docs.ts",
-    "generate": "npm run ledger:generate && npm run proof:generate && npm run contracts:generate"
+    "generate": "npm run ledger:generate && npm run proof:generate && npm run contracts:generate",
+    "ci": "npm run typecheck && npm run validate:schemas"
   },
   "devDependencies": {
+    "@types/node": "^25.5.0",
+    "ajv": "^8.17.0",
+    "ajv-formats": "^3.0.0",
+    "markdownlint-cli2": "^0.17.0",
     "tsx": "^4.19.0",
     "typescript": "^5.7.0",
     "zod": "^3.24.0",

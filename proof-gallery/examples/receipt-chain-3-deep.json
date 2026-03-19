@@ -2,8 +2,8 @@
   "chain": [
     {
       "receiptId": "crown-chain-001",
-      "snapshotId": "chain-0001-0000-0000-000000000001",
-      "answerId": "chain-ans-0000-0000-000000000001",
+      "snapshotId": "c0000001-0001-4000-8000-000000000001",
+      "answerId": "a0000001-0001-4000-8000-000000000001",
       "mode": "verified",
       "modeRequested": "verified",
       "queryHash": "blake3:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
@@ -103,8 +103,8 @@
     },
     {
       "receiptId": "crown-chain-002",
-      "snapshotId": "chain-0001-0000-0000-000000000002",
-      "answerId": "chain-ans-0000-0000-000000000002",
+      "snapshotId": "c0000001-0002-4000-8000-000000000002",
+      "answerId": "a0000001-0002-4000-8000-000000000002",
       "mode": "verified",
       "modeRequested": "verified",
       "queryHash": "blake3:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
@@ -148,7 +148,7 @@
         "totalMs": 1384
       },
       "receiptHash": "blake3:chain002hash",
-      "parentSnapId": "chain-0001-0000-0000-000000000001",
+      "parentSnapId": "c0000001-0001-4000-8000-000000000001",
       "triggerActionReceiptId": null,
       "signature": {
         "sigB64": "TUVBSUJBQ0tFTkQtU0lHTkFUVVJFLUVYQU1QTEU=",
@@ -204,8 +204,8 @@
     },
     {
       "receiptId": "crown-chain-003",
-      "snapshotId": "chain-0001-0000-0000-000000000003",
-      "answerId": "chain-ans-0000-0000-000000000003",
+      "snapshotId": "c0000001-0003-4000-8000-000000000003",
+      "answerId": "a0000001-0003-4000-8000-000000000003",
       "mode": "verified",
       "modeRequested": "verified",
       "queryHash": "blake3:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
@@ -249,7 +249,7 @@
         "totalMs": 1384
       },
       "receiptHash": "blake3:chain003hash",
-      "parentSnapId": "chain-0001-0000-0000-000000000002",
+      "parentSnapId": "c0000001-0002-4000-8000-000000000002",
       "triggerActionReceiptId": null,
       "signature": {
         "sigB64": "TUVBSUJBQ0tFTkQtU0lHTkFUVVJFLUVYQU1QTEU=",
