@@ -46,7 +46,7 @@ jobs:
           args: >-
             --no-progress
             --exclude-path node_modules
-            --exclude-mail
+            --exclude "^mailto:"
             --exclude "^https://github.com/CueCrux/ResearchCrux/proof-gallery"
             "protocol/**/*.md"
             "README.md"
