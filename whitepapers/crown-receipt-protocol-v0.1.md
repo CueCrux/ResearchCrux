@@ -316,14 +316,26 @@ The IETF Supply Chain Integrity, Transparency, and Trust (SCITT) working group i
 
 **Transparency log structure.** SCITT does not prescribe a specific log structure but references Merkle-tree-based approaches (RFC 6962). CROWN uses a simpler parent_snap_id linked list. A Merkle tree would provide stronger inclusion proofs but is not required for the current use case (single-issuer chains verified by the issuer's own database).
 
-### 8.4 Path to SCITT Compatibility
+### 8.4 SCITT Compatibility Layer
 
-Formal SCITT compatibility would require:
+The SCITT compatibility artifacts are published in [`protocol/scitt-compat/`](../protocol/scitt-compat/):
 
-1. **COSE envelope wrapping.** Package the canonical receipt payload as a COSE Sign1 structure with the ed25519 signature.
-2. **Content type registration.** Define and register a content type for RAG evidence claims (e.g., `application/vnd.cuecrux.crown-receipt+json`).
-3. **Independent transparency service.** Deploy a registrar that accepts CROWN receipts and countersigns them, providing independent confirmation of registration.
-4. **Merkle-based log.** Replace or supplement the parent_snap_id chain with a Merkle tree for efficient inclusion proofs.
+| Artifact | Description |
+|---|---|
+| [CDDL Schema](../protocol/scitt-compat/crown-receipt.cddl) | CBOR type definition for CROWN receipts, modelled on [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events-02/) Section 4 |
+| [SCITT Integration](../protocol/scitt-compat/scitt-integration.md) | Terminology mapping, COSE Sign1 encoding, registration guidance, verification procedure |
+| [Registration Policy](../protocol/scitt-compat/registration-policy.md) | Mandatory, recommended, and out-of-scope checks for Transparency Services accepting CROWN receipts |
+| [Privacy Considerations](../protocol/scitt-compat/privacy-considerations.md) | Query content, evidence content, tenant isolation, correlation risks, actor privacy |
+
+Content types: `application/vnd.crown.receipt+cbor` (SCITT registration) and `application/vnd.crown.receipt+json` (standalone verification, API responses).
+
+### 8.5 Remaining SCITT Gaps
+
+Full SCITT alignment additionally requires:
+
+1. **Independent transparency service.** Deploy a registrar that accepts CROWN receipts and countersigns them, providing independent confirmation of registration.
+2. **Merkle-based log.** Replace or supplement the `parent_snap_id` chain with a Merkle tree for efficient inclusion proofs (see [ADR-004](../protocol/decisions/004-linked-list-over-merkle.md)).
+3. **IANA content type registration.** Formal registration of the `application/vnd.crown.receipt+cbor` and `application/vnd.crown.receipt+json` content types.
 
 These changes are additive — they do not require modifying the existing receipt structure. The current CROWN protocol can be wrapped in SCITT without breaking backward compatibility.
 
@@ -337,7 +349,7 @@ This document describes CROWN protocol version 0.1. The receipt schema defined i
 
 ### 9.2 Verification Library
 
-An independent verification library (requiring only BLAKE3 and ed25519 implementations, no CueCrux dependencies) is planned for publication. Until then, the verification procedure in Section 5 is fully specified and implementable from this document.
+An independent verification library is published at [`verify/`](../verify/). It requires only BLAKE3, SHA256, and ed25519 implementations (via `@noble/hashes` and `@noble/curves`) with zero CueCrux dependencies. The library provides both a programmatic API and a CLI (`crown-verify`) for receipt and chain verification. Test vectors with a deterministic ed25519 keypair are available in [`protocol/test-vectors/`](../protocol/test-vectors/).
 
 ### 9.3 Backward Compatibility
 

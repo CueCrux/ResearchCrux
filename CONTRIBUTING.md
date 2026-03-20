@@ -10,7 +10,7 @@ The CROWN Receipt Protocol (v0.1) is an open specification under CC BY 4.0. We w
 
 - **Issues** identifying ambiguities, gaps, or inconsistencies in the protocol spec
 - **Protocol extension proposals** for new use cases (e.g., multi-party verification, alternative hash algorithms, COSE envelope wrapping for SCITT compatibility)
-- **Review of the SCITT alignment** (Section 8) — especially from anyone involved in IETF SCITT or related standards work
+- **Review of the [SCITT compatibility layer](protocol/scitt-compat/)** — especially from anyone involved in IETF SCITT or related standards work
 
 ### Verification implementations
 
@@ -19,6 +19,15 @@ The `verify/` directory contains a reference verification library in TypeScript.
 - **Alternative language implementations** — Python, Go, Rust, or any language with BLAKE3 + ed25519 support. Independent implementations strengthen the protocol's credibility as a standard.
 - **Bug reports** where the verification library disagrees with the protocol spec
 - **Test vectors** — additional receipt examples that exercise edge cases (chain forks, legacy SHA256 hashes, unsigned receipts, key rotation scenarios)
+
+### SCITT compatibility
+
+The `protocol/scitt-compat/` directory contains artifacts for IETF SCITT integration. We welcome:
+
+- **Alternative COSE implementations** — wrapping CROWN receipts in COSE Sign1 envelopes using different languages or libraries
+- **CDDL extensions** — proposed additions to `crown-receipt.cddl` for new claim types or deployment contexts
+- **Transparency Service integration tests** — results from registering CROWN receipts with SCITT Transparency Service implementations
+- **Privacy or registration policy review** — feedback from anyone operating or evaluating SCITT infrastructure
 
 ### Evidence and benchmark contributions
 

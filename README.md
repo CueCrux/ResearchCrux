@@ -19,6 +19,7 @@ ResearchCrux is the **public evidence and protocol layer** for the CueCrux platf
 | Section | Description | Start Here |
 |---------|-------------|------------|
 | [Protocol Specs](protocol/) | CROWN receipt protocol specification, hash chain construction, IETF SCITT alignment | [CROWN v0.1](protocol/crown-receipt-protocol-v0.1.md) |
+| [SCITT Compatibility](protocol/scitt-compat/) | CDDL schema, COSE encoding, registration policy, privacy considerations for SCITT integration | [Integration Guide](protocol/scitt-compat/scitt-integration.md) |
 | [Living Evidence](evidence/) | Benchmark ledger with historical runs, DQP findings, embedding comparison | [Ledger Index](evidence/ledger/README.md) |
 | [Proof Gallery](proof-gallery/) | CROWN receipt examples, redacted proof packs, verification walkthrough | [Gallery Index](proof-gallery/README.md) |
 | [Regulatory Mapping](evidence/regulatory-mapping.md) | EU AI Act (Art. 13, 14) and DORA (Art. 8–11) mapped to CROWN capabilities | [Mapping](evidence/regulatory-mapping.md) |
@@ -31,7 +32,7 @@ ResearchCrux is the **public evidence and protocol layer** for the CueCrux platf
 ## Audiences
 
 - **Compliance engineers** evaluating EU AI Act (Article 13, 14) and DORA (Articles 8–11) obligations — start with [regulatory-mapping.md](evidence/regulatory-mapping.md)
-- **Standards participants** assessing the CROWN receipt protocol for IETF SCITT alignment — start with [CROWN v0.1](protocol/crown-receipt-protocol-v0.1.md)
+- **Standards participants** evaluating CROWN as a SCITT application profile — start with the [SCITT integration guide](protocol/scitt-compat/scitt-integration.md)
 - **Technical evaluators** who need measured performance and architecture evidence — start with the [benchmark ledger](evidence/ledger/README.md)
 - **Integrators** building on the CueCrux API or MCP surface — start with [contracts](contracts/README.md)
 

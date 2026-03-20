@@ -1,0 +1,20 @@
+{
+  "name": "crown-cose-example",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "COSE Sign1 wrapped CROWN receipt example for SCITT compatibility",
+  "scripts": {
+    "generate": "npx tsx generate.ts"
+  },
+  "dependencies": {
+    "cbor": "^9.0.0",
+    "@noble/curves": "^1.8.0",
+    "@noble/hashes": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

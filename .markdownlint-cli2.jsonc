@@ -1,4 +1,5 @@
 {
+  "ignores": ["**/node_modules/**"],
   "config": {
     // Allow long lines in specs (tables, URLs, hashes)
     "MD013": false,

@@ -1,0 +1,197 @@
+; CROWN Receipt Protocol — CDDL Definition
+; Version: 0.1 (Draft, pre-standardisation)
+; Date: March 2026
+; Aligned to: crown-receipt-protocol-v0.1
+; Modelled on: draft-kamimura-scitt-refusal-events-02 Section 4
+;
+; This grammar is RECOMMENDED for CBOR-based implementations
+; within SCITT Signed Statements. Implementations using JSON
+; encoding SHOULD maintain semantic equivalence with this
+; definition. See Appendix in the protocol spec for JSON
+; representation examples.
+
+; ============================================================
+; Top-level receipt type
+; ============================================================
+
+crown-receipt = {
+  common-claims,
+  fusion:      fusion-group,
+  retrieval:   retrieval-group,
+  selection:   selection-group,
+  timings:     timings-group,
+  ? knowledge-state-cursor: cursor-group / null,
+  ? trigger-action-receipt-id: uuid / null,
+  tenant-id:   tstr,
+  * tstr => any                         ; extension point
+}
+
+; ============================================================
+; Common claims (appear in every receipt)
+; ============================================================
+
+common-claims = (
+  snap-id:          uuid,
+  answer-id:        uuid,
+  parent-snap-id:   uuid / null,        ; null for chain root
+  generated-at:     time,
+  mode:             mode-value,
+  mode-requested:   tstr,
+  query-hash:       hash-value,
+  query-text:       tstr,
+  receipt-hash:     hash-value,
+  ? signature:      bstr / tstr / null,
+  ? signing-kid:    tstr / null,
+  ? signing-pub:    tstr / null,         ; base64-encoded ed25519 public key
+  ? signed-at:      time / null
+)
+
+mode-value = "light" / "verified" / "audit"
+
+; ============================================================
+; Selection (MiSES composition)
+; ============================================================
+
+selection-group = {
+  mi-ses-size:              uint,
+  citation-ids:             [* tstr],
+  ? coverage:               { * tstr => [* tstr] } / null,
+  ? distinct-domains:       uint / null,
+  ? fragility-score:        float16 .le 1.0 / null,
+  ? load-bearing-citations: [* tstr] / null,
+  ? counterfactual:         counterfactual-group / null,
+  * tstr => any
+}
+
+counterfactual-group = {
+  ? considered:   uint,
+  ? rejected:     uint,
+  ? candidates:   [* candidate-entry],
+  * tstr => any
+}
+
+candidate-entry = {
+  id:             tstr,
+  score:          float16,
+  reject-reason:  tstr,
+  * tstr => any
+}
+
+; ============================================================
+; Fusion (retrieval weighting)
+; ============================================================
+
+fusion-group = {
+  bm25-weight:    float16,
+  vector-weight:  float16,
+  rrf-k:          uint,
+  * tstr => any
+}
+
+; ============================================================
+; Retrieval configuration
+; ============================================================
+
+retrieval-group = {
+  ? top-k:          uint,
+  ? rerank:         bool,
+  ? min-domains:    uint,
+  ? budget:         tstr,
+  * tstr => any
+}
+
+; ============================================================
+; Timings (milliseconds)
+; ============================================================
+
+timings-group = {
+  retrieve-ms:  uint,
+  rerank-ms:    uint,
+  llm-ms:       uint,
+  total-ms:     uint,
+  * tstr => any
+}
+
+; ============================================================
+; Knowledge state cursor (CoreCrux position)
+; ============================================================
+
+cursor-group = {
+  shard-id:     uint,
+  epoch:        uint,
+  segment-seq:  uint,
+  offset:       uint,
+  * tstr => any
+}
+
+; ============================================================
+; Evidence record (accompanies a receipt)
+; ============================================================
+
+crown-evidence = {
+  snap-id:          uuid,
+  evidence-set-id:  uuid,
+  claim-id:         uint,
+  source-id:        uint,
+  role:             role-value,
+  quote-hash:       hash-value,
+  ts-observed:      time,
+  score-components: score-group,
+  ? chunk-id:       tstr / null,
+  ? corpus-id:      tstr / null,
+  * tstr => any
+}
+
+role-value = "support" / "counterfactual"
+
+score-group = {
+  ? bm25:     float16,
+  ? vector:   float16,
+  ? combined: float16,
+  * tstr => any
+}
+
+; ============================================================
+; Supporting types
+; Aligned with draft-kamimura-scitt-refusal-events-02
+; ============================================================
+
+uuid = bstr .size 16 / tstr            ; binary or RFC 9562 string
+hash-value = bstr / tstr               ; raw bytes or prefixed string
+                                        ; e.g., "blake3:a1b2c3..." or
+                                        ;        "sha256:d4e5f6..."
+time = #6.0(tstr) / #6.1(number) / uint
+                                        ; tag 0 (RFC 3339 date-time string),
+                                        ; tag 1 (epoch-based number),
+                                        ; or untagged epoch seconds
+
+; ============================================================
+; Notes
+; ============================================================
+;
+; 1. Extension points (* tstr => any) allow deployment-specific
+;    claims without breaking interoperability.
+;
+; 2. UUID may be binary (16 bytes) or string (RFC 9562 format).
+;
+; 3. Hash values may be raw bytes or algorithm-prefixed strings.
+;    The prefix ensures automatic algorithm detection during
+;    verification (see protocol spec Section 3.3).
+;
+; 4. Timestamps support CBOR tag 0 (RFC 3339 date-time string),
+;    tag 1 (epoch-based number), or untagged epoch seconds.
+;
+; 5. The claim names defined here represent semantic labels.
+;    Implementations MAY use alternative key representations
+;    (such as short integer labels for CBOR efficiency) provided
+;    the semantic meaning is preserved and documented.
+;
+; 6. The receipt-hash field contains the BLAKE3 hash of the
+;    canonical receipt payload (see protocol spec Section 3).
+;    Verification requires reconstructing the canonical payload,
+;    hashing it, and comparing to this field.
+;
+; 7. The parent-snap-id field links receipts into an append-only
+;    chain. This chain is an application-level integrity mechanism
+;    complementary to (not replacing) SCITT Transparency Log
+;    inclusion proofs.
