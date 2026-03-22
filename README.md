@@ -56,15 +56,36 @@ The benchmark suite itself is published separately at [CueCrux/AuditCrux](https:
 
 ## Canonical Results
 
+### Current Baseline — v4 Phase 7.3 (2026-03-22)
+
+| Suite | Run ID | Embedding | Categories | Result |
+|-------|--------|-----------|------------|--------|
+| v4 — Production Quality | `16554101` | EmbedderCrux/nomic | 13 categories | **13/13** |
+| v4 — Production Quality | `ca505454` | EmbedderCrux/nomic | 13 categories | **13/13** |
+| v4 — Production Quality | `5e5ccff5` | EmbedderCrux/nomic | 13 categories | **13/13** |
+
+**Corpus:** 1074 unique docs, 462 queries, 13 categories. **LLM:** gpt-4o-mini (OpenAI). **Config:** [config-manifest-6.7](https://github.com/CueCrux/Engine/blob/main/docs/config-manifest-6.7.json).
+
+Key metrics across 3 canonical runs:
+
+| Category | Metric | Values | Target |
+|---|---|---|---|
+| Cat 2 (Format-Aware Citation) | avg_citation_recall | 0.670 / 0.715 / 0.696 | ≥0.50 |
+| Cat 11 (Chunking Stress) | broad_recall | 0.927 / 0.927 / 0.927 | ≥0.70 |
+| Cat 12 (Hard-Negative Overlap) | parent_child_recall | 1.000 / 1.000 / 1.000 | ≥0.80 |
+
+Cat 2 and Cat 12 improvements are product-owned engineering changes. Cat 11's improvement (0.722→0.927) is externally contingent — a full attribution matrix ruled out both 7.3 code flags; the lift is likely upstream LLM model drift.
+
+### Legacy Suites (v1-v3)
+
 | Suite | Run ID | Embedding | Categories | Result |
 |-------|--------|-----------|------------|--------|
 | v1 — Baseline | `110ada93` | OpenAI | 4 × 3 modes | **12/12** |
-| v1 — Baseline | `a86b1733` | EmbedderCrux/nomic | 4 × 3 modes | **12/12** |
 | v2 — Enterprise | `c85daff7` | OpenAI | 4 × 3 modes | **12/12** |
-| v2 — Enterprise | `5b125495` | EmbedderCrux/nomic | 4 × 3 modes | **12/12** |
 | v3 — Capability | `e782fbd0` | OpenAI | 6 × 3 modes | **16/16** |
+| v1 — Baseline | `a86b1733` | EmbedderCrux/nomic | 4 × 3 modes | **12/12** |
+| v2 — Enterprise | `5b125495` | EmbedderCrux/nomic | 4 × 3 modes | **12/12** |
 | v3 — Capability | `8dd5efff` | EmbedderCrux/nomic | 6 × 3 modes | **16/16** |
-| **Total** | | | **14 categories** | **80/80** |
 
 See the [benchmark ledger](evidence/ledger/README.md) for per-run details, metric deltas, and downloadable evidence.
 

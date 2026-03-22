@@ -134,6 +134,36 @@ A complete AI audit trail for regulated industries may require multiple profiles
 
 ---
 
+## 7. What CROWN Does Not Claim Yet
+
+This section explicitly states what is not yet implemented, not yet demonstrated, or intentionally deferred. Standards readers should treat this as the current boundary of the profile.
+
+### Not yet demonstrated
+
+- **End-to-end Transparency Service interop.** No CROWN receipt has been registered with a live SCITT Transparency Service and verified via a returned SCITT Receipt (inclusion proof). The encoding path (JSON → CBOR → COSE_Sign1 → SCRAPI registration) is specified but not yet exercised against an operational log. This is the primary gap between "credible profile" and "interoperable profile."
+
+- **COSE_Sign1 production path.** The current Engine produces JSON receipts signed with ed25519 via Vault Transit. The CBOR/COSE_Sign1 encoding described in Section 2 is specified in the CDDL schema but not yet produced by the Engine's signing pipeline. A worked example with real signatures does not yet exist.
+
+### Intentionally deferred
+
+- **IANA content-type registration.** `application/vnd.crown.receipt+cbor` and `application/vnd.crown.receipt+json` are defined for use but not yet submitted to IANA. Registration will be requested when the profile reaches a stability level that justifies it.
+
+- **Multi-Transparency-Service registration.** The spec does not address registering the same receipt with multiple Transparency Services. This is a deployment concern, not a protocol concern, and is deferred.
+
+### Implemented and verified
+
+- **Receipt hash chain.** `parentSnapId` chain integrity verified to depth 50 with flat latency (~3ms). See [AuditCrux Cat 5](https://github.com/CueCrux/AuditCrux) results.
+
+- **Ed25519 signing via Vault Transit.** Production signing with key rotation, public key embedding, and offline verification. Signing queue with 90-day expiry for transient Vault unavailability.
+
+- **Standalone verification.** The `crown-verify` CLI ([verify/](../../verify/)) performs receipt hash recomputation and chain linkage checks without SCITT infrastructure. Published test vectors in [proof-gallery/](../../proof-gallery/).
+
+- **Retrieval quality evidence.** 13-category benchmark suite with 1074 docs, 462 queries, 13/13 × 3 canonical passes. Methodology separates retrieval failure from LLM citation failure. See [benchmark evidence](../../evidence/ledger/README.md).
+
+- **CDDL schema.** CBOR type definition for CROWN receipts published at [`crown-receipt.cddl`](crown-receipt.cddl), modelled on existing SCITT application profile patterns.
+
+---
+
 ## References
 
 - [draft-ietf-scitt-architecture](https://datatracker.ietf.org/doc/draft-ietf-scitt-architecture/) — SCITT Architecture (AUTH48, approaching RFC status)

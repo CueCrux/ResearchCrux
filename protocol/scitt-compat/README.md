@@ -34,7 +34,36 @@ The SCITT compatibility layer builds on the existing CROWN implementation:
 - [Proof gallery](../../proof-gallery/) — full and redacted receipt examples with JSON schemas
 - [Regulatory mapping](../../evidence/regulatory-mapping.md) — EU AI Act Article 13/14 and DORA Article 8–11 mapped to CROWN capabilities with benchmark citations
 
-## Planned additions
+## Implementation Status
 
-- Content type registration guidance
-- Interoperability test results against SCITT Transparency Service implementations
+A plain-language summary of what is implemented, what is draft, and what is pending. For the detailed version, see [Section 7 of the integration guide](scitt-integration.md#7-what-crown-does-not-claim-yet).
+
+### Implemented and verified
+
+| Capability | Status | Evidence |
+|---|---|---|
+| Receipt hash chain (parentSnapId) | Production | Depth 50, flat latency (~3ms). [AuditCrux Cat 5](https://github.com/CueCrux/AuditCrux) |
+| Ed25519 signing (Vault Transit) | Production | Key rotation, public key embedding, signing queue with 90-day expiry |
+| Standalone verification CLI | Published | [`crown-verify`](../../verify/), test vectors in [proof-gallery](../../proof-gallery/) |
+| JSON Schema | Published | [crown-receipt.schema.json](../../proof-gallery/schema/crown-receipt.schema.json) |
+| CDDL Schema (CBOR) | Published | [crown-receipt.cddl](crown-receipt.cddl) |
+| Retrieval quality benchmark | Production | 13/13 × 3 (1074 docs, 462 queries). [Benchmark ledger](../../evidence/ledger/README.md) |
+| Regulatory mapping | Published | EU AI Act Art. 13/14, DORA Art. 8-11. [Mapping](../../evidence/regulatory-mapping.md) |
+| COSE_Sign1 walkthrough | Published | [Worked example](cose-example/cose-walkthrough.md) with hex walkthrough |
+
+### Draft (specified, not yet exercised end-to-end)
+
+| Capability | Status | What remains |
+|---|---|---|
+| CBOR encoding path | Specified in CDDL | Engine produces JSON; CBOR serialisation not yet in production pipeline |
+| COSE_Sign1 production signing | Specified in Section 2 | Engine signs JSON+ed25519 natively; COSE wrapping not yet automated |
+| SCRAPI registration flow | Specified in Section 3 | No live registration against an operational Transparency Service |
+| Content types | Defined | `application/vnd.crown.receipt+{cbor,json}` — IANA registration deferred |
+
+### Pending (not yet started)
+
+| Capability | Notes |
+|---|---|
+| Transparency Service interop test | Requires an operational SCITT TS accepting third-party profiles |
+| IANA content-type registration | Deferred until profile stability warrants it |
+| Multi-TS registration guidance | Deployment concern, deferred |
