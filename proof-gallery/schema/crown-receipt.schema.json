@@ -272,6 +272,24 @@
     "generatedAt": {
       "type": "string",
       "format": "date-time"
+    },
+    "signingStatus": {
+      "type": "string",
+      "enum": [
+        "signed",
+        "pending_signature",
+        "expired"
+      ],
+      "default": "signed",
+      "description": "Receipt signing state. 'pending_signature' when Vault Transit was transiently unavailable; 'expired' after 90-day signing window."
+    },
+    "signingExpiresAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time",
+      "description": "Deadline for signing (90 days from generatedAt). Null if already signed."
     }
   }
 }

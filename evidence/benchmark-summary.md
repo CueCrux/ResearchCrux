@@ -13,7 +13,36 @@
 | v1 — Baseline Corpus | `110ada93` | 4 categories × 3 modes | **12/12** |
 | v2 — Enterprise Corpus | `c85daff7` | 4 categories × 3 modes | **12/12** |
 | v3 — Capability Probes | `e782fbd0` | 6 categories × 3 modes | **16/16** |
-| **Total** | | **14 categories** | **40/40** |
+| v4 — Production Quality (Phase 7.3) | `16554101` | 13 categories | **13/13 × 3** |
+| **Total** | | **27 categories** | **79/79** |
+
+### v4 Suite — Phase 7.3 Canonical Baseline (2026-03-22)
+
+**Corpus:** 1074 unique docs / 1127 ingested, 462 queries, 13 categories
+**Config:** `config-manifest-6.7.json`, EmbedderCrux nomic-embed-text-v1.5 (768d), gpt-4o-mini
+**Validated:** 13/13 × 3 (runs `16554101`, `ca505454`, `5e5ccff5`)
+
+| Category | Metric | Run 1 | Run 2 | Run 3 | Target |
+|---|---|---|---|---|---|
+| Cat 1 | supersession_recall | 1.000 | 1.000 | 1.000 | ≥0.80 |
+| Cat 2 | avg_citation_recall | 0.670 | 0.715 | 0.696 | ≥0.50 |
+| Cat 3 | lane_decomposition | PASS | PASS | PASS | all lanes contribute |
+| Cat 5 | chain_integrity | 1.000 | 1.000 | 1.000 | 1.000 |
+| Cat 6 | fragility_calibration | PASS | PASS | PASS | score < 1.0 |
+| Cat 7 | broad_recall | ≥0.70 | ≥0.70 | ≥0.70 | ≥0.70 |
+| Cat 8 | P@1 | ≥0.75 | ≥0.75 | ≥0.75 | ≥0.75 |
+| Cat 9 | dedup_detection | 1.000 | 1.000 | 1.000 | ≥0.90 |
+| Cat 10 | chain_completeness | ≥0.90 | ≥0.90 | ≥0.90 | ≥0.90 |
+| Cat 11 | broad_recall | 0.927 | 0.927 | 0.927 | ≥0.70 |
+| Cat 12 | parent_child_recall | 1.000 | 1.000 | 1.000 | ≥0.80 |
+| Cat 12v2 | overlap_recall | PASS | PASS | PASS | ≥0.80 |
+| Cat 13 | temporal_reconstruction | PASS | PASS | PASS | ≥0.90 |
+
+#### Two-Layer Narrative
+
+**Layer 1 (owned):** Cat 2 (format-aware citation) and Cat 12 (relation-pair preservation) are product-owned improvements.
+
+**Layer 2 (observed):** Cat 11 broad_recall 0.722→0.927 is an external factor (LLM model drift), confirmed by full attribution matrix (runs `f9b80070`, `b5f84195`). Neither `FEATURE_FORMAT_AWARE_CITATION` nor `FEATURE_RELATION_PAIR_PRESERVATION` caused the improvement.
 
 ---
 
@@ -85,11 +114,13 @@ Both retrieval lanes contribute. V-class (semantic-only) docs are retrieved but 
 
 ## Known Limitations
 
-- **Embedding space:** Canonical runs cover both OpenAI text-embedding-3-small (768d) and EmbedderCrux/nomic-embed-text-v1.5 (768d). See [embedding comparison](embedding-comparison.md).
-- **Relation expansion:** Not active in baseline — relation graph used for state classification and MiSES, not candidate retrieval. See relation-expansion canonical run in [ledger](ledger/README.md).
+- **Embedding space:** v4 canonical runs use EmbedderCrux/nomic-embed-text-v1.5 (768d). Earlier v1-v3 runs cover both OpenAI and nomic. See [embedding comparison](embedding-comparison.md).
+- **Relation expansion:** Active in v4 baseline (`FEATURE_RELATION_EXPANSION=true`). Relation-pair preservation (`FEATURE_RELATION_PAIR_PRESERVATION=true`) injects children that survive rerank but miss topK cutoff.
 - **Corpus:** Synthetic (reproducible but not ecologically validated).
 - **LLM nondeterminism:** Citation recall may vary ±0.1 between runs. Retrieved recall is deterministic.
-- **DQP:** Advanced retrieval techniques cause severe recall regression. See [DQP findings](dqp-findings.md).
+- **Cat 11 externally contingent:** broad_recall 0.722→0.927 is not attributable to any shipped code mechanism. Full attribution matrix (2 runs) ruled out both Phase 7.3 flags. Most likely cause: upstream LLM model/provider drift. Monitored via model-drift sentinel pack.
+- **Model provenance:** Baseline runs used gpt-4o-mini (OpenAI). Model/provider drift is a first-class release variable — model provenance pinned in config manifest.
+- **DQP:** Advanced retrieval techniques cause severe recall regression and remain parked per audit guidance. See [DQP findings](dqp-findings.md).
 
 ---
 

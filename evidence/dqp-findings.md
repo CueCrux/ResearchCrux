@@ -11,6 +11,8 @@ Document Quality Pipeline (DQP) techniques — semantic chunking, late chunking,
 
 **Result: DQP causes severe recall regression.** The production system runs without DQP.
 
+**Status (Phase 7.3, 2026-03-22):** DQP and multi-lane retrieval remain **parked** per external audit guidance. Three audit reviews confirmed that recent quality movement is dominated by answer-model behavior and prompt control surfaces, not missing retrieval richness. Do not reopen DQP Tier 3 or multi-lane retrieval.
+
 ---
 
 ## Results

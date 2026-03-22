@@ -24,6 +24,33 @@ For independent verification without CueCrux infrastructure, see the [verificati
 
 Receipts are signed with **ed25519** via HashiCorp Vault Transit. Each receipt carries its public key (`signature.pubB64`), enabling verification without access to the signing infrastructure. Key rotation is transparent — old receipts remain verifiable.
 
+### Signing Queue (Phase 7.1+)
+
+When Vault Transit is transiently unavailable during receipt creation, the receipt is saved with `signingStatus: "pending_signature"` instead of failing the request. A background worker retries signing:
+
+| Field | Description |
+|---|---|
+| `signingStatus` | `"signed"` \| `"pending_signature"` \| `"expired"` |
+| `signError` | Error message from last failed signing attempt (if any) |
+| `signingExpiresAt` | Deadline for signing (90 days from `generatedAt`) |
+
+**Flow:**
+1. Receipt created → immediate signing attempt via `transitSignEd25519()`
+2. On Transit failure → receipt saved with `signingStatus: "pending_signature"`
+3. Background worker (every 30s, configurable) retries pending receipts using `FOR UPDATE SKIP LOCKED`
+4. On success → `signingStatus: "signed"`, signature fields populated
+5. After 90 days → auto-expired to `signingStatus: "expired"` (receipt retained for compliance)
+
+**Observability:** Prometheus metrics track queue depth (`crown_receipt_signing_queue_depth`), retry attempts (`crown_receipt_sign_retries_total`), failures (`crown_receipt_sign_failures_total`), and expirations (`crown_receipt_expired_total`).
+
+**Configuration:**
+
+| Env Var | Default | Description |
+|---|---|---|
+| `CROWN_SIGNING_VAULT_TRANSIT_KEY` | — | Transit key name for CROWN signing |
+| `CROWN_RECEIPT_SIGN_RETRY_INTERVAL_MS` | `30000` | Retry worker frequency |
+| `CROWN_RECEIPT_SIGN_BATCH_SIZE` | `100` | Max receipts per retry cycle |
+
 ---
 
 See also: [CROWN Receipt Protocol v0.1](../../protocol/crown-receipt-protocol-v0.1.md) | [Proof API Surface](proof-surface.md)

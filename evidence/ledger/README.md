@@ -4,7 +4,7 @@ Living index of all canonical audit runs. Each run page contains pass/fail matri
 
 Evidence is generated from [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) (MIT) canonical results.
 
-**10 canonical runs** | **96/96 categories passed (v1-v3)** | **v4 isolation: diagnostic** | [Changelog](changelog.md) | [Latest (JSON)](latest.json)
+**15 canonical runs** | **96/96 categories passed (v1-v3)** | **v4: 13/13 × 3 (Phase 7.3 baseline)** | [Changelog](changelog.md) | [Latest (JSON)](latest.json)
 
 | Run ID | Suite | Embedding | Date | Duration | Pass Rate | Details |
 |---|---|---|---|---|---|---|
@@ -18,6 +18,11 @@ Evidence is generated from [CueCrux/AuditCrux](https://github.com/CueCrux/AuditC
 | `iso-baseline` | v4-isolation | EmbedderCrux/nomic | 2026-03-14 | — | **1/2** | DQP off, cat7+8 only |
 | `iso-nosplit` | v4-isolation | EmbedderCrux/nomic | 2026-03-14 | — | **0/2** | DQP on (no-split fix) |
 | `iso-full` | v4-isolation | EmbedderCrux/nomic | 2026-03-14 | — | **0/2** | Full corpus (1025 docs) |
+| `16554101` | v4 | EmbedderCrux/nomic | 2026-03-22 | — | **13/13** | Phase 7.3 canonical (run 1/3) |
+| `ca505454` | v4 | EmbedderCrux/nomic | 2026-03-22 | — | **13/13** | Phase 7.3 canonical (run 2/3) |
+| `5e5ccff5` | v4 | EmbedderCrux/nomic | 2026-03-22 | — | **13/13** | Phase 7.3 canonical (run 3/3) |
+| `f9b80070` | v4-attribution | EmbedderCrux/nomic | 2026-03-22 | — | **13/13** | Attribution: RELATION_PAIR off → Cat 11 = 0.927 |
+| `b5f84195` | v4-attribution | EmbedderCrux/nomic | 2026-03-22 | — | **13/13** | Attribution: FORMAT_AWARE_CITATION off → Cat 11 = 0.927 |
 
 ## Category Reference
 
@@ -34,6 +39,8 @@ Evidence is generated from [CueCrux/AuditCrux](https://github.com/CueCrux/AuditC
 | cat9 | DQP Semantic Chunking (v4) | Chunking quality on structured docs |
 | cat10 | DQP Quality Gating (v4) | Confidence-gated retrieval |
 | cat11 | Chunking Stress (v5) | Long-doc chunking (500-2000+ tokens) |
+| cat12 | Hard-Negative Overlap | Parent-child recall, relation-pair preservation |
+| cat12v2 | Hard-Negative Overlap v2 | Extended overlap scenarios |
 
 ---
 
