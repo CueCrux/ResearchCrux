@@ -25,7 +25,7 @@ ResearchCrux is the **public evidence and protocol layer** for the CueCrux platf
 | [Regulatory Mapping](evidence/regulatory-mapping.md) | EU AI Act (Art. 13, 14) and DORA (Art. 8–11) mapped to CROWN capabilities | [Mapping](evidence/regulatory-mapping.md) |
 | [API & MCP Contracts](contracts/) | Published API surface, MCP tool catalog, JSON schemas | [Contracts Index](contracts/README.md) |
 | [Whitepapers](whitepapers/) | Retrieval quality benchmark methodology and results | [Benchmark v1](whitepapers/retrieval-quality-benchmark-v1.md) |
-| [Manifesto](manifesto/) | Product philosophy — "Receipts Over Vibes" | [Manifesto v2.2](manifesto/crux-manifesto-v2.2.md) |
+| [Manifesto](manifesto/) | Product philosophy — "Receipts Over Vibes" | [Manifesto v2.3](manifesto/Crux-Manifesto-v2.3.md) |
 
 ---
 
@@ -85,5 +85,5 @@ CC BY 4.0. See [LICENSE](LICENSE).
 ## Key Links
 
 - Platform overview: [CueCrux](https://github.com/CueCrux)
-- Crux Manifesto v2.2: [manifesto/crux-manifesto-v2.2.md](manifesto/crux-manifesto-v2.2.md)
+- Crux Manifesto v2.3: [manifesto/Crux-Manifesto-v2.3.md](manifesto/Crux-Manifesto-v2.3.md)
 - Related repos: [Engine](https://github.com/CueCrux/Engine) (retrieval implementation), [AuditCrux](https://github.com/CueCrux/AuditCrux) (benchmark suite), [CoreCrux](https://github.com/CueCrux/CoreCrux) (provenance spine)

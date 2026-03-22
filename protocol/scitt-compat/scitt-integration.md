@@ -108,7 +108,7 @@ A SCITT Transparency Service MAY apply a Registration Policy that validates inco
 
 Transparency Services SHOULD NOT attempt to enforce:
 
-- **Chain completeness.** Whether every answer has a receipt, or whether the chain has gaps. This is an application-level semantic constraint, verified by auditors, not by the Transparency Service. (Analogous to Kamimura's completeness invariant in [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events-02/) Section 3.6.)
+- **Chain completeness.** Whether every answer has a receipt, or whether the chain has gaps. This is an application-level semantic constraint, verified by auditors, not by the Transparency Service. (Analogous to Kamimura's completeness invariant in [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/) Section 3.6.)
 - **Fragility score validation.** Whether the fragility score is correctly computed. This requires access to the evidence set and domain-specific logic.
 - **Evidence content inspection.** The Transparency Service should not inspect or validate the content of evidence records. This is a privacy boundary.
 
@@ -120,8 +120,8 @@ CROWN is one of several emerging SCITT application profiles for AI system audita
 
 | Profile | Domain | What It Proves |
 |---|---|---|
-| CAP-SRP ([draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events-02/)) | AI content refusal | That a generation request was refused, and why |
-| VCP ([draft-kamimura-scitt-vcp-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp-02/)) | Algorithmic trading | That a trading decision followed a verifiable audit trail |
+| CAP-SRP ([draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/)) | AI content refusal | That a generation request was refused, and why |
+| VCP ([draft-kamimura-scitt-vcp-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp/)) | Algorithmic trading | That a trading decision followed a verifiable audit trail |
 | CROWN | Retrieval-augmented generation | That an AI-assisted answer was derived from specific, current evidence |
 
 Together, these profiles address distinct layers of AI decision auditability:
@@ -140,6 +140,6 @@ A complete AI audit trail for regulated industries may require multiple profiles
 - [draft-ietf-scitt-scrapi](https://datatracker.ietf.org/doc/draft-ietf-scitt-scrapi/) — SCITT Reference APIs
 - [RFC 9052](https://www.rfc-editor.org/rfc/rfc9052.html) — CBOR Object Signing and Encryption (COSE): Structures and Process
 - [RFC 8610](https://www.rfc-editor.org/rfc/rfc8610.html) — Concise Data Definition Language (CDDL)
-- [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events-02/) — Verifiable AI Refusal Events using SCITT
-- [draft-kamimura-scitt-vcp-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp-02/) — VeritasChain Protocol: SCITT Profile for Algorithmic Trading
+- [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/) — Verifiable AI Refusal Events using SCITT
+- [draft-kamimura-scitt-vcp-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp/) — VeritasChain Protocol: SCITT Profile for Algorithmic Trading
 - [CROWN Receipt Protocol v0.1](../crown-receipt-protocol-v0.1.md) — The CROWN protocol specification

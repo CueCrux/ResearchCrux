@@ -2,7 +2,7 @@
 
 **Version:** 0.1 (Draft)
 **Date:** March 2026
-**Aligned to:** [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events-02/) Section 8
+**Aligned to:** [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/) Section 8
 
 CROWN receipts are designed for auditability. Auditability and privacy are in tension. This document describes the privacy properties, risks, and mitigations for CROWN receipts, particularly when registered with SCITT Transparency Services.
 
@@ -103,7 +103,7 @@ Receipt metadata enables several correlation attacks:
 
 CROWN receipts do not include user identity fields. This is a deliberate design choice. The receipt attests to the system's behaviour (what evidence was retrieved, what mode was applied, what confidence was produced), not to who asked the question.
 
-This contrasts with [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events-02/) Section 8.2, which includes an `actor-hash` field for pseudonymised user identity. The difference reflects the different audit requirements:
+This contrasts with [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/) Section 8.2, which includes an `actor-hash` field for pseudonymised user identity. The difference reflects the different audit requirements:
 
 - **Refusal events** need actor attribution to detect patterns of adversarial probing (the same user repeatedly triggering refusals).
 - **Evidence provenance** needs system attribution to verify that the retrieval process was correct, regardless of who initiated it.

@@ -18,8 +18,8 @@ The SCITT architecture ([draft-ietf-scitt-architecture](https://datatracker.ietf
 
 CROWN is complementary to other emerging SCITT application profiles for AI auditability:
 
-- **CAP-SRP** ([draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events-02/)) — refusal provenance
-- **VCP** ([draft-kamimura-scitt-vcp-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp-02/)) — algorithmic trading audit trails
+- **CAP-SRP** ([draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/)) — refusal provenance
+- **VCP** ([draft-kamimura-scitt-vcp-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp/)) — algorithmic trading audit trails
 - **CROWN** — retrieval-evidence provenance for RAG systems
 
 ## What CROWN already has (outside this directory)

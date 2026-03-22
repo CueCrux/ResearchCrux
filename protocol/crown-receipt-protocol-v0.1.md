@@ -322,7 +322,7 @@ The SCITT compatibility artifacts are published in [`protocol/scitt-compat/`](sc
 
 | Artifact | Description |
 |---|---|
-| [CDDL Schema](scitt-compat/crown-receipt.cddl) | CBOR type definition for CROWN receipts, modelled on [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events-02/) Section 4 |
+| [CDDL Schema](scitt-compat/crown-receipt.cddl) | CBOR type definition for CROWN receipts, modelled on [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/) Section 4 |
 | [SCITT Integration](scitt-compat/scitt-integration.md) | Terminology mapping, COSE Sign1 encoding, registration guidance, verification procedure |
 | [Registration Policy](scitt-compat/registration-policy.md) | Mandatory, recommended, and out-of-scope checks for Transparency Services accepting CROWN receipts |
 | [Privacy Considerations](scitt-compat/privacy-considerations.md) | Query content, evidence content, tenant isolation, correlation risks, actor privacy |
