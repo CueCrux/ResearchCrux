@@ -1,0 +1,13 @@
+{
+  "_note": "ILLUSTRATIVE — mock SCRAPI registration response per draft-ietf-scitt-scrapi Section 2.1",
+  "_status": "No live SCITT Transparency Service currently accepts third-party application profiles",
+  "entryId": "urn:uuid:e0000001-0001-4000-8000-000000000001",
+  "operationId": "urn:uuid:f0000001-0001-4000-8000-000000000001",
+  "status": "succeeded",
+  "entryInformation": {
+    "signedStatementTimestamp": "2026-03-23T10:00:00.000Z",
+    "issuer": "https://engine.cuecrux.com",
+    "subject": "urn:crown:receipt:a0000002-0001-4000-8000-000000000001",
+    "registrationTimestamp": "2026-03-23T10:00:01.234Z"
+  }
+}

@@ -1,0 +1,17 @@
+### SCRAPI Registration Request
+### Per draft-ietf-scitt-scrapi, Section 2.1 (Submit Signed Statement)
+###
+### The body is the raw COSE_Sign1 envelope (signed-statement.cbor).
+### A Transparency Service would receive this and:
+###   1. Parse the COSE_Sign1 array
+###   2. Validate the protected header (alg, content-type, kid, CWT claims)
+###   3. Verify the ed25519 signature
+###   4. Apply the registration policy (see ../registration-policy.md)
+###   5. Log the entry and return an operation ID
+
+POST /entries HTTP/1.1
+Host: ts.example.com
+Content-Type: application/cose
+Accept: application/json
+
+< ../cose-example/signed-statement.cbor

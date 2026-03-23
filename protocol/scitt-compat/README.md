@@ -12,6 +12,7 @@ CROWN as a [SCITT](https://datatracker.ietf.org/wg/scitt/about/) application pro
 | [registration-policy.md](registration-policy.md) | What a SCITT Transparency Service checks before accepting a CROWN Signed Statement | You operate or evaluate a Transparency Service |
 | [privacy-considerations.md](privacy-considerations.md) | Privacy properties, risks, and mitigations for CROWN receipts | You are assessing CROWN for a privacy-sensitive deployment |
 | [cose-example/](cose-example/cose-walkthrough.md) | Worked COSE_Sign1 Signed Statement with hex walkthrough and generation script | You want to see the CBOR/COSE encoding in practice |
+| [interop-pack/](interop-pack/README.md) | End-to-end SCITT path walkthrough: receipt → CBOR → COSE_Sign1 → SCRAPI → verification | You want one canonical receipt through the full SCITT path |
 
 ## Context
 
@@ -55,6 +56,7 @@ A plain-language summary of what is implemented, what is draft, and what is pend
 | CBOR encoding path | Production | Engine produces CBOR-encoded receipt payload (kebab-case keys per CDDL) inside COSE_Sign1. M8 deployment (2026-03-23), 13/13 × 3 validated |
 | COSE_Sign1 envelope verification in audit pipeline | Production | AuditCrux Cat 3 verifies COSE_Sign1 structure, ed25519 signature, protected header (alg, kid, CWT Claims), and CBOR payload integrity |
 | Media types | Production | `application/cose` (envelope), `application/vnd.crown.receipt+cbor` (payload content-type in protected header). Content negotiation via `Accept: application/cose` |
+| End-to-end SCITT path walkthrough | Published | [Interop pack](interop-pack/README.md): single receipt through creation → CBOR → COSE_Sign1 → SCRAPI → verification. SCRAPI/TS steps illustrative (no live TS accepts third-party profiles) |
 
 ### Draft (specified, not yet exercised end-to-end)
 

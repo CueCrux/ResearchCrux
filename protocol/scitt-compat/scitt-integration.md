@@ -1,6 +1,6 @@
 # CROWN as a SCITT Application Profile
 
-**Version:** 0.1 (Draft)
+**Version:** 0.2 (Pre-submission Review)
 **Date:** March 2026
 **Status:** Pre-standardisation
 **Aligned to:** [draft-ietf-scitt-architecture](https://datatracker.ietf.org/doc/draft-ietf-scitt-architecture/), [draft-ietf-scitt-scrapi](https://datatracker.ietf.org/doc/draft-ietf-scitt-scrapi/)
@@ -146,7 +146,7 @@ This section explicitly states what is not yet implemented, not yet demonstrated
 
 ### Not yet demonstrated
 
-- **End-to-end Transparency Service interop.** No CROWN receipt has been registered with a live SCITT Transparency Service and verified via a returned SCITT Receipt (inclusion proof). The encoding path (JSON → CBOR → COSE_Sign1 → SCRAPI registration) is specified but not yet exercised against an operational log. This is the primary gap between "credible profile" and "interoperable profile."
+- **End-to-end Transparency Service interop.** No CROWN receipt has been registered with a live SCITT Transparency Service and verified via a returned SCITT Receipt (inclusion proof). The full encoding path (JSON → CBOR → COSE_Sign1 → SCRAPI registration → TS Receipt → Transparent Statement) is walked end-to-end in the [SCITT Interop Pack](interop-pack/README.md), with the SCRAPI registration and TS Receipt steps clearly labelled as illustrative. As of March 2026, no operational TS accepts third-party application profiles — this is a gap in the SCITT ecosystem, not in the CROWN implementation.
 
 - ~~**COSE_Sign1 production path.**~~ **Resolved.** The Engine now wraps every receipt in a COSE_Sign1 envelope (RFC 9052 §4.2). The canonical JSON receipt is the COSE payload, signed via Vault Transit ed25519. The API supports `Accept: application/vnd.crown.receipt+cbor` for raw CBOR envelope retrieval. The `crown-verify` CLI supports `--cose` mode for standalone COSE_Sign1 verification.
 

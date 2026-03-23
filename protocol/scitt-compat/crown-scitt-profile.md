@@ -1,6 +1,6 @@
 # CROWN SCITT Application Profile
 
-**Version:** 0.1 (Draft)
+**Version:** 0.2 (Pre-submission Review)
 **Date:** March 2026
 **Status:** Pre-standardisation
 **Aligned to:** [draft-ietf-scitt-architecture](https://datatracker.ietf.org/doc/draft-ietf-scitt-architecture/), [draft-ietf-scitt-scrapi](https://datatracker.ietf.org/doc/draft-ietf-scitt-scrapi/)
