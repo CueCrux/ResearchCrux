@@ -73,7 +73,7 @@ The full schema with sub-map definitions and extension points is in [crown-recei
 
 EdDSA (ed25519) over the CBOR-encoded Sig_structure ([RFC 9052](https://www.rfc-editor.org/rfc/rfc9052.html) §4.4):
 
-```
+```text
 Sig_structure = [
   "Signature1",           // context string
   protected_header_bytes, // CBOR bstr
@@ -100,7 +100,7 @@ The 64-byte ed25519 signature is the fourth element of the COSE_Sign1 array.
 
 The Issuer's ed25519 public keys are available via the Engine's key discovery endpoint:
 
-```
+```text
 GET /receipts/signing-keys
 ```
 
