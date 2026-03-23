@@ -15,13 +15,15 @@ This specification maps directly to SCITT primitives:
 
 | CROWN Concept | SCITT Primitive | Notes |
 |---|---|---|
-| CROWN receipt payload | Signed Statement payload | Serialised per the CDDL schema in `crown-receipt.cddl` |
-| CueCrux Engine instance | Issuer | Identified by ed25519 signing key managed via Vault Transit |
-| Answer (`answerId`) | Artifact | The thing the receipt is about |
-| `receiptHash` + ed25519 `signature` | Signed Statement signature | COSE_Sign1 envelope for SCITT; native JSON+ed25519 for standalone |
-| SCITT inclusion proof | Receipt | Countersignature from Transparency Service confirming registration |
+| CROWN receipt payload wrapped in COSE_Sign1 | **Signed Statement** | CBOR payload per CDDL, signed via Vault Transit ed25519 |
+| CueCrux Engine instance | **Issuer** | Identified by ed25519 signing key; CWT Claims `iss`/`sub` in protected header |
+| Answer (`answerId`) | **Artifact** | The thing the Signed Statement is about |
+| COSE_Sign1 envelope (RFC 9052 §4.2) | **Signed Statement envelope** | Protected header carries `alg`, `content type`, `kid`, CWT Claims |
+| `receiptHash` (BLAKE3 of canonical JSON) | Application-level chain hash | Chain integrity mechanism, orthogonal to COSE signature |
+| TS-produced countersignature (inclusion proof) | **Receipt** | Countersignature from Transparency Service confirming registration |
+| Signed Statement + TS Receipt | **Transparent Statement** | Full auditable unit with third-party verifiability |
 | `crown_snapshots` chain (`parentSnapId`) | Application-level integrity chain | Complementary to (not replacing) the Transparency Log |
-| Evidence records | Supplementary claim data | Accompanies the receipt; linked by `snapId` |
+| Evidence records | Supplementary claim data | Accompanies the Signed Statement; linked by `snapId` |
 | Assurance mode (`light`/`verified`/`audit`) | Registration policy input | Transparency Services MAY apply mode-specific acceptance rules |
 
 The `parentSnapId` chain and the SCITT Transparency Log serve different purposes. The chain provides application-level integrity: a verifier can traverse the chain to detect gaps or tampering in the receipt sequence. The Transparency Log provides third-party verifiability: a verifier can confirm that a receipt was registered at a specific time without trusting the Issuer. These mechanisms are complementary. A CROWN receipt registered with a SCITT Transparency Service carries both guarantees.
@@ -32,34 +34,38 @@ The `parentSnapId` chain and the SCITT Transparency Log serve different purposes
 
 A CROWN receipt is carried as the payload of a SCITT Signed Statement:
 
-1. The receipt is serialised. CBOR encoding per the CDDL schema (`crown-receipt.cddl`) is RECOMMENDED for SCITT integration. JSON encoding per the existing JSON Schema is permitted for standalone deployments and backward compatibility.
+1. The receipt payload is serialised as a CBOR map with kebab-case keys per the CDDL schema (`crown-receipt.cddl`). The CBOR payload includes identifying fields (`snap-id`, `tenant-id`, `receipt-hash`, `parent-snap-id`) alongside the receipt content.
 
-2. The serialised bytes become the COSE_Sign1 payload per [RFC 9052](https://www.rfc-editor.org/rfc/rfc9052.html).
+2. The CBOR-serialised bytes become the COSE_Sign1 payload per [RFC 9052](https://www.rfc-editor.org/rfc/rfc9052.html). The `receiptHash` (BLAKE3 of canonical JSON) is computed independently and included in the CBOR payload — these are orthogonal: canonical JSON for chain integrity, CBOR for COSE signing.
 
 3. The protected header MUST contain:
-   - Algorithm identifier for EdDSA (ed25519)
-   - Content type: `application/vnd.crown.receipt+cbor` (for CBOR) or `application/vnd.crown.receipt+json` (for JSON)
+   - Algorithm identifier (label 1): EdDSA (ed25519), value `-8`
+   - Content type (label 3): `application/vnd.crown.receipt+cbor`
+   - Key ID (label 4): signing key identifier (e.g., `engine-provenance:v3`)
+   - CWT Claims (label 15, [RFC 8392](https://www.rfc-editor.org/rfc/rfc8392.html)): `iss` (Issuer URI) and `sub` (receipt URN)
 
-4. The Issuer is the CueCrux Engine instance's signing identity. The ed25519 key is managed via HashiCorp Vault Transit. The key identifier (`signing_kid`) and public key (`signing_pub`) are embedded in the receipt and in the COSE protected header.
+4. The Issuer is the CueCrux Engine instance's signing identity. The ed25519 key is managed via HashiCorp Vault Transit. The key identifier is resolved before signing and bound in the protected header (label 4). The Issuer URI (CWT `iss`) defaults to `https://engine.cuecrux.com` (configurable via `CROWN_SCITT_ISSUER`). The subject (CWT `sub`) is `urn:crown:receipt:<snapshotId>`.
 
-5. Evidence records MAY be included as additional Signed Statements linked to the receipt by `snapId`, or bundled in the receipt payload's `selection` field.
+5. The COSE_Sign1 envelope is the **Signed Statement**. On the wire, it is served with `Content-Type: application/cose`. Evidence records MAY be included as additional Signed Statements linked by `snapId`, or bundled in the receipt payload's `selection` field.
 
-### Content Types
+### Media Types
 
-| Encoding | Content Type | Use Case |
+| Context | Media Type | Use |
 |---|---|---|
-| CBOR | `application/vnd.crown.receipt+cbor` | SCITT Transparency Service registration |
-| JSON | `application/vnd.crown.receipt+json` | Standalone verification, API responses, proof gallery |
+| COSE_Sign1 envelope on the wire | `application/cose` | `Accept` / `Content-Type` header for Signed Statement retrieval |
+| Payload content type (protected header label 3) | `application/vnd.crown.receipt+cbor` | Describes the COSE payload format |
+| JSON API responses | `application/json` | Default API format; JSON receipt with `coseEnvelope` base64 field |
+| Standalone JSON verification | `application/vnd.crown.receipt+json` | `crown-verify` CLI, proof gallery |
 
-A future revision may request IANA registration of these content types. This document does not request IANA actions at this time.
+A future revision may request IANA registration of the `vnd.crown.receipt` content types. This document does not request IANA actions at this time.
 
 ---
 
 ## 3. Registration
 
-After creating a Signed Statement, the Issuer SHOULD register it with a SCITT Transparency Service via [SCRAPI](https://datatracker.ietf.org/doc/draft-ietf-scitt-scrapi/).
+After creating a Signed Statement (COSE_Sign1 envelope), the Issuer SHOULD register it with a SCITT Transparency Service via [SCRAPI](https://datatracker.ietf.org/doc/draft-ietf-scitt-scrapi/).
 
-The Transparency Service returns a Receipt (SCITT inclusion proof) confirming that the Signed Statement has been registered in the append-only log. Issuers SHOULD store Receipts for future verification requests.
+The Transparency Service returns a Receipt (SCITT countersignature / inclusion proof) confirming that the Signed Statement has been registered in the append-only log. The combination of the Signed Statement and the TS Receipt forms a **Transparent Statement**. Issuers SHOULD store Receipts for future verification requests.
 
 ### Registration timing
 
@@ -82,10 +88,10 @@ The `parentSnapId` chain is maintained independently of the Transparency Log. Re
 
 ## 4. Verification
 
-A verifiable CROWN evidence trail consists of:
+A verifiable CROWN evidence trail (Transparent Statement) consists of:
 
-1. The CROWN receipt Signed Statement
-2. The SCITT Receipt (inclusion proof from Transparency Service)
+1. The CROWN Signed Statement (COSE_Sign1 envelope containing CBOR receipt payload)
+2. The SCITT Receipt (countersignature / inclusion proof from Transparency Service)
 3. The evidence records (linked by `snapId`)
 
 Verifiers confirm:
@@ -104,7 +110,7 @@ This demonstrates that a CROWN receipt was logged and that it was derived from s
 
 ## 5. Registration Policy Considerations
 
-A SCITT Transparency Service MAY apply a Registration Policy that validates incoming CROWN Signed Statements before acceptance. See [registration-policy.md](registration-policy.md) for the full policy specification.
+A SCITT Transparency Service MAY apply a Registration Policy that validates incoming CROWN Signed Statements before acceptance into the log. See [registration-policy.md](registration-policy.md) for the full policy specification.
 
 Transparency Services SHOULD NOT attempt to enforce:
 
@@ -142,7 +148,7 @@ This section explicitly states what is not yet implemented, not yet demonstrated
 
 - **End-to-end Transparency Service interop.** No CROWN receipt has been registered with a live SCITT Transparency Service and verified via a returned SCITT Receipt (inclusion proof). The encoding path (JSON → CBOR → COSE_Sign1 → SCRAPI registration) is specified but not yet exercised against an operational log. This is the primary gap between "credible profile" and "interoperable profile."
 
-- **COSE_Sign1 production path.** The current Engine produces JSON receipts signed with ed25519 via Vault Transit. The CBOR/COSE_Sign1 encoding described in Section 2 is specified in the CDDL schema but not yet produced by the Engine's signing pipeline. A worked example with real signatures does not yet exist.
+- ~~**COSE_Sign1 production path.**~~ **Resolved.** The Engine now wraps every receipt in a COSE_Sign1 envelope (RFC 9052 §4.2). The canonical JSON receipt is the COSE payload, signed via Vault Transit ed25519. The API supports `Accept: application/vnd.crown.receipt+cbor` for raw CBOR envelope retrieval. The `crown-verify` CLI supports `--cose` mode for standalone COSE_Sign1 verification.
 
 ### Intentionally deferred
 
@@ -156,7 +162,9 @@ This section explicitly states what is not yet implemented, not yet demonstrated
 
 - **Ed25519 signing via Vault Transit.** Production signing with key rotation, public key embedding, and offline verification. Signing queue with 90-day expiry for transient Vault unavailability.
 
-- **Standalone verification.** The `crown-verify` CLI ([verify/](../../verify/)) performs receipt hash recomputation and chain linkage checks without SCITT infrastructure. Published test vectors in [proof-gallery/](../../proof-gallery/).
+- **COSE_Sign1 production signing (SCITT Signed Statements).** Every receipt is wrapped in a COSE_Sign1 envelope (RFC 9052 §4.2) with ed25519 signature via Vault Transit. CBOR-encoded receipt payload (kebab-case keys per CDDL). Protected header carries `alg`, `content type`, `kid`, and CWT Claims (`iss`/`sub`). API supports `Accept: application/cose` for raw Signed Statement retrieval.
+
+- **Standalone verification.** The `crown-verify` CLI ([verify/](../../verify/)) performs receipt hash recomputation, chain linkage checks, and COSE_Sign1 envelope verification (`--cose` mode) without SCITT infrastructure. Published test vectors in [proof-gallery/](../../proof-gallery/).
 
 - **Retrieval quality evidence.** 13-category benchmark suite with 1074 docs, 462 queries, 13/13 × 3 canonical passes. Methodology separates retrieval failure from LLM citation failure. See [benchmark evidence](../../evidence/ledger/README.md).
 

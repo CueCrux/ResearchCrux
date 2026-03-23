@@ -1,16 +1,16 @@
 /**
- * COSE Sign1 Wrapped CROWN Receipt — Generator
+ * COSE Sign1 Wrapped CROWN Signed Statement — Generator
  *
- * Takes the signed test vector receipt, serialises the canonical payload
- * to CBOR, wraps it in a COSE_Sign1 envelope with the test ed25519 key,
- * and writes out:
- *   - receipt-payload.cbor   (raw CBOR-serialised receipt payload)
- *   - signed-statement.cbor  (complete COSE_Sign1 envelope)
+ * Takes the signed test vector receipt, converts the payload to CBOR
+ * with kebab-case keys per the CDDL schema, wraps it in a COSE_Sign1
+ * envelope with the test ed25519 key, and writes out:
+ *   - receipt-payload.cbor   (raw CBOR-serialised receipt payload, kebab-case keys)
+ *   - signed-statement.cbor  (complete COSE_Sign1 Signed Statement)
  *   - cose-walkthrough.md    (annotated hex walkthrough)
  *
- * The signature is computed fresh over the COSE Sig_structure per RFC 9052
- * Section 4.4, not copied from the JSON test vector (which signs the
- * receiptHash string, not the COSE structure).
+ * The protected header includes kid (label 4) and CWT Claims (label 15)
+ * per SCITT requirements. The signature is computed over the COSE
+ * Sig_structure per RFC 9052 Section 4.4.
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -32,13 +32,40 @@ const COSE_SIGN1_TAG = 18;
 
 // COSE Header Parameters
 const COSE_HDR_ALG = 1; // Algorithm
-const COSE_HDR_KID = 4; // Key Identifier
 const COSE_HDR_CONTENT_TYPE = 3; // Content Type
+const COSE_HDR_KID = 4; // Key Identifier
+const COSE_HDR_CWT_CLAIMS = 15; // CWT Claims (RFC 8392)
 
 // COSE Algorithm Values
 const COSE_ALG_EDDSA = -8; // EdDSA (ed25519)
 
+// CWT claim keys (RFC 8392 §4)
+const CWT_CLAIM_ISS = 1;
+const CWT_CLAIM_SUB = 2;
+
 const CONTENT_TYPE = "application/vnd.crown.receipt+cbor";
+const TEST_ISSUER = "https://engine.cuecrux.com";
+
+/**
+ * Convert camelCase keys to kebab-case recursively (mirrors Engine cose.ts logic).
+ */
+function camelToKebab(str: string): string {
+  return str
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .replace(/([A-Z])([A-Z][a-z])/g, "$1-$2")
+    .toLowerCase();
+}
+
+function toKebabKeys(obj: unknown): unknown {
+  if (obj === null || obj === undefined) return obj;
+  if (typeof obj !== "object") return obj;
+  if (Array.isArray(obj)) return obj.map(toKebabKeys);
+  const result: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(obj as Record<string, unknown>)) {
+    result[camelToKebab(key)] = toKebabKeys(value);
+  }
+  return result;
+}
 
 // ── Load inputs ─────────────────────────────────────────────────────
 const vector = JSON.parse(readFileSync(VECTOR_PATH, "utf-8"));
@@ -47,23 +74,34 @@ const testKey = JSON.parse(readFileSync(KEY_PATH, "utf-8"));
 const receipt = vector.receipt;
 const canonicalPayload = vector.verification.canonicalPayload;
 
-// ── Step 1: Encode canonical payload to CBOR ────────────────────────
-// We serialise the canonical JSON payload object (not the JSON string)
-// to CBOR. This is the payload that goes inside the COSE_Sign1 envelope.
-const payloadCbor: Buffer = cbor.encode(canonicalPayload);
+// ── Step 1: Encode canonical payload to CBOR (kebab-case keys per CDDL) ─
+// Convert camelCase keys to kebab-case and add CDDL-required identifying fields.
+const kebabPayload = toKebabKeys(canonicalPayload) as Record<string, unknown>;
+// Add fields that are in CDDL but not in the hashed JSON payload
+kebabPayload["snap-id"] = receipt.snapshotId ?? "test-snap-00000000";
+kebabPayload["tenant-id"] = receipt.tenantId ?? "tenant";
+kebabPayload["receipt-hash"] = receipt.receiptHash ?? vector.verification?.receiptHash ?? "";
+kebabPayload["parent-snap-id"] = receipt.parentSnapId ?? null;
+
+const payloadCbor: Buffer = cbor.encode(kebabPayload);
 writeFileSync(resolve(OUT_DIR, "receipt-payload.cbor"), payloadCbor);
 
-// ── Step 2: Build protected header ──────────────────────────────────
+// ── Step 2: Build protected header (kid + CWT Claims per SCITT) ─────
+const testSubject = `urn:crown:receipt:${kebabPayload["snap-id"]}`;
+const cwtClaims = new Map<number, unknown>([
+  [CWT_CLAIM_ISS, TEST_ISSUER],
+  [CWT_CLAIM_SUB, testSubject],
+]);
 const protectedHeaderMap = new Map<number, unknown>([
   [COSE_HDR_ALG, COSE_ALG_EDDSA],
   [COSE_HDR_CONTENT_TYPE, CONTENT_TYPE],
+  [COSE_HDR_KID, Buffer.from(testKey.kid, "utf-8")],
+  [COSE_HDR_CWT_CLAIMS, cwtClaims],
 ]);
 const protectedHeaderBytes: Buffer = cbor.encode(protectedHeaderMap);
 
-// ── Step 3: Build unprotected header ────────────────────────────────
-const unprotectedHeader = new Map<number, unknown>([
-  [COSE_HDR_KID, Buffer.from(testKey.kid, "utf-8")],
-]);
+// ── Step 3: Unprotected header (empty — all identity in protected) ──
+const unprotectedHeader = new Map<number, unknown>();
 
 // ── Step 4: Build Sig_structure and sign ────────────────────────────
 // Per RFC 9052 Section 4.4:
@@ -116,16 +154,16 @@ function hexSnippet(buf: Buffer | Uint8Array, maxBytes = 32): string {
   return hex.slice(0, maxBytes * 2) + "...";
 }
 
-const walkthrough = `# COSE Sign1 Wrapped CROWN Receipt — Walkthrough
+const walkthrough = `# COSE Sign1 CROWN Signed Statement — Walkthrough
 
 **Generated:** ${new Date().toISOString().split("T")[0]}
 **Source:** \`vector-signed.json\` from \`protocol/test-vectors/\`
 **Key:** \`test-key.json\` (throwaway ed25519 — TEST ONLY)
 
-This document shows the byte-level structure of a CROWN receipt wrapped in a
-COSE_Sign1 envelope per [RFC 9052](https://www.rfc-editor.org/rfc/rfc9052.html).
-This is the format used when registering CROWN receipts with a SCITT
-Transparency Service.
+This document shows the byte-level structure of a CROWN Signed Statement — a
+COSE_Sign1 envelope per [RFC 9052](https://www.rfc-editor.org/rfc/rfc9052.html)
+wrapping a CBOR-encoded receipt payload. This is the format registered with a
+SCITT Transparency Service.
 
 ---
 
@@ -133,28 +171,28 @@ Transparency Service.
 
 | File | Size | Description |
 |---|---|---|
-| \`receipt-payload.cbor\` | ${payloadCbor.length} bytes | CBOR-serialised canonical receipt payload |
-| \`signed-statement.cbor\` | ${coseSign1.length} bytes | Complete COSE_Sign1 envelope (CBOR tag 18) |
+| \`receipt-payload.cbor\` | ${payloadCbor.length} bytes | CBOR-serialised receipt payload (kebab-case keys per CDDL) |
+| \`signed-statement.cbor\` | ${coseSign1.length} bytes | Complete COSE_Sign1 Signed Statement (CBOR tag 18) |
 | \`generate.ts\` | — | Generation script (reproduces all files deterministically) |
 
 ---
 
 ## 1. Receipt Payload (CBOR)
 
-The canonical receipt payload from the JSON test vector, serialised to CBOR.
-This is the payload that goes inside the COSE_Sign1 envelope.
+The receipt payload from the JSON test vector, converted to CBOR with kebab-case
+keys per the CDDL schema. This is the payload inside the COSE_Sign1 envelope.
 
-**Source JSON fields** (sorted keys per Section 3.1):
+**Source fields** (kebab-case CBOR keys):
 
 | Field | Value |
 |---|---|
-| \`answerId\` | \`${canonicalPayload.answerId}\` |
+| \`answer-id\` | \`${canonicalPayload.answerId}\` |
 | \`mode\` | \`${canonicalPayload.mode}\` |
-| \`modeRequested\` | \`${canonicalPayload.modeRequested}\` |
-| \`generatedAt\` | \`${canonicalPayload.generatedAt}\` |
+| \`mode-requested\` | \`${canonicalPayload.modeRequested}\` |
+| \`generated-at\` | \`${canonicalPayload.generatedAt}\` |
 | \`citations\` | ${canonicalPayload.citations.length} entries |
-| \`fragilityScore\` | ${canonicalPayload.selection.fragilityScore} |
-| \`distinctDomains\` | ${canonicalPayload.selection.distinctDomains} |
+| \`snap-id\` | \`${kebabPayload["snap-id"]}\` |
+| \`tenant-id\` | \`${kebabPayload["tenant-id"]}\` |
 
 **CBOR bytes** (\`receipt-payload.cbor\`, ${payloadCbor.length} bytes):
 
@@ -175,6 +213,8 @@ in the first element of the COSE_Sign1 array.
 |---|---|---|---|
 | 1 | Algorithm | -8 | EdDSA (ed25519) |
 | 3 | Content Type | \`${CONTENT_TYPE}\` | CROWN receipt in CBOR encoding |
+| 4 | Key ID | \`${testKey.kid}\` | Signing key identifier |
+| 15 | CWT Claims | \`{ iss: "${TEST_ISSUER}", sub: "${testSubject}" }\` | Issuer identity binding |
 
 **CBOR bytes** (${protectedHeaderBytes.length} bytes):
 
@@ -186,14 +226,7 @@ ${hexDump(protectedHeaderBytes)}
 
 ## 3. Unprotected Header
 
-Carried as a CBOR map (not byte-wrapped) in the second element.
-
-| Label | Name | Value |
-|---|---|---|
-| 4 | Key ID | \`${testKey.kid}\` (UTF-8 bytes) |
-
-The Key ID identifies which signing key was used. In production, this
-corresponds to the Vault Transit key name and version (e.g., \`crown-key:v3\`).
+Empty map — all identity-binding fields are in the protected header per SCITT requirements.
 
 ---
 
@@ -226,15 +259,15 @@ ${hexDump(Buffer.from(signature))}
 
 ---
 
-## 5. Complete COSE_Sign1 Envelope
+## 5. Complete COSE_Sign1 Signed Statement
 
 The final structure is a CBOR tag 18 wrapping a 4-element array:
 
 \`\`\`text
 COSE_Sign1 = Tag(18) [
-  protected:   ${protectedHeaderBytes.length} bytes (header map as bstr)
-  unprotected: { 4: "${testKey.kid}" }
-  payload:     ${payloadCbor.length} bytes (receipt CBOR)
+  protected:   ${protectedHeaderBytes.length} bytes (alg, ct, kid, CWT Claims)
+  unprotected: {} (empty)
+  payload:     ${payloadCbor.length} bytes (CBOR receipt, kebab-case keys)
   signature:   64 bytes (ed25519)
 ]
 \`\`\`
@@ -249,22 +282,24 @@ ${hexDump(coseSign1)}
 
 ---
 
-## 6. Comparison: JSON vs COSE
+## 6. Comparison: JSON vs COSE Signed Statement
 
-| Property | JSON (standalone) | COSE (SCITT) |
+| Property | JSON (standalone) | COSE Signed Statement (SCITT) |
 |---|---|---|
-| Payload format | Canonical JSON string | CBOR-serialised map |
-| Signature input | UTF-8 bytes of \`receiptHash\` string | CBOR-encoded Sig_structure |
+| Payload format | Canonical JSON string | CBOR-serialised map (kebab-case keys per CDDL) |
+| Signature input | UTF-8 bytes of \`receiptHash\` string | CBOR-encoded Sig_structure (RFC 9052 §4.4) |
 | Signature algorithm | ed25519 (same) | ed25519 (same) |
-| Key identifier | \`signing_kid\` field in receipt | COSE header label 4 (kid) |
-| Content type | \`application/json\` | \`${CONTENT_TYPE}\` |
-| Envelope overhead | ~0 (signature fields in receipt) | ~${coseSign1.length - payloadCbor.length} bytes (COSE framing) |
-| SCITT compatible | Requires wrapping | Native |
+| Key identifier | \`signing_kid\` field in receipt | COSE protected header label 4 (kid) |
+| Issuer identity | N/A | CWT Claims (label 15): \`iss\` + \`sub\` in protected header |
+| Content type | \`application/json\` | Payload: \`${CONTENT_TYPE}\`; Envelope: \`application/cose\` |
+| Envelope overhead | ~0 (signature fields in receipt) | ~${coseSign1.length - payloadCbor.length} bytes (COSE framing + CWT) |
+| SCITT compatible | Requires wrapping | Native Signed Statement |
 | Human readable | Yes | Requires CBOR decoder |
 
-The JSON format remains the primary format for API responses, the proof gallery,
-and standalone verification. The COSE format is used when registering receipts
-with a SCITT Transparency Service.
+The JSON format remains the default for API responses and standalone verification.
+The COSE_Sign1 envelope is the **Signed Statement** — every receipt signed by
+the Engine is wrapped in COSE_Sign1 with CBOR payload. Clients can request the
+raw Signed Statement via \`Accept: application/cose\`.
 
 ---
 

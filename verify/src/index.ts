@@ -8,6 +8,7 @@
  */
 
 export { verifyReceipt, verifyChain } from "./verify.js";
+export { verifyCoseSign1 } from "./cose.js";
 export type {
   CrownReceipt,
   CrownEvidence,
@@ -16,3 +17,4 @@ export type {
   ChainVerifyResult,
   ReceiptBreak,
 } from "./types.js";
+export type { CoseVerifyResult } from "./cose.js";

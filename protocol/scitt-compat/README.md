@@ -6,11 +6,12 @@ CROWN as a [SCITT](https://datatracker.ietf.org/wg/scitt/about/) application pro
 
 | Document | Description | Start Here If... |
 |---|---|---|
+| [crown-scitt-profile.md](crown-scitt-profile.md) | Standalone SCITT profile spec: protected header, payload, media types, verification | You implement a Transparency Service or want the concise spec |
 | [scitt-integration.md](scitt-integration.md) | How CROWN maps to SCITT: terminology, encoding, registration, verification | You want to understand the CROWN-to-SCITT bridge |
 | [crown-receipt.cddl](crown-receipt.cddl) | CDDL schema ([RFC 8610](https://www.rfc-editor.org/rfc/rfc8610.html)) for CBOR-encoded CROWN receipts | You want to implement CROWN in CBOR/COSE |
-| [registration-policy.md](registration-policy.md) | What a SCITT Transparency Service checks before accepting a CROWN receipt | You operate or evaluate a Transparency Service |
+| [registration-policy.md](registration-policy.md) | What a SCITT Transparency Service checks before accepting a CROWN Signed Statement | You operate or evaluate a Transparency Service |
 | [privacy-considerations.md](privacy-considerations.md) | Privacy properties, risks, and mitigations for CROWN receipts | You are assessing CROWN for a privacy-sensitive deployment |
-| [cose-example/](cose-example/cose-walkthrough.md) | Worked COSE_Sign1 wrapped receipt with hex walkthrough and generation script | You want to see the CBOR/COSE encoding in practice |
+| [cose-example/](cose-example/cose-walkthrough.md) | Worked COSE_Sign1 Signed Statement with hex walkthrough and generation script | You want to see the CBOR/COSE encoding in practice |
 
 ## Context
 
@@ -49,16 +50,17 @@ A plain-language summary of what is implemented, what is draft, and what is pend
 | CDDL Schema (CBOR) | Published | [crown-receipt.cddl](crown-receipt.cddl) |
 | Retrieval quality benchmark | Production | 13/13 × 3 (1074 docs, 462 queries). [Benchmark ledger](../../evidence/ledger/README.md) |
 | Regulatory mapping | Published | EU AI Act Art. 13/14, DORA Art. 8-11. [Mapping](../../evidence/regulatory-mapping.md) |
+| COSE_Sign1 Signed Statements | Production | Engine wraps every receipt in COSE_Sign1 (RFC 9052). CBOR payload, protected header with kid + CWT Claims. API supports `Accept: application/cose` |
 | COSE_Sign1 walkthrough | Published | [Worked example](cose-example/cose-walkthrough.md) with hex walkthrough |
+| CBOR encoding path | Production | Engine produces CBOR-encoded receipt payload (kebab-case keys per CDDL) inside COSE_Sign1. M8 deployment (2026-03-23), 13/13 × 3 validated |
+| COSE_Sign1 envelope verification in audit pipeline | Production | AuditCrux Cat 3 verifies COSE_Sign1 structure, ed25519 signature, protected header (alg, kid, CWT Claims), and CBOR payload integrity |
+| Media types | Production | `application/cose` (envelope), `application/vnd.crown.receipt+cbor` (payload content-type in protected header). Content negotiation via `Accept: application/cose` |
 
 ### Draft (specified, not yet exercised end-to-end)
 
 | Capability | Status | What remains |
 |---|---|---|
-| CBOR encoding path | Specified in CDDL | Engine produces JSON; CBOR serialisation not yet in production pipeline |
-| COSE_Sign1 production signing | Specified in Section 2 | Engine signs JSON+ed25519 natively; COSE wrapping not yet automated |
 | SCRAPI registration flow | Specified in Section 3 | No live registration against an operational Transparency Service |
-| Content types | Defined | `application/vnd.crown.receipt+{cbor,json}` — IANA registration deferred |
 
 ### Pending (not yet started)
 
