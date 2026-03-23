@@ -1,6 +1,6 @@
 # CROWN Registration Policy for SCITT Transparency Services
 
-**Version:** 0.1 (Draft)
+**Version:** 0.2 (Pre-submission Review)
 **Date:** March 2026
 **Aligned to:** [draft-ietf-scitt-scrapi](https://datatracker.ietf.org/doc/draft-ietf-scitt-scrapi/) Section 5.4
 

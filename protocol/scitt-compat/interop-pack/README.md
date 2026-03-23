@@ -1,4 +1,4 @@
-# SCITT Interop Pack — End-to-End Walkthrough
+# SCITT Interop Pack: End-to-End Walkthrough
 
 **Profile:** CROWN SCITT Application Profile v0.2
 **Date:** March 2026
@@ -15,14 +15,14 @@ This document shows a single receipt travelling from creation through COSE_Sign1
 | [`signed-statement.cbor`](../cose-example/signed-statement.cbor) | 1,269 bytes | Complete COSE_Sign1 Signed Statement (the thing a TS receives) |
 | [`receipt-payload.cbor`](../cose-example/receipt-payload.cbor) | 1,048 bytes | CBOR-encoded receipt payload (kebab-case keys per CDDL) |
 | [`vector-signed.json`](../../test-vectors/vector-signed.json) | 7,956 bytes | Source receipt in JSON with canonical payload, hash, and signature |
-| [`test-key.json`](../../test-vectors/test-key.json) | 354 bytes | Ed25519 test key (kid: `crown-test-key:v1`) — **TEST ONLY** |
+| [`test-key.json`](../../test-vectors/test-key.json) | 354 bytes | Ed25519 test key (kid: `crown-test-key:v1`). **TEST ONLY** |
 | [`crown-receipt.cddl`](../crown-receipt.cddl) | 6,274 bytes | CDDL schema for CBOR receipt payload |
-| [`scrapi-request.http`](scrapi-request.http) | — | SCRAPI registration request template |
-| [`scrapi-response-mock.json`](scrapi-response-mock.json) | — | Mock SCRAPI registration response (illustrative) |
-| [`verification-output.txt`](verification-output.txt) | — | Captured `crown-verify --cose` output |
-| [`cose-walkthrough.md`](../cose-example/cose-walkthrough.md) | — | Byte-level hex walkthrough of the COSE_Sign1 structure |
+| [`scrapi-request.http`](scrapi-request.http) | - | SCRAPI registration request template |
+| [`scrapi-response-mock.json`](scrapi-response-mock.json) | - | Mock SCRAPI registration response (illustrative) |
+| [`verification-output.txt`](verification-output.txt) | - | Captured `crown-verify --cose` output |
+| [`cose-walkthrough.md`](../cose-example/cose-walkthrough.md) | - | Byte-level hex walkthrough of the COSE_Sign1 structure |
 
-**Verification tool:** [`crown-verify`](../../../verify/) — standalone CLI, zero CueCrux dependencies.
+**Verification tool:** [`crown-verify`](../../../verify/), standalone CLI, zero CueCrux dependencies.
 
 ---
 
@@ -45,7 +45,7 @@ Key fields from the receipt:
 
 ### Canonical payload and hash
 
-The receipt's integrity hash is computed from a **canonical JSON payload** — a deterministic projection of the receipt with keys sorted alphabetically at all nesting levels:
+The receipt's integrity hash is computed from a **canonical JSON payload**, a deterministic projection of the receipt with keys sorted alphabetically at all nesting levels:
 
 ```json
 {
@@ -65,13 +65,13 @@ The receipt's integrity hash is computed from a **canonical JSON payload** — a
 
 **Hash:** `BLAKE3(canonicalJson) = blake3:6024a5b2f2e6935a37248bf2d162e1dd57975530db915f61cacc27ca7fee63d9`
 
-This hash is the `receiptHash` — the chain integrity mechanism. It is **independent** of COSE signing. A verifier can recompute it from the receipt fields without any COSE tooling.
+This hash is the `receiptHash`, the chain integrity mechanism. It is **independent** of COSE signing. A verifier can recompute it from the receipt fields without any COSE tooling.
 
 ---
 
 ## Step 2: CBOR Encoding
 
-The canonical JSON payload is re-encoded as CBOR with **kebab-case keys** per the [CDDL schema](../crown-receipt.cddl). This is the COSE_Sign1 payload — the bytes that get signed.
+The canonical JSON payload is re-encoded as CBOR with **kebab-case keys** per the [CDDL schema](../crown-receipt.cddl). This is the COSE_Sign1 payload (the bytes that get signed).
 
 Key transformations:
 
@@ -106,14 +106,14 @@ The protected header is a CBOR-serialised map carried as a byte string:
 | Label | Name | Value | RFC |
 |-------|------|-------|-----|
 | 1 | Algorithm | `-8` (EdDSA / ed25519) | RFC 9053 §2.2 |
-| 3 | Content Type | `application/vnd.crown.receipt+cbor` | — |
+| 3 | Content Type | `application/vnd.crown.receipt+cbor` | - |
 | 4 | Key ID (kid) | `crown-test-key:v1` (UTF-8 bytes) | RFC 9052 §3.1 |
 | 15 | CWT Claims | `{ 1: "https://engine.cuecrux.com", 2: "urn:crown:receipt:a0000002-..." }` | RFC 8392 |
 
 CWT Claims bind the issuer identity:
 
-- **`iss` (1):** `https://engine.cuecrux.com` — the Engine instance that generated the receipt
-- **`sub` (2):** `urn:crown:receipt:a0000002-0001-4000-8000-000000000001` — the specific receipt
+- **`iss` (1):** `https://engine.cuecrux.com` (the Engine instance that generated the receipt)
+- **`sub` (2):** `urn:crown:receipt:a0000002-0001-4000-8000-000000000001` (the specific receipt)
 
 ### Sig_structure
 
@@ -203,7 +203,7 @@ See [`scrapi-response-mock.json`](scrapi-response-mock.json) for the full mock r
 
 ## Step 5: Transparency Service Receipt
 
-After registration, the TS issues a **SCITT Receipt** — a countersignature that proves the Signed Statement was included in the transparency log.
+After registration, the TS issues a **SCITT Receipt**, a countersignature that proves the Signed Statement was included in the transparency log.
 
 > **Note:** This step is illustrative. CROWN has not yet obtained a TS Receipt from an operational Transparency Service.
 
@@ -215,18 +215,18 @@ A SCITT Receipt would be a COSE_Sign1 envelope containing:
 | Payload | Inclusion proof (Merkle tree path or equivalent) |
 | Signature | TS private key over Sig_structure |
 
-The combination of the original Signed Statement (Step 3) and the TS Receipt forms a **Transparent Statement** — the fully auditable, log-backed artifact.
+The combination of the original Signed Statement (Step 3) and the TS Receipt forms a **Transparent Statement**, the fully auditable, log-backed artifact.
 
 ### What CROWN provides without a TS
 
 Even without a Transparency Service, CROWN receipts provide:
 
-- **Cryptographic binding** — ed25519 signature ties receipt to issuer
-- **Hash chain integrity** — `parentSnapId` links form an append-only chain verified by BLAKE3
-- **Issuer identity** — CWT Claims (`iss`/`sub`) in protected header
-- **Evidence provenance** — full retrieval configuration and citation evidence frozen at generation time
+- **Cryptographic binding:** ed25519 signature ties receipt to issuer
+- **Hash chain integrity:** `parentSnapId` links form an append-only chain verified by BLAKE3
+- **Issuer identity:** CWT Claims (`iss`/`sub`) in protected header
+- **Evidence provenance:** full retrieval configuration and citation evidence frozen at generation time
 
-A TS adds **third-party transparency** — proof that the receipt was logged at a specific time and cannot be retroactively altered without detection.
+A TS adds **third-party transparency**: proof that the receipt was logged at a specific time and cannot be retroactively altered without detection.
 
 ---
 
@@ -263,12 +263,12 @@ See [`verification-output.txt`](verification-output.txt) for the captured output
 
 | Check | What it proves |
 |-------|---------------|
-| `cose:valid` | Ed25519 signature over Sig_structure is valid — the envelope has not been tampered with |
+| `cose:valid` | Ed25519 signature over Sig_structure is valid; the envelope has not been tampered with |
 | `kid: crown-test-key:v1` | The signing key is identified in the protected header (SCITT requirement) |
 | `content-type` | The payload is a CBOR-encoded CROWN receipt (not opaque bytes) |
 | `issuer` | The Engine instance is bound via CWT Claims in the protected header |
 | `subject` | The specific receipt is bound via CWT Claims |
-| `receipt-hash` | The CBOR payload carries the BLAKE3 hash of the canonical JSON payload — cross-links envelope signing to chain integrity |
+| `receipt-hash` | The CBOR payload carries the BLAKE3 hash of the canonical JSON payload; cross-links envelope signing to chain integrity |
 | `snap-id` | The receipt identifier matches the CWT subject URN |
 
 ### Receipt hash verification (independent of COSE)
@@ -291,11 +291,11 @@ This recomputes the canonical payload, hashes it with BLAKE3, and compares again
 |------------|----------|
 | Receipt creation | Engine generates receipts for every answered query |
 | Canonical JSON hashing (BLAKE3) | Deterministic, independently reproducible |
-| CBOR encoding (kebab-case per CDDL) | `receipt-payload.cbor` — decode with any CBOR library |
-| COSE_Sign1 wrapping (RFC 9052) | `signed-statement.cbor` — parse with any COSE library |
+| CBOR encoding (kebab-case per CDDL) | `receipt-payload.cbor`, decode with any CBOR library |
+| COSE_Sign1 wrapping (RFC 9052) | `signed-statement.cbor`, parse with any COSE library |
 | Protected header (alg, ct, kid, CWT Claims) | Verified by `crown-verify --cose` above |
-| Ed25519 signature | Verified above — `cose:valid` |
-| Standalone verification CLI | `crown-verify` — zero CueCrux dependencies |
+| Ed25519 signature | Verified above: `cose:valid` |
+| Standalone verification CLI | `crown-verify`, zero CueCrux dependencies |
 | COSE_Sign1 in audit pipeline | AuditCrux Cat 3 verifies every envelope: structure, signature, header, payload integrity |
 | Receipt chain (parentSnapId) | Depth 50, flat latency. 13/13 × 3 audit passes |
 
@@ -318,7 +318,7 @@ This recomputes the canonical payload, hashes it with BLAKE3, and compares again
 
 CROWN is a **credible SCITT application profile** with production-verified COSE_Sign1 signing, a published CDDL schema, standalone verification tooling, and concrete test vectors. The profile is ready for serious review.
 
-The gap between "credible profile" and "fully interoperable profile" is a live Transparency Service that accepts the CROWN profile identifier (`urn:ietf:params:scitt:profile:crown`) and returns a TS Receipt. As of March 2026, no operational TS accepts third-party profiles — this is a gap in the SCITT ecosystem, not in the CROWN implementation.
+The gap between "credible profile" and "fully interoperable profile" is a live Transparency Service that accepts the CROWN profile identifier (`urn:ietf:params:scitt:profile:crown`) and returns a TS Receipt. As of March 2026, no operational TS accepts third-party profiles. This is a gap in the SCITT ecosystem, not in the CROWN implementation.
 
 ---
 
@@ -346,12 +346,12 @@ npx tsx src/__tests__/cose.test.ts
 
 ## References
 
-- [RFC 9052](https://www.rfc-editor.org/rfc/rfc9052.html) — COSE Structures and Process
-- [RFC 9053](https://www.rfc-editor.org/rfc/rfc9053.html) — COSE Initial Algorithms (EdDSA = -8)
-- [RFC 8392](https://www.rfc-editor.org/rfc/rfc8392.html) — CBOR Web Token (CWT)
-- [RFC 8610](https://www.rfc-editor.org/rfc/rfc8610.html) — Concise Data Definition Language (CDDL)
-- [draft-ietf-scitt-architecture](https://datatracker.ietf.org/doc/draft-ietf-scitt-architecture/) — SCITT Architecture (AUTH48)
-- [draft-ietf-scitt-scrapi](https://datatracker.ietf.org/doc/draft-ietf-scitt-scrapi/) — SCITT Reference APIs
-- [CROWN Receipt Protocol v0.1](../../crown-receipt-protocol-v0.1.md) — Source protocol specification
-- [CROWN SCITT Profile v0.2](../crown-scitt-profile.md) — Standalone profile specification
-- [Registration Policy](../registration-policy.md) — What a TS checks before accepting a CROWN Signed Statement
+- [RFC 9052](https://www.rfc-editor.org/rfc/rfc9052.html): COSE Structures and Process
+- [RFC 9053](https://www.rfc-editor.org/rfc/rfc9053.html): COSE Initial Algorithms (EdDSA = -8)
+- [RFC 8392](https://www.rfc-editor.org/rfc/rfc8392.html): CBOR Web Token (CWT)
+- [RFC 8610](https://www.rfc-editor.org/rfc/rfc8610.html): Concise Data Definition Language (CDDL)
+- [draft-ietf-scitt-architecture](https://datatracker.ietf.org/doc/draft-ietf-scitt-architecture/): SCITT Architecture (AUTH48)
+- [draft-ietf-scitt-scrapi](https://datatracker.ietf.org/doc/draft-ietf-scitt-scrapi/): SCITT Reference APIs
+- [CROWN Receipt Protocol v0.1](../../crown-receipt-protocol-v0.1.md): Source protocol specification
+- [CROWN SCITT Profile v0.2](../crown-scitt-profile.md): Standalone profile specification
+- [Registration Policy](../registration-policy.md): What a TS checks before accepting a CROWN Signed Statement

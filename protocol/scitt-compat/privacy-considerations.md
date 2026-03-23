@@ -1,6 +1,6 @@
 # CROWN Privacy Considerations
 
-**Version:** 0.1 (Draft)
+**Version:** 0.2 (Pre-submission Review)
 **Date:** March 2026
 **Aligned to:** [draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/) Section 8
 

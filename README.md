@@ -6,9 +6,9 @@
 
 > Public evidence layer: protocol specs, proof gallery, regulatory mappings, API contracts.
 
-Part of [CueCrux](https://github.com/CueCrux) — where outsiders can verify claims without accessing the machinery.
+Part of [CueCrux](https://github.com/CueCrux). Where outsiders can verify claims without accessing the machinery.
 
-ResearchCrux is the **public evidence and protocol layer** for the CueCrux platform. It contains protocol specifications, living benchmark evidence, proof galleries, and published API/MCP contracts — all generated from or grounded in the platform itself.
+ResearchCrux is the **public evidence and protocol layer** for the CueCrux platform. It contains protocol specifications, living benchmark evidence, proof galleries, and published API/MCP contracts, all generated from or grounded in the platform itself.
 
 **VaultCrux** is infrastructure. **CueCrux** is the Reasoning OS. **ResearchCrux** is where outsiders can verify claims without accessing the machinery.
 
@@ -25,16 +25,16 @@ ResearchCrux is the **public evidence and protocol layer** for the CueCrux platf
 | [Regulatory Mapping](evidence/regulatory-mapping.md) | EU AI Act (Art. 13, 14) and DORA (Art. 8–11) mapped to CROWN capabilities | [Mapping](evidence/regulatory-mapping.md) |
 | [API & MCP Contracts](contracts/) | Published API surface, MCP tool catalog, JSON schemas | [Contracts Index](contracts/README.md) |
 | [Whitepapers](whitepapers/) | Retrieval quality benchmark methodology and results | [Benchmark v1](whitepapers/retrieval-quality-benchmark-v1.md) |
-| [Manifesto](manifesto/) | Product philosophy — "Receipts Over Vibes" | [Manifesto v2.3](manifesto/Crux-Manifesto-v2.3.md) |
+| [Manifesto](manifesto/) | Product philosophy: "Receipts Over Vibes" | [Manifesto v2.3](manifesto/Crux-Manifesto-v2.3.md) |
 
 ---
 
 ## Audiences
 
-- **Compliance engineers** evaluating EU AI Act (Article 13, 14) and DORA (Articles 8–11) obligations — start with [regulatory-mapping.md](evidence/regulatory-mapping.md)
-- **Standards participants** evaluating CROWN as a SCITT application profile — start with the [SCITT integration guide](protocol/scitt-compat/scitt-integration.md)
-- **Technical evaluators** who need measured performance and architecture evidence — start with the [benchmark ledger](evidence/ledger/README.md)
-- **Integrators** building on the CueCrux API or MCP surface — start with [contracts](contracts/README.md)
+- **Compliance engineers** evaluating EU AI Act (Article 13, 14) and DORA (Articles 8-11) obligations: [regulatory-mapping.md](evidence/regulatory-mapping.md)
+- **Standards participants** evaluating CROWN as a SCITT application profile: [SCITT integration guide](protocol/scitt-compat/scitt-integration.md)
+- **Technical evaluators** who need measured performance and architecture evidence: [benchmark ledger](evidence/ledger/README.md)
+- **Integrators** building on the CueCrux API or MCP surface: [contracts](contracts/README.md)
 
 ---
 
@@ -56,13 +56,13 @@ The benchmark suite itself is published separately at [CueCrux/AuditCrux](https:
 
 ## Canonical Results
 
-### Current Baseline — v4 Phase 7.3 (2026-03-22)
+### Current Baseline: v4 Phase 7.3 (2026-03-22)
 
 | Suite | Run ID | Embedding | Categories | Result |
 |-------|--------|-----------|------------|--------|
-| v4 — Production Quality | `16554101` | EmbedderCrux/nomic | 13 categories | **13/13** |
-| v4 — Production Quality | `ca505454` | EmbedderCrux/nomic | 13 categories | **13/13** |
-| v4 — Production Quality | `5e5ccff5` | EmbedderCrux/nomic | 13 categories | **13/13** |
+| v4 - Production Quality | `16554101` | EmbedderCrux/nomic | 13 categories | **13/13** |
+| v4 - Production Quality | `ca505454` | EmbedderCrux/nomic | 13 categories | **13/13** |
+| v4 - Production Quality | `5e5ccff5` | EmbedderCrux/nomic | 13 categories | **13/13** |
 
 **Corpus:** 1074 unique docs, 462 queries, 13 categories. **LLM:** gpt-4o-mini (OpenAI). **Config:** [config-manifest-6.7](https://github.com/CueCrux/Engine/blob/main/docs/config-manifest-6.7.json).
 
@@ -74,18 +74,18 @@ Key metrics across 3 canonical runs:
 | Cat 11 (Chunking Stress) | broad_recall | 0.927 / 0.927 / 0.927 | ≥0.70 |
 | Cat 12 (Hard-Negative Overlap) | parent_child_recall | 1.000 / 1.000 / 1.000 | ≥0.80 |
 
-Cat 2 and Cat 12 improvements are product-owned engineering changes. Cat 11's improvement (0.722→0.927) is externally contingent — a full attribution matrix ruled out both 7.3 code flags; the lift is likely upstream LLM model drift.
+Cat 2 and Cat 12 improvements are product-owned engineering changes. Cat 11's improvement (0.722 to 0.927) is externally contingent. A full attribution matrix ruled out both 7.3 code flags; the lift is likely upstream LLM model drift.
 
 ### Legacy Suites (v1-v3)
 
 | Suite | Run ID | Embedding | Categories | Result |
 |-------|--------|-----------|------------|--------|
-| v1 — Baseline | `110ada93` | OpenAI | 4 × 3 modes | **12/12** |
-| v2 — Enterprise | `c85daff7` | OpenAI | 4 × 3 modes | **12/12** |
-| v3 — Capability | `e782fbd0` | OpenAI | 6 × 3 modes | **16/16** |
-| v1 — Baseline | `a86b1733` | EmbedderCrux/nomic | 4 × 3 modes | **12/12** |
-| v2 — Enterprise | `5b125495` | EmbedderCrux/nomic | 4 × 3 modes | **12/12** |
-| v3 — Capability | `8dd5efff` | EmbedderCrux/nomic | 6 × 3 modes | **16/16** |
+| v1 - Baseline | `110ada93` | OpenAI | 4 × 3 modes | **12/12** |
+| v2 - Enterprise | `c85daff7` | OpenAI | 4 × 3 modes | **12/12** |
+| v3 - Capability | `e782fbd0` | OpenAI | 6 × 3 modes | **16/16** |
+| v1 - Baseline | `a86b1733` | EmbedderCrux/nomic | 4 × 3 modes | **12/12** |
+| v2 - Enterprise | `5b125495` | EmbedderCrux/nomic | 4 × 3 modes | **12/12** |
+| v3 - Capability | `8dd5efff` | EmbedderCrux/nomic | 6 × 3 modes | **16/16** |
 
 See the [benchmark ledger](evidence/ledger/README.md) for per-run details, metric deltas, and downloadable evidence.
 
@@ -94,7 +94,7 @@ See the [benchmark ledger](evidence/ledger/README.md) for per-run details, metri
 ## Citation
 
 > CueCrux. *Retrieval Quality Benchmarking for Enterprise Knowledge Systems.* ResearchCrux, v1.0. March 2026. https://github.com/CueCrux/ResearchCrux
-
+>
 > CueCrux. *The CROWN Receipt Protocol, v0.1.* ResearchCrux. March 2026. https://github.com/CueCrux/ResearchCrux
 
 ---

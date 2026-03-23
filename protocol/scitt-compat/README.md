@@ -20,21 +20,21 @@ The SCITT architecture ([draft-ietf-scitt-architecture](https://datatracker.ietf
 
 CROWN is complementary to other emerging SCITT application profiles for AI auditability:
 
-- **CAP-SRP** ([draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/)) — refusal provenance
-- **VCP** ([draft-kamimura-scitt-vcp-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp/)) — algorithmic trading audit trails
-- **CROWN** — retrieval-evidence provenance for RAG systems
+- **CAP-SRP** ([draft-kamimura-scitt-refusal-events-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-refusal-events/)): refusal provenance
+- **VCP** ([draft-kamimura-scitt-vcp-02](https://datatracker.ietf.org/doc/draft-kamimura-scitt-vcp/)): algorithmic trading audit trails
+- **CROWN**: retrieval-evidence provenance for RAG systems
 
 ## What CROWN already has (outside this directory)
 
 The SCITT compatibility layer builds on the existing CROWN implementation:
 
-- [Protocol spec](../crown-receipt-protocol-v0.1.md) — full specification with hash chain construction, signing, verification, and assurance modes
-- [Test vectors](../test-vectors/) — deterministic test key + 4 receipt vectors for independent implementation
-- [Security considerations](../security-considerations.md) — 9-section threat analysis
-- [Architecture Decision Records](../decisions/) — rationale for BLAKE3, ed25519, JSON canonical serialisation, linked-list chain
-- [Verification library](../../verify/) — standalone `crown-verify` CLI and programmatic API (zero CueCrux dependencies)
-- [Proof gallery](../../proof-gallery/) — full and redacted receipt examples with JSON schemas
-- [Regulatory mapping](../../evidence/regulatory-mapping.md) — EU AI Act Article 13/14 and DORA Article 8–11 mapped to CROWN capabilities with benchmark citations
+- [Protocol spec](../crown-receipt-protocol-v0.1.md): full specification with hash chain construction, signing, verification, and assurance modes
+- [Test vectors](../test-vectors/): deterministic test key + 4 receipt vectors for independent implementation
+- [Security considerations](../security-considerations.md): 9-section threat analysis
+- [Architecture Decision Records](../decisions/): rationale for BLAKE3, ed25519, JSON canonical serialisation, linked-list chain
+- [Verification library](../../verify/): standalone `crown-verify` CLI and programmatic API (zero CueCrux dependencies)
+- [Proof gallery](../../proof-gallery/): full and redacted receipt examples with JSON schemas
+- [Regulatory mapping](../../evidence/regulatory-mapping.md): EU AI Act Article 13/14 and DORA Article 8-11 mapped to CROWN capabilities with benchmark citations
 
 ## Implementation Status
 
