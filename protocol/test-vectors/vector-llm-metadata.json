@@ -1,0 +1,100 @@
+{
+  "_description": "CROWN receipt test vector with LLM metadata fields (schema 1.1)",
+  "_protocol": "CROWN Receipt Protocol v0.1",
+  "_section": "Section 5.5 — Independent Verification",
+  "_note": "Schema version 1.1 adds llmModel and llmRequestId to the canonical payload. These fields are hash-bound and tamper-proof.",
+  "receipt": {
+    "receiptId": "tv-llm-meta-001",
+    "snapshotId": "d0000001-0001-4000-8000-000000000001",
+    "answerId": "c0000001-0001-4000-8000-000000000001",
+    "mode": "verified",
+    "modeRequested": "verified",
+    "queryHash": "blake3:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+    "fusion": {
+      "w_bm25": 0.4,
+      "w_vec": 0.6,
+      "rrf_k": 60
+    },
+    "retrieval": {
+      "topK": 10,
+      "rerankK": 25
+    },
+    "selection": {
+      "miSESSize": 2,
+      "citationIds": [
+        "doc-llm-test-001",
+        "doc-llm-test-002"
+      ],
+      "coverage": {
+        "test.com": [
+          "doc-llm-test-001",
+          "doc-llm-test-002"
+        ]
+      },
+      "distinctDomains": 1
+    },
+    "timings": {
+      "retrieveMs": 120,
+      "rerankMs": 35,
+      "llmMs": 950,
+      "totalMs": 1105
+    },
+    "llmModel": "gpt-4o-mini-2024-07-18",
+    "llmRequestId": "chatcmpl-tv-llm-metadata-001",
+    "receiptHash": "blake3:efc1ecbc4b27b7461b04fe88fc5b38a39c188f638481e0f8f854cbdc27208e4d",
+    "parentSnapId": null,
+    "signature": null,
+    "evidence": [
+      {
+        "claimId": "claim-tv-llm-001",
+        "sourceId": "doc-llm-test-001",
+        "role": "support",
+        "quoteHash": "blake3:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "observedAt": "2026-03-24T12:00:00.000Z",
+        "scoreComponents": {
+          "bm25": 0.75,
+          "vector": 0.88,
+          "rrf": 0.82
+        },
+        "chunkId": "chunk-tv-llm-001",
+        "corpusId": "corpus-test"
+      },
+      {
+        "claimId": "claim-tv-llm-002",
+        "sourceId": "doc-llm-test-002",
+        "role": "support",
+        "quoteHash": "blake3:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "observedAt": "2026-03-24T12:00:00.000Z",
+        "scoreComponents": {
+          "bm25": 0.70,
+          "vector": 0.85,
+          "rrf": 0.78
+        },
+        "chunkId": "chunk-tv-llm-002",
+        "corpusId": "corpus-test"
+      }
+    ],
+    "generatedAt": "2026-03-24T12:00:01.000Z"
+  },
+  "verification": {
+    "canonicalPayloadFields": [
+      "answerId",
+      "citations",
+      "counterfactual",
+      "fusion",
+      "generatedAt",
+      "llmModel",
+      "llmRequestId",
+      "mode",
+      "modeRequested",
+      "queryHash",
+      "retrieval",
+      "selection",
+      "timings"
+    ],
+    "expectedReceiptHash": "blake3:efc1ecbc4b27b7461b04fe88fc5b38a39c188f638481e0f8f854cbdc27208e4d",
+    "hashAlgorithm": "blake3",
+    "schemaVersion": "1.1",
+    "notes": "llmModel and llmRequestId are included in the canonical JSON (alphabetically sorted). Schema 1.0 receipts without these fields verify unchanged."
+  }
+}

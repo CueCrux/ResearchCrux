@@ -39,6 +39,8 @@ export function buildCanonicalPayload(
     retrieval: Record<string, unknown>;
     selection: Record<string, unknown>;
     timings: Record<string, unknown>;
+    llmModel?: string | null;
+    llmRequestId?: string | null;
     generatedAt?: string;
     evidence: Array<{
       sourceId: string;
@@ -74,6 +76,9 @@ export function buildCanonicalPayload(
     counterfactual,
     fusion: receipt.fusion,
     generatedAt: receipt.generatedAt ?? null,
+    // LLM metadata: undefined = schema 1.0 (omit from hash), null = schema 1.1 light mode (include).
+    ...(receipt.llmModel !== undefined ? { llmModel: receipt.llmModel } : {}),
+    ...(receipt.llmRequestId !== undefined ? { llmRequestId: receipt.llmRequestId } : {}),
     mode: receipt.mode,
     modeRequested: receipt.modeRequested ?? receipt.mode,
     queryHash: receipt.queryHash,

@@ -43,7 +43,9 @@ common-claims = (
   ? signature:      bstr / tstr / null,
   ? signing-kid:    tstr / null,
   ? signing-pub:    tstr / null,         ; base64-encoded ed25519 public key
-  ? signed-at:      time / null
+  ? signed-at:      time / null,
+  ? llm-model:      tstr / null,         ; actual model returned by LLM API
+  ? llm-request-id: tstr / null          ; provider response/request ID
 )
 
 mode-value = "light" / "verified" / "audit"

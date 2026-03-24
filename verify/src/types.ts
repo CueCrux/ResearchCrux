@@ -34,6 +34,8 @@ export interface CrownReceipt {
   retrieval: Record<string, unknown>;
   selection: Record<string, unknown>;
   timings: Record<string, unknown>;
+  llmModel?: string | null;
+  llmRequestId?: string | null;
   receiptHash: string;
   parentSnapId?: string | null;
   triggerActionReceiptId?: string | null;

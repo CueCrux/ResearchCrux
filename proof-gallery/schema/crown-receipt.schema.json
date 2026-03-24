@@ -163,6 +163,14 @@
         "totalMs"
       ]
     },
+    "llmModel": {
+      "type": ["string", "null"],
+      "description": "Actual model string returned by the LLM API"
+    },
+    "llmRequestId": {
+      "type": ["string", "null"],
+      "description": "Provider response/request ID for LLM call correlation"
+    },
     "receiptHash": {
       "type": "string",
       "description": "BLAKE3 hash of the canonical receipt payload"
