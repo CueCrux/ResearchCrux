@@ -14,7 +14,7 @@ This document shows a single receipt travelling from creation through COSE_Sign1
 |------|------|-------------|
 | [`signed-statement.cbor`](../cose-example/signed-statement.cbor) | 1,188 bytes | Complete COSE_Sign1 Signed Statement (the thing a TS receives) |
 | [`receipt-payload.cbor`](../cose-example/receipt-payload.cbor) | 967 bytes | CBOR-encoded receipt payload (kebab-case keys per CDDL) |
-| [`vector-llm-metadata.json`](../../test-vectors/vector-llm-metadata.json) | — | Source receipt (schema 1.1, with `llmModel` and `llmRequestId`) |
+| [`vector-llm-metadata.json`](../../test-vectors/vector-llm-metadata.json) | - | Source receipt (schema 1.1, with `llmModel` and `llmRequestId`) |
 | [`test-key.json`](../../test-vectors/test-key.json) | 354 bytes | Ed25519 test key (kid: `crown-test-key:v1`). **TEST ONLY** |
 | [`crown-receipt.cddl`](../crown-receipt.cddl) | 6,274 bytes | CDDL schema for CBOR receipt payload |
 | [`scrapi-request.http`](scrapi-request.http) | - | SCRAPI registration request template |

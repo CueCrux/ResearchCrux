@@ -223,8 +223,8 @@ keys per the CDDL schema. This is the payload inside the COSE_Sign1 envelope.
 | \`mode\` | \`${canonicalPayload.mode}\` |
 | \`mode-requested\` | \`${canonicalPayload.modeRequested}\` |
 | \`generated-at\` | \`${canonicalPayload.generatedAt}\` |
-| \`llm-model\` | \`${canonicalPayload.llmModel ?? "—"}\` |
-| \`llm-request-id\` | \`${canonicalPayload.llmRequestId ?? "—"}\` |
+| \`llm-model\` | \`${canonicalPayload.llmModel ?? "-"}\` |
+| \`llm-request-id\` | \`${canonicalPayload.llmRequestId ?? "-"}\` |
 | \`citations\` | ${canonicalPayload.citations.length} entries |
 | \`snap-id\` | \`${kebabPayload["snap-id"]}\` |
 | \`tenant-id\` | \`${kebabPayload["tenant-id"]}\` |
