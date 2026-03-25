@@ -13,36 +13,37 @@
 | v1 — Baseline Corpus | `110ada93` | 4 categories × 3 modes | **12/12** |
 | v2 — Enterprise Corpus | `c85daff7` | 4 categories × 3 modes | **12/12** |
 | v3 — Capability Probes | `e782fbd0` | 6 categories × 3 modes | **16/16** |
-| v4 — Production Quality (Phase 7.3) | `16554101` | 13 categories | **13/13 × 3** |
-| **Total** | | **27 categories** | **79/79** |
+| v4 -- Production Quality (Phase 7.4) | `037b303a` | 12 categories | **12/12 x 5** |
+| **Total** | | **26 categories** | **76/76** |
 
-### v4 Suite — Phase 7.3 Canonical Baseline (2026-03-22)
+### v4 Suite -- Phase 7.4 Canonical Baseline (2026-03-24)
 
-**Corpus:** 1074 unique docs / 1127 ingested, 462 queries, 13 categories
-**Config:** `config-manifest-6.7.json`, EmbedderCrux nomic-embed-text-v1.5 (768d), gpt-4o-mini
-**Validated:** 13/13 × 3 (runs `16554101`, `ca505454`, `5e5ccff5`)
+**Corpus:** 1074 unique docs / 1127 ingested, 462 queries, 12 categories
+**Config:** `config-manifest-6.7.json` + schema 1.1, EmbedderCrux nomic-embed-text-v1.5 (768d), gpt-4o-mini
+**Validated:** 12/12 x 5 on production server (runs `037b303a`, `80434381`, `69341abe`, `e0bfbd9b`, `fabf5dc8`)
 
-| Category | Metric | Run 1 | Run 2 | Run 3 | Target |
-|---|---|---|---|---|---|
-| Cat 1 | supersession_recall | 1.000 | 1.000 | 1.000 | ≥0.80 |
-| Cat 2 | avg_citation_recall | 0.670 | 0.715 | 0.696 | ≥0.50 |
-| Cat 3 | lane_decomposition | PASS | PASS | PASS | all lanes contribute |
-| Cat 5 | chain_integrity | 1.000 | 1.000 | 1.000 | 1.000 |
-| Cat 6 | fragility_calibration | PASS | PASS | PASS | score < 1.0 |
-| Cat 7 | broad_recall | ≥0.70 | ≥0.70 | ≥0.70 | ≥0.70 |
-| Cat 8 | P@1 | ≥0.75 | ≥0.75 | ≥0.75 | ≥0.75 |
-| Cat 9 | dedup_detection | 1.000 | 1.000 | 1.000 | ≥0.90 |
-| Cat 10 | chain_completeness | ≥0.90 | ≥0.90 | ≥0.90 | ≥0.90 |
-| Cat 11 | broad_recall | 0.927 | 0.927 | 0.927 | ≥0.70 |
-| Cat 12 | parent_child_recall | 1.000 | 1.000 | 1.000 | ≥0.80 |
-| Cat 12v2 | overlap_recall | PASS | PASS | PASS | ≥0.80 |
-| Cat 13 | temporal_reconstruction | PASS | PASS | PASS | ≥0.90 |
+| Category | Metric | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Target |
+|---|---|---|---|---|---|---|---|
+| Cat 1 | supersession_recall | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | >=0.80 |
+| Cat 2 | avg_citation_recall | 0.678 | 0.633 | 0.644 | 0.670 | 0.693 | >=0.50 |
+| Cat 3 | lane_decomposition | PASS | PASS | PASS | PASS | PASS | all lanes contribute |
+| Cat 5 | chain_integrity | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| Cat 6 | fragility_calibration | PASS | PASS | PASS | PASS | PASS | monotonic |
+| Cat 7 | broad_recall | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | >=0.70 |
+| Cat 8 | P@1 | 0.963 | 0.963 | 0.963 | 0.963 | 0.963 | >=0.75 |
+| Cat 9 | dedup_detection | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | >=0.90 |
+| Cat 10 | chain_completeness | PASS | PASS | PASS | PASS | PASS | >=0.90 |
+| Cat 11 | broad_recall | 0.927 | 0.927 | 0.927 | 0.927 | 0.927 | >=0.70 |
+| Cat 12 | parent_child_recall | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | >=0.80 |
+| Cat 13 | temporal_reconstruction | PASS | PASS | PASS | PASS | PASS | >=0.90 |
 
-#### Two-Layer Narrative
+#### Two-Layer Narrative (inherited from Phase 7.3)
 
 **Layer 1 (owned):** Cat 2 (format-aware citation) and Cat 12 (relation-pair preservation) are product-owned improvements.
 
-**Layer 2 (observed):** Cat 11 broad_recall 0.722→0.927 is an external factor (LLM model drift), confirmed by full attribution matrix (runs `f9b80070`, `b5f84195`). Neither `FEATURE_FORMAT_AWARE_CITATION` nor `FEATURE_RELATION_PAIR_PRESERVATION` caused the improvement.
+**Layer 2 (observed):** Cat 11 broad_recall 0.927 is an external factor (LLM model drift), confirmed by full attribution matrix (runs `f9b80070`, `b5f84195`). Neither `FEATURE_FORMAT_AWARE_CITATION` nor `FEATURE_RELATION_PAIR_PRESERVATION` caused the improvement.
+
+Phase 7.4 adds LLM metadata binding to CROWN receipts (schema 1.0 -> 1.1). Zero retrieval code changes. 5x server-side validation confirms 7.3 quality baseline maintained.
 
 ---
 

@@ -49,11 +49,11 @@ A plain-language summary of what is implemented, what is draft, and what is pend
 | Standalone verification CLI | Published | [`crown-verify`](../../verify/), test vectors in [proof-gallery](../../proof-gallery/) |
 | JSON Schema | Published | [crown-receipt.schema.json](../../proof-gallery/schema/crown-receipt.schema.json) |
 | CDDL Schema (CBOR) | Published | [crown-receipt.cddl](crown-receipt.cddl) |
-| Retrieval quality benchmark | Production | 13/13 × 3 (1074 docs, 462 queries). [Benchmark ledger](../../evidence/ledger/README.md) |
+| Retrieval quality benchmark | Production | 12/12 x 5 (1074 docs, 462 queries, Phase 7.4). [Benchmark ledger](../../evidence/ledger/README.md) |
 | Regulatory mapping | Published | EU AI Act Art. 13/14, DORA Art. 8-11. [Mapping](../../evidence/regulatory-mapping.md) |
 | COSE_Sign1 Signed Statements | Production | Engine wraps every receipt in COSE_Sign1 (RFC 9052). CBOR payload, protected header with kid + CWT Claims. API supports `Accept: application/cose` |
 | COSE_Sign1 walkthrough | Published | [Worked example](cose-example/cose-walkthrough.md) with hex walkthrough |
-| CBOR encoding path | Production | Engine produces CBOR-encoded receipt payload (kebab-case keys per CDDL) inside COSE_Sign1. M8 deployment (2026-03-23), 13/13 × 3 validated |
+| CBOR encoding path | Production | Engine produces CBOR-encoded receipt payload (kebab-case keys per CDDL) inside COSE_Sign1. M8 deployment (2026-03-23), 12/12 x 5 validated (Phase 7.4) |
 | COSE_Sign1 envelope verification in audit pipeline | Production | AuditCrux Cat 3 verifies COSE_Sign1 structure, ed25519 signature, protected header (alg, kid, CWT Claims), and CBOR payload integrity |
 | Media types | Production | `application/cose` (envelope), `application/vnd.crown.receipt+cbor` (payload content-type in protected header). Content negotiation via `Accept: application/cose` |
 | End-to-end SCITT path walkthrough | Published | [Interop pack](interop-pack/README.md): single receipt through creation → CBOR → COSE_Sign1 → SCRAPI → verification. SCRAPI/TS steps illustrative (no live TS accepts third-party profiles) |

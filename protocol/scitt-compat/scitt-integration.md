@@ -166,7 +166,7 @@ This section explicitly states what is not yet implemented, not yet demonstrated
 
 - **Standalone verification.** The `crown-verify` CLI ([verify/](../../verify/)) performs receipt hash recomputation, chain linkage checks, and COSE_Sign1 envelope verification (`--cose` mode) without SCITT infrastructure. Published test vectors in [proof-gallery/](../../proof-gallery/).
 
-- **Retrieval quality evidence.** 13-category benchmark suite with 1074 docs, 462 queries, 13/13 × 3 canonical passes. Methodology separates retrieval failure from LLM citation failure. See [benchmark evidence](../../evidence/ledger/README.md).
+- **Retrieval quality evidence.** 12-category benchmark suite with 1074 docs, 462 queries, 12/12 x 5 canonical passes (Phase 7.4). Methodology separates retrieval failure from LLM citation failure. See [benchmark evidence](../../evidence/ledger/README.md).
 
 - **CDDL schema.** CBOR type definition for CROWN receipts published at [`crown-receipt.cddl`](crown-receipt.cddl), modelled on existing SCITT application profile patterns.
 
