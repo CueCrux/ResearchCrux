@@ -5,7 +5,22 @@
 **Status:** Pre-standardisation
 **Aligned to:** [draft-ietf-scitt-architecture](https://datatracker.ietf.org/doc/draft-ietf-scitt-architecture/), [draft-ietf-scitt-scrapi](https://datatracker.ietf.org/doc/draft-ietf-scitt-scrapi/)
 
-This document describes how CROWN receipts integrate with the IETF SCITT (Supply Chain Integrity, Transparency, and Trust) architecture. CROWN is an application profile for SCITT — it defines domain-specific claim semantics for AI retrieval-evidence provenance. It does not extend or modify the SCITT architecture.
+This document describes how CROWN receipts integrate with the IETF SCITT (Supply Chain Integrity, Transparency, and Trust) architecture. CROWN is an application profile for SCITT -- it defines domain-specific claim semantics for AI retrieval-evidence provenance. It does not extend or modify the SCITT architecture.
+
+### Reviewer Checklist
+
+| Item | Status | Reference |
+|------|--------|-----------|
+| SCITT primitive mapping complete | Done | [Section 1](#1-mapping-to-scitt) |
+| CDDL schema present | Done | [crown-receipt.cddl](crown-receipt.cddl) |
+| COSE_Sign1 envelope path defined and exercised | Done | [Section 2](#2-encoding-as-signed-statements), [COSE walkthrough](cose-example/cose-walkthrough.md) |
+| Benchmark evidence backing | Done | 12/12 x 5, Phase 7.4. [Ledger](../../evidence/ledger/README.md) |
+| Registration policy specified | Done | [registration-policy.md](registration-policy.md) |
+| Privacy considerations | Done | [privacy-considerations.md](privacy-considerations.md) |
+| Live Transparency Service interop | **Not yet** | No operational TS accepts third-party profiles (ecosystem gap). See [Section 7](#7-what-crown-does-not-claim-yet) |
+| IANA content-type registration | Deferred | Awaiting profile stability |
+
+> **What this document does not claim:** Live end-to-end interop with a SCITT Transparency Service. The full encoding path (receipt -> CBOR -> COSE_Sign1 -> SCRAPI -> verification) is walked in the [interop pack](interop-pack/README.md), but SCRAPI registration and TS Receipt steps are illustrative. This is stated explicitly in [Section 7](#7-what-crown-does-not-claim-yet). As of March 2026, no operational TS accepts third-party application profiles.
 
 ---
 

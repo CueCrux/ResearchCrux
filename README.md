@@ -14,6 +14,21 @@ ResearchCrux is the **public evidence and protocol layer** for the CueCrux platf
 
 ---
 
+## Version Matrix
+
+| Dimension | Current Value |
+|-----------|---------------|
+| CROWN Protocol | v0.1 |
+| SCITT Application Profile | v0.2 (Pre-submission Review) |
+| Receipt Schema | 1.1 (llmModel + llmRequestId hash-bound) |
+| Benchmark Phase | 7.4 (12/12 x 5, 2026-03-24) |
+| Audit Source | [AuditCrux](https://github.com/CueCrux/AuditCrux) -- runs `037b303a` through `fabf5dc8` |
+| Config Manifest | 6.7 + schema 1.1 |
+
+> **Source of truth:** Benchmark status is mirrored from [AuditCrux](https://github.com/CueCrux/AuditCrux), which is the operational source of truth for all quality metrics. ResearchCrux publishes the evidence; AuditCrux produces it.
+
+---
+
 ## Quick Navigation
 
 | Section | Description | Start Here |
