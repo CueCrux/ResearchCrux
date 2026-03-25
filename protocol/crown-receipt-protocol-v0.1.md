@@ -46,9 +46,13 @@ A CROWN receipt (internally: `crown_snapshot`) contains the following fields:
 | `signing_kid` | String or null | Key identifier, format `{keyName}:v{version}` |
 | `signing_pub` | String or null | Base64-encoded ed25519 public key used for signing |
 | `signed_at` | ISO 8601 timestamp or null | When the signature was produced |
+| `llm_model` | String or null | Actual model string returned by the LLM API (schema 1.1+) |
+| `llm_request_id` | String or null | Provider response/request ID for LLM call correlation (schema 1.1+) |
 | `knowledge_state_cursor` | Object or null | Position in the CoreCrux knowledge plane (see Section 7) |
 | `trigger_action_receipt_id` | UUID or null | Action receipt that triggered a chain rebuild, if applicable |
 | `tenant_id` | String | Multi-tenant isolation identifier |
+
+> **Schema versioning:** Receipt schema 1.0 omits `llm_model` and `llm_request_id`. Schema 1.1 (introduced in Phase 7.4) includes them in the canonical payload. When these fields are `undefined` (absent), they are excluded from the canonical hash; when `null` (LLM not called), they are included. This preserves backward compatibility -- schema 1.0 receipts verify unchanged.
 
 ### 2.2 Selection Object
 
@@ -107,6 +111,8 @@ The canonical receipt payload is constructed from the following fields, in this 
   "counterfactual": object or null,
   "fusion": object,
   "generatedAt": ISO 8601 string,
+  "llmModel": string or null,       // schema 1.1+ only
+  "llmRequestId": string or null,   // schema 1.1+ only
   "mode": string,
   "modeRequested": string,
   "queryHash": string,
@@ -115,6 +121,8 @@ The canonical receipt payload is constructed from the following fields, in this 
   "timings": object
 }
 ```
+
+`llmModel` and `llmRequestId` are included only in schema 1.1+ receipts. When the field is absent from the source receipt (schema 1.0), it is omitted from the canonical payload entirely. When it is `null` (schema 1.1, LLM not called), it is included as `null`. This distinction ensures schema 1.0 receipts produce the same hash as before.
 
 Quote hashes are normalised before inclusion: legacy SHA256 hashes (without an algorithm prefix) are detected and prefixed with `sha256:` for consistency with the current BLAKE3-prefixed format.
 
@@ -346,6 +354,8 @@ These changes are additive — they do not require modifying the existing receip
 ### 9.1 Schema Stability
 
 This document describes CROWN protocol version 0.1. The receipt schema defined in Section 2 is the stable interface. Fields may be added in future versions but will not be removed or have their types changed. The canonical JSON serialisation algorithm (Section 3.1) will not change within a major version.
+
+Receipt schema sub-versions (e.g. 1.0, 1.1) track additive field additions within protocol v0.1. Schema 1.1 adds `llm_model` and `llm_request_id` to the canonical payload. Verification implementations must handle both absent fields (schema 1.0) and null fields (schema 1.1) correctly -- see the `undefined` vs `null` distinction in Section 2.1.
 
 ### 9.2 Verification Library
 

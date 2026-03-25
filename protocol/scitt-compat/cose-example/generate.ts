@@ -23,7 +23,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = __dirname;
 const VECTOR_PATH = resolve(
   __dirname,
-  "../../test-vectors/vector-signed.json"
+  "../../test-vectors/vector-llm-metadata.json"
 );
 const KEY_PATH = resolve(__dirname, "../../test-vectors/test-key.json");
 
@@ -72,7 +72,40 @@ const vector = JSON.parse(readFileSync(VECTOR_PATH, "utf-8"));
 const testKey = JSON.parse(readFileSync(KEY_PATH, "utf-8"));
 
 const receipt = vector.receipt;
-const canonicalPayload = vector.verification.canonicalPayload;
+
+// Build canonical payload from receipt (mirrors verify/src/canonical.ts buildCanonicalPayload).
+// This handles both schema 1.0 vectors (which may have verification.canonicalPayload)
+// and schema 1.1 vectors (which may only have canonicalPayloadFields).
+const canonicalPayload = vector.verification?.canonicalPayload ?? buildCanonicalPayloadFromReceipt(receipt);
+
+function buildCanonicalPayloadFromReceipt(r: Record<string, unknown>): Record<string, unknown> {
+  const evidence = r.evidence as Array<{ sourceId: string; quoteHash: string; role: string }>;
+  const citations = evidence
+    .filter((e) => e.role === "support")
+    .map((e) => ({ id: e.sourceId, quoteHash: e.quoteHash }));
+  const counterfactualEvidence = evidence.filter((e) => e.role === "counterfactual");
+  const counterfactual = counterfactualEvidence.length > 0
+    ? counterfactualEvidence.map((e) => ({ id: e.sourceId, quoteHash: e.quoteHash }))
+    : null;
+
+  const payload: Record<string, unknown> = {
+    answerId: r.answerId,
+    citations,
+    counterfactual,
+    fusion: r.fusion,
+    generatedAt: r.generatedAt ?? null,
+    // LLM metadata (schema 1.1): include if present on receipt
+    ...(r.llmModel !== undefined ? { llmModel: r.llmModel } : {}),
+    ...(r.llmRequestId !== undefined ? { llmRequestId: r.llmRequestId } : {}),
+    mode: r.mode,
+    modeRequested: r.modeRequested ?? r.mode,
+    queryHash: r.queryHash,
+    retrieval: r.retrieval,
+    selection: r.selection,
+    timings: r.timings,
+  };
+  return payload;
+}
 
 // ── Step 1: Encode canonical payload to CBOR (kebab-case keys per CDDL) ─
 // Convert camelCase keys to kebab-case and add CDDL-required identifying fields.
@@ -157,7 +190,7 @@ function hexSnippet(buf: Buffer | Uint8Array, maxBytes = 32): string {
 const walkthrough = `# COSE Sign1 CROWN Signed Statement — Walkthrough
 
 **Generated:** ${new Date().toISOString().split("T")[0]}
-**Source:** \`vector-signed.json\` from \`protocol/test-vectors/\`
+**Source:** \`vector-llm-metadata.json\` (schema 1.1) from \`protocol/test-vectors/\`
 **Key:** \`test-key.json\` (throwaway ed25519 — TEST ONLY)
 
 This document shows the byte-level structure of a CROWN Signed Statement — a
@@ -190,6 +223,8 @@ keys per the CDDL schema. This is the payload inside the COSE_Sign1 envelope.
 | \`mode\` | \`${canonicalPayload.mode}\` |
 | \`mode-requested\` | \`${canonicalPayload.modeRequested}\` |
 | \`generated-at\` | \`${canonicalPayload.generatedAt}\` |
+| \`llm-model\` | \`${canonicalPayload.llmModel ?? "—"}\` |
+| \`llm-request-id\` | \`${canonicalPayload.llmRequestId ?? "—"}\` |
 | \`citations\` | ${canonicalPayload.citations.length} entries |
 | \`snap-id\` | \`${kebabPayload["snap-id"]}\` |
 | \`tenant-id\` | \`${kebabPayload["tenant-id"]}\` |

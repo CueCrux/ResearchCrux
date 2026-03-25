@@ -56,25 +56,28 @@ The benchmark suite itself is published separately at [CueCrux/AuditCrux](https:
 
 ## Canonical Results
 
-### Current Baseline: v4 Phase 7.3 (2026-03-22)
+### Current Baseline: v4 Phase 7.4 (2026-03-24)
 
 | Suite | Run ID | Embedding | Categories | Result |
 |-------|--------|-----------|------------|--------|
-| v4 - Production Quality | `16554101` | EmbedderCrux/nomic | 13 categories | **13/13** |
-| v4 - Production Quality | `ca505454` | EmbedderCrux/nomic | 13 categories | **13/13** |
-| v4 - Production Quality | `5e5ccff5` | EmbedderCrux/nomic | 13 categories | **13/13** |
+| v4 - Production (schema 1.1) | `037b303a` | EmbedderCrux/nomic | 12 categories | **12/12** |
+| v4 - Production (schema 1.1) | `80434381` | EmbedderCrux/nomic | 12 categories | **12/12** |
+| v4 - Production (schema 1.1) | `69341abe` | EmbedderCrux/nomic | 12 categories | **12/12** |
+| v4 - Production (schema 1.1) | `e0bfbd9b` | EmbedderCrux/nomic | 12 categories | **12/12** |
+| v4 - Production (schema 1.1) | `fabf5dc8` | EmbedderCrux/nomic | 12 categories | **12/12** |
 
-**Corpus:** 1074 unique docs, 462 queries, 13 categories. **LLM:** gpt-4o-mini (OpenAI). **Config:** [config-manifest-6.7](https://github.com/CueCrux/Engine/blob/main/docs/config-manifest-6.7.json).
+**Corpus:** 1074 unique docs, 462 queries, 12 categories. **LLM:** gpt-4o-mini (OpenAI). **Schema:** Receipt schema 1.1 (llmModel + llmRequestId hash-bound).
 
-Key metrics across 3 canonical runs:
+Key metrics across 5 canonical runs:
 
-| Category | Metric | Values | Target |
+| Category | Metric | Range | Target |
 |---|---|---|---|
-| Cat 2 (Format-Aware Citation) | avg_citation_recall | 0.670 / 0.715 / 0.696 | ≥0.50 |
-| Cat 11 (Chunking Stress) | broad_recall | 0.927 / 0.927 / 0.927 | ≥0.70 |
-| Cat 12 (Hard-Negative Overlap) | parent_child_recall | 1.000 / 1.000 / 1.000 | ≥0.80 |
+| Cat 2 (Format-Aware Citation) | avg_citation_recall | 0.633-0.693 | >=0.50 |
+| Cat 8 (Proposition Precision) | precision_at_1 | 0.963 (5x) | >=0.80 |
+| Cat 11 (Chunking Stress) | broad_recall | 0.927 (5x) | >=0.70 |
+| Cat 12 (Hard-Negative Overlap) | parent_child_recall | 1.000 (5x) | >=0.80 |
 
-Cat 2 and Cat 12 improvements are product-owned engineering changes. Cat 11's improvement (0.722 to 0.927) is externally contingent. A full attribution matrix ruled out both 7.3 code flags; the lift is likely upstream LLM model drift.
+Phase 7.4 adds LLM metadata binding (schema 1.1) to CROWN receipts. Zero retrieval code changed. Cat 7, 8, 11, 12 are perfectly deterministic across all 5 runs. Cat 5 receipt chain 10/10 intact (schema 1.1 validated).
 
 ### Legacy Suites (v1-v3)
 

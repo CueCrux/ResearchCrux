@@ -10,12 +10,13 @@ these test vectors. **DO NOT use this key in production.**
 
 ## Vectors
 
-| File | Description | Signed | Chain |
-|------|-------------|:------:|:-----:|
-| `vector-minimal.json` | Single receipt, minimal fields, unsigned | No | No |
-| `vector-signed.json` | Single receipt, two evidence records, signed | Yes | No |
-| `vector-chain.json` | 3-deep chain, all signed | Yes | Yes |
-| `vector-counterfactual.json` | Receipt with counterfactual evidence, signed | Yes | No |
+| File | Description | Signed | Chain | Schema |
+|------|-------------|:------:|:-----:|:------:|
+| `vector-minimal.json` | Single receipt, minimal fields, unsigned | No | No | 1.0 |
+| `vector-signed.json` | Single receipt, two evidence records, signed | Yes | No | 1.0 |
+| `vector-chain.json` | 3-deep chain, all signed | Yes | Yes | 1.0 |
+| `vector-counterfactual.json` | Receipt with counterfactual evidence, signed | Yes | No | 1.0 |
+| `vector-llm-metadata.json` | Single receipt with LLM metadata fields, unsigned | No | No | 1.1 |
 
 ## Structure
 

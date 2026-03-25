@@ -4,10 +4,10 @@ PASS  signed-statement.cbor  [cose:valid]
   kid: crown-test-key:v1
   content-type: application/vnd.crown.receipt+cbor
   issuer: https://engine.cuecrux.com
-  subject: urn:crown:receipt:a0000002-0001-4000-8000-000000000001
+  subject: urn:crown:receipt:d0000001-0001-4000-8000-000000000001
   Embedded receipt (CBOR, kebab-case keys)
-  receipt-hash: blake3:6024a5b2f2e6935a37248bf2d162e1dd57975530db915f61cacc27ca7fee63d9
-  snap-id: a0000002-0001-4000-8000-000000000001
+  receipt-hash: blake3:efc1ecbc4b27b7461b04fe88fc5b38a39c188f638481e0f8f854cbdc27208e4d
+  snap-id: d0000001-0001-4000-8000-000000000001
   tenant-id: tenant
 
 1 envelope checked, 0 issue(s)
