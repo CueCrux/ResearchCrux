@@ -6,6 +6,17 @@ This file tracks changes to protocol specifications, benchmark evidence, and pub
 
 ---
 
+## 2026-03-27 -- MemoryCrux Benchmark Standard v1.0
+
+- **MemoryCrux Benchmark Standard v1.0 published:** Normative spec for arms, scoring, controls, anti-gaming, reproducibility, and deprecation policy. ([standard](evidence/memorycrux-benchmark-standard-v1.md))
+- **Governance charter published:** Benchmark council (2 internal + 1 external), decision authority, external rerun program, amendment process. ([charter](evidence/memorycrux-governance.md))
+- **METRICS.md promoted:** Status changed from DRAFT to Published v1.0 (no formula changes).
+- **Scoring bug fixes (AuditCrux):** UNSAFE logic escape, constraint hit rate inflation, S_gate null for non-Beta projects, brittle isKillVariant detection. All with unit tests.
+- **Failure handling rulebook:** Codified in METHODOLOGY.md with 8 failure types, retry rules, and cell dispositions.
+- **Exclusion register:** EXCLUSIONS.md created with template and seeded with Delta mini-T3 exclusion.
+- **Reproducibility tooling:** BLAKE3 fixture hashing, run manifest metadata, integrity verification.
+- **Semantic scorer:** Optional LLM-based scoring layer (opt-in via --semantic flag) with scorer agreement reporting.
+
 ## 2026-03-25 -- Phase 7.4 Alignment
 
 - **Receipt schema 1.1:** `llmModel` and `llmRequestId` added to canonical receipt payload, hash-bound via BLAKE3. `undefined` = schema 1.0 (omitted from hash), `null` = schema 1.1 LLM not called (included in hash).

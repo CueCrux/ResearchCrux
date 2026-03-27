@@ -36,7 +36,10 @@ ResearchCrux is the **public evidence and protocol layer** for the CueCrux platf
 | [Protocol Specs](protocol/) | CROWN receipt protocol specification, hash chain construction, IETF SCITT alignment | [CROWN v0.1](protocol/crown-receipt-protocol-v0.1.md) |
 | [SCITT Compatibility](protocol/scitt-compat/) | CDDL schema, COSE encoding, registration policy, privacy considerations for SCITT integration | [Integration Guide](protocol/scitt-compat/scitt-integration.md) |
 | [Living Evidence](evidence/) | Benchmark ledger with historical runs, DQP findings, embedding comparison | [Ledger Index](evidence/ledger/README.md) |
+| [MemoryCrux Benchmark Standard](evidence/memorycrux-benchmark-standard-v1.md) | Normative spec: arms, scoring, controls, anti-gaming, reproducibility, governance | [Standard v1.0](evidence/memorycrux-benchmark-standard-v1.md) |
 | [MemoryCrux Cost Analysis](evidence/memorycrux-cost-analysis.md) | Tool-mediated memory vs context-stuffing: subscription breakeven, TCO, quality-adjusted cost | [Cost Analysis](evidence/memorycrux-cost-analysis.md) |
+| [MemoryCrux Governance](evidence/memorycrux-governance.md) | Benchmark council, decision authority, external rerun program, amendment process | [Charter](evidence/memorycrux-governance.md) |
+| [MemoryCrux Proof Packs](evidence/memorycrux-proof-packs/) | Per-claim evidence bundles: safety, recall, cost — with run receipts and statistics | [Proof Packs](evidence/memorycrux-proof-packs/README.md) |
 | [Proof Gallery](proof-gallery/) | CROWN receipt examples, redacted proof packs, verification walkthrough | [Gallery Index](proof-gallery/README.md) |
 | [Regulatory Mapping](evidence/regulatory-mapping.md) | EU AI Act (Art. 13, 14) and DORA (Art. 8–11) mapped to CROWN capabilities | [Mapping](evidence/regulatory-mapping.md) |
 | [API & MCP Contracts](contracts/) | Published API surface, MCP tool catalog, JSON schemas | [Contracts Index](contracts/README.md) |
