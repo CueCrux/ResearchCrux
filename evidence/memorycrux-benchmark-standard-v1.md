@@ -161,7 +161,7 @@ Token estimation: `ceil(text.length / 4)`. This is a rough heuristic (~10-15% va
 
 Decision recall is scored by case-insensitive substring matching of expected keys against all session output and tool call results.
 
-```
+```text
 recall = |matched_keys| / |expected_keys|
 ```
 
