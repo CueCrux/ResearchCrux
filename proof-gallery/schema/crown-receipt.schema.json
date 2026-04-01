@@ -298,6 +298,10 @@
       ],
       "format": "date-time",
       "description": "Deadline for signing (90 days from generatedAt). Null if already signed."
+    },
+    "shieldManifestHash": {
+      "type": ["string", "null"],
+      "description": "BLAKE3 hash of canonicalized Shield tool manifests (name, capability_class, risk_tier) at signing time. Enables policy provenance — investigators can prove which capability profile was active at any decision point."
     }
   }
 }
