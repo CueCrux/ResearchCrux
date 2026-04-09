@@ -83,7 +83,7 @@ Question
 |------|-------|--------|
 | `RETRIEVAL_BACKEND` | `corecrux-v5-hybrid` (on VaultCrux App) | Routes VaultCrux queries to CoreCrux BM25+graph + Qdrant dense (NOT used by deterministic pipeline) |
 | `CORECRUXD_BUILD_CCXI` | `1` (on GPU-1) | Builds .ccxi BM25 companion at seal time |
-| `CORECRUXD_EMBEDDER_URL` | `http://100.75.64.43:8079` (on GPU-1) | Builds .ccxe dense vector companion at seal time |
+| `CORECRUXD_EMBEDDER_URL` | `http://<DATA_HOST>:8079` (on GPU-1) | Builds .ccxe dense vector companion at seal time |
 | `CORECRUXD_QUERY_TEXT_SEARCH` | `1` (on GPU-1) | Enables /v1/query/text-search endpoint with RRF fusion |
 | `FEATURE_ENRICHMENT_PASSIVE_RECEIPTS` | `true` (on VaultCrux App) | Gap receipts + validation queue (observability only) |
 | `FEATURE_DQP_PROPOSITION_EXTRACTION` | `false` (on VaultCrux App) | Disabled — no local LLM at 8800 on prod |
@@ -152,10 +152,10 @@ Question
 
 | Service | Host | Commit | Config |
 |---|---|---|---|
-| **CoreCrux** | GPU-1 (100.111.227.102:4006) | `85348e9` | CORECRUXD_BUILD_CCXI=1, EMBEDDER_URL, QUERY_TEXT_SEARCH=1 |
-| **VaultCrux API** | App (100.109.10.67:14333) | `a79e78e` | RETRIEVAL_BACKEND=corecrux-v5-hybrid |
-| **EmbedderCrux** | Data-1 (100.75.64.43:8079) | — | nomic-embed-text-v1.5 768d |
-| **Engine** | Data-1 (100.75.64.43:3333) | `e48047b` | CIRCUIT_BREAKER_ENABLED=true |
+| **CoreCrux** | GPU-1 | `85348e9` | CORECRUXD_BUILD_CCXI=1, EMBEDDER_URL, QUERY_TEXT_SEARCH=1 |
+| **VaultCrux API** | App | `a79e78e` | RETRIEVAL_BACKEND=corecrux-v5-hybrid |
+| **EmbedderCrux** | Data-1 | — | nomic-embed-text-v1.5 768d |
+| **Engine** | Data-1 | `e48047b` | CIRCUIT_BREAKER_ENABLED=true |
 
 ### CoreCrux v5 Components (all on GPU-1)
 

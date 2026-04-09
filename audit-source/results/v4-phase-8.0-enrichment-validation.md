@@ -5,7 +5,7 @@
 **Run ID:** `4563b7b1`
 **Embedding:** EmbedderCrux nomic-embed-text-v1.5, 768d
 **Infrastructure:** CueCrux-Data-1 (i9-13900, 192GB DDR5, 2x1.92TB NVMe RAID-1)
-**Target:** Production Engine at `100.75.64.43:3333`
+**Target:** Production Engine at `<DATA_HOST>:3333`
 
 ---
 

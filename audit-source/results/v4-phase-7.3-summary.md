@@ -89,13 +89,13 @@ CIRCUIT_BREAKER_ENABLED: "false"  # Disabled during audit, re-enable after
 ## Audit Environment
 
 ```bash
-DATABASE_URL="postgres://cuecrux:...@100.75.64.43:5433/engine"
-BENCH_TARGET="http://100.75.64.43:3333"
+DATABASE_URL="postgres://cuecrux:...@<DATA_HOST>:5433/engine"
+BENCH_TARGET="http://<DATA_HOST>:3333"
 EMBEDDING_PROVIDER="embeddercrux"
-EMBEDDERCRUX_BASE_URL="http://100.75.64.43:8079"
+EMBEDDERCRUX_BASE_URL="http://<DATA_HOST>:8079"
 EMBEDDING_DIM=768
-QDRANT_URL="http://100.75.64.43:6333"        # REQUIRED
-QDRANT_API_KEY="kCexWISTy8Vw+CS8ukSj2aHaT2s0lf/Qrl5PQ4Xk3L4="  # REQUIRED
+QDRANT_URL="http://<DATA_HOST>:6333"        # REQUIRED
+QDRANT_API_KEY="<REDACTED>"                  # REQUIRED
 ```
 
 ---

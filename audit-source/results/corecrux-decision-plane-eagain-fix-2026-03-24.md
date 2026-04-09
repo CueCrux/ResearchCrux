@@ -76,10 +76,10 @@ Cat B detail:
 - Read latency: ~28s per call (full 1.56M frame scan, pre-projection)
 
 Production wiring:
-- VaultCrux-App: `CORECRUX_BASE_URL=http://100.111.227.102:4006`, `FEATURE_MEMORY_DECISION_PLANE=true`
-- CoreCrux GPU-1: port 4006 (HTTP), 4007 (gRPC), `CORECRUXD_AUTH_MODE=dev`
-- `__service__` tenant + BFF service key seeded on production VaultCrux DB
-- `__audit_memory__` and `default` tenants created for rate-limiter FK compatibility
+- VaultCrux-App: `CORECRUX_BASE_URL=http://<GPU_HOST>:4006`, `FEATURE_MEMORY_DECISION_PLANE=true`
+- CoreCrux GPU-1: port 4006 (HTTP), 4007 (gRPC)
+- Service tenant + BFF service key seeded on production VaultCrux DB
+- Audit and default tenants created for rate-limiter FK compatibility
 
 ## Production Audit Results — Post Local Storage Fix
 

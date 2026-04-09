@@ -369,7 +369,7 @@ Receipts issued under version 0.1 will remain verifiable under all future protoc
 
 ## Appendix A: Benchmark Evidence
 
-All protocol claims in this document are supported by benchmark evidence from the CueCrux retrieval quality audit suite (see [audit-source/](../../audit-source/)):
+All protocol claims in this document are supported by benchmark evidence from the CueCrux retrieval quality audit suite (see [audit-source/](../audit-source/)):
 
 | Claim | Evidence | Run ID |
 |---|---|---|

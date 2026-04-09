@@ -207,8 +207,8 @@ npx tsx benchmarks/memorycrux/run-benchmark.ts \
 ```bash
 export $(grep -E '^(ANTHROPIC|OPENAI)_API_KEY=' .env | xargs)
 
-BENCH_VAULTCRUX_API_BASE=http://100.109.10.67:14333 \
-BENCH_VAULTCRUX_API_KEY=vcrx_bench-delta-prod-key-20260327 \
+BENCH_VAULTCRUX_API_BASE=http://<VAULTCRUX_HOST>:14333 \
+BENCH_VAULTCRUX_API_KEY=<REDACTED> \
 npx tsx benchmarks/memorycrux/run-benchmark.ts \
   --project delta --arm T3 --model gpt-5.4 --variant v01
 ```
