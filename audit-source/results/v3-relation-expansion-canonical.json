@@ -1,0 +1,1757 @@
+{
+  "runId": "e26bf4ed",
+  "startedAt": "2026-03-12T02:05:01.183Z",
+  "finishedAt": "2026-03-12T02:08:48.404Z",
+  "host": "unknown",
+  "results": [
+    {
+      "category": "cat1",
+      "mode": "V1",
+      "passed": true,
+      "metrics": {
+        "avg_recall": 1,
+        "amendment_found": true,
+        "relation_expansion_active": true
+      },
+      "queries": [
+        {
+          "query": "What is the current data residency framework at Meridian? What are the geographic locality and sovereignty requirements?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 1,
+            "precision": 0.5,
+            "recall": 1,
+            "found_ids": [
+              "v3-rel-orig"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 1,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-rel-orig",
+              "v3-rel-support1",
+              "v3-rel-support2",
+              "v3-rel-amend",
+              "v3-rel-noise4",
+              "v3-rel-noise3",
+              "v3-rel-noise1",
+              "v3-rel-noise2"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 4661.416486
+          },
+          "notes": []
+        }
+      ],
+      "notes": [
+        "DETECTED: Relation expansion IS active — amendment found via supersedes edge"
+      ]
+    },
+    {
+      "category": "cat2",
+      "mode": "V1",
+      "passed": true,
+      "metrics": {
+        "avg_citation_recall": 0.3333333333333333,
+        "avg_retrieved_recall": 1,
+        "format_citation_recall": "{\"text/markdown\":1,\"application/json\":0.3333333333333333,\"application/x-yaml\":0,\"text/csv\":0.6666666666666666,\"text/plain (chat)\":0,\"text/plain (notes)\":0}",
+        "format_retrieved_recall": "{\"text/markdown\":1,\"application/json\":1,\"application/x-yaml\":1,\"text/csv\":1,\"text/plain (chat)\":1,\"text/plain (notes)\":1}",
+        "query_count": 3,
+        "tier1_pass": true,
+        "tier2_pass": true,
+        "tier1_recall": 1,
+        "tier2_csv_recall": 0.6666666666666666,
+        "tier2_json_recall": 0.3333333333333333,
+        "tier3_yaml_recall": 0,
+        "tier3_chat_recall": 0,
+        "tier3_notes_recall": 0,
+        "tier1_retrieved_recall": 1,
+        "tier2_csv_retrieved_recall": 1,
+        "tier2_json_retrieved_recall": 1
+      },
+      "queries": [
+        {
+          "query": "What are the rate limiting rules for the payment service? What are the request limits and burst allowances?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "found_ids": [
+              "v3-fmt-a-md",
+              "v3-fmt-a-json"
+            ],
+            "missing_ids": [
+              "v3-fmt-a-yaml",
+              "v3-fmt-a-csv",
+              "v3-fmt-a-chat",
+              "v3-fmt-a-notes"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-fmt-a-md",
+              "v3-fmt-a-json",
+              "v3-fmt-a-notes",
+              "v3-fmt-a-csv",
+              "v3-fmt-a-chat",
+              "v3-fmt-a-yaml",
+              "v3-fmt-c-md",
+              "v3-fmt-c-csv",
+              "v3-fmt-c-chat",
+              "v3-fmt-c-yaml"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2489.467243
+          },
+          "notes": [
+            "Missing expected docs: v3-fmt-a-yaml, v3-fmt-a-csv, v3-fmt-a-chat, v3-fmt-a-notes"
+          ]
+        },
+        {
+          "query": "What is the database backup schedule? How often are full backups and WAL archives taken?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "found_ids": [
+              "v3-fmt-b-md",
+              "v3-fmt-b-csv"
+            ],
+            "missing_ids": [
+              "v3-fmt-b-json",
+              "v3-fmt-b-yaml",
+              "v3-fmt-b-chat",
+              "v3-fmt-b-notes"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-fmt-b-md",
+              "v3-fmt-b-json",
+              "v3-fmt-b-csv",
+              "v3-fmt-b-chat",
+              "v3-fmt-b-notes",
+              "v3-fmt-b-yaml",
+              "v3-fmt-a-chat",
+              "v3-fmt-c-md",
+              "v3-fmt-a-md",
+              "v3-fmt-a-notes"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 1807.656746
+          },
+          "notes": [
+            "Missing expected docs: v3-fmt-b-json, v3-fmt-b-yaml, v3-fmt-b-chat, v3-fmt-b-notes"
+          ]
+        },
+        {
+          "query": "What are the alerting threshold configurations? What latency and error rate thresholds trigger alerts?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "found_ids": [
+              "v3-fmt-c-md",
+              "v3-fmt-c-csv"
+            ],
+            "missing_ids": [
+              "v3-fmt-c-json",
+              "v3-fmt-c-yaml",
+              "v3-fmt-c-chat",
+              "v3-fmt-c-notes"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-fmt-c-md",
+              "v3-fmt-c-notes",
+              "v3-fmt-c-json",
+              "v3-fmt-c-chat",
+              "v3-fmt-c-csv",
+              "v3-fmt-c-yaml",
+              "v3-fmt-a-json",
+              "v3-fmt-a-chat",
+              "v3-fmt-a-md",
+              "v3-fmt-a-csv"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 3489.556549
+          },
+          "notes": [
+            "Missing expected docs: v3-fmt-c-json, v3-fmt-c-yaml, v3-fmt-c-chat, v3-fmt-c-notes"
+          ]
+        }
+      ],
+      "notes": [
+        "text/markdown: cited=3/3 (1.00), retrieved=3/3 (1.00)",
+        "application/json: cited=1/3 (0.33), retrieved=3/3 (1.00)",
+        "application/x-yaml: cited=0/3 (0.00), retrieved=3/3 (1.00)",
+        "text/csv: cited=2/3 (0.67), retrieved=3/3 (1.00)",
+        "text/plain (chat): cited=0/3 (0.00), retrieved=3/3 (1.00)",
+        "text/plain (notes): cited=0/3 (0.00), retrieved=3/3 (1.00)",
+        "Tier 1 (markdown): recall=1.00 PASS",
+        "Tier 2 (csv=0.67, json=0.33): PASS",
+        "Tier 3 baseline (yaml=0.00, chat=0.00, notes=0.00)",
+        "Retrieved recall — markdown=1.00, csv=1.00, json=1.00"
+      ]
+    },
+    {
+      "category": "cat3",
+      "mode": "V1",
+      "passed": true,
+      "metrics": {
+        "combined_citation_recall": 0.6666666666666666,
+        "combined_retrieved_recall": 1,
+        "bm25_citation_recall": 1,
+        "vector_citation_recall": 0,
+        "hybrid_citation_recall": 1,
+        "bm25_retrieved_recall": 1,
+        "vector_retrieved_recall": 1,
+        "hybrid_retrieved_recall": 1,
+        "bm25_found": 2,
+        "vector_found": 0,
+        "hybrid_found": 4,
+        "lane_bm25_retrieved": true,
+        "lane_vector_retrieved": true,
+        "lane_hybrid_retrieved": true,
+        "lane_bm25_cited": true,
+        "lane_vector_cited": true,
+        "lane_hybrid_cited": true
+      },
+      "queries": [
+        {
+          "query": "What is the XK7-Bravo protocol for FIPS-140-3 HSM validation?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 1,
+            "precision": 0.5,
+            "recall": 1,
+            "found_ids": [
+              "v3-bm25-k1"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 1,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-bm25-k1",
+              "v3-vec-v1",
+              "v3-vec-v4",
+              "v3-hyb-h4",
+              "v3-hyb-h2",
+              "v3-bm25-k2",
+              "v3-vec-v2",
+              "v3-bm25-k3",
+              "v3-hyb-h3",
+              "v3-hyb-h1"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2660.752867
+          },
+          "notes": []
+        },
+        {
+          "query": "What does runbook RB-2025-0417 say about ZetaQueue99thPctLatency alert response?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 1,
+            "precision": 0.5,
+            "recall": 1,
+            "found_ids": [
+              "v3-bm25-k2"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 1,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-bm25-k2",
+              "v3-hyb-h4",
+              "v3-vec-v4",
+              "v3-bm25-k1",
+              "v3-hyb-h2",
+              "v3-vec-v2",
+              "v3-vec-v1",
+              "v3-bm25-k3",
+              "v3-hyb-h3",
+              "v3-bm25-k4"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 5160.516406
+          },
+          "notes": []
+        },
+        {
+          "query": "What is the API key rotation policy at Meridian?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h1"
+            ],
+            "missing_ids": [
+              "v3-vec-v1"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h1",
+              "v3-bm25-k3",
+              "v3-hyb-h3",
+              "v3-bm25-k1",
+              "v3-hyb-h2",
+              "v3-hyb-h4",
+              "v3-vec-v2",
+              "v3-vec-v1",
+              "v3-vec-v3",
+              "v3-bm25-k2"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2087.228086
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v1"
+          ]
+        },
+        {
+          "query": "What is the incident response playbook and severity classification?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h2"
+            ],
+            "missing_ids": [
+              "v3-vec-v2"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h2",
+              "v3-vec-v4",
+              "v3-vec-v2",
+              "v3-hyb-h4",
+              "v3-bm25-k1",
+              "v3-bm25-k2",
+              "v3-bm25-k4",
+              "v3-hyb-h3",
+              "v3-bm25-k3",
+              "v3-vec-v3"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 3935.998291
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v2"
+          ]
+        },
+        {
+          "query": "What is the database backup strategy and recovery objectives?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h3"
+            ],
+            "missing_ids": [
+              "v3-vec-v3"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h3",
+              "v3-vec-v3",
+              "v3-vec-v2",
+              "v3-hyb-h1",
+              "v3-hyb-h2",
+              "v3-vec-v1",
+              "v3-bm25-k2",
+              "v3-vec-v4",
+              "v3-bm25-k4",
+              "v3-bm25-k3"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 4372.981023
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v3"
+          ]
+        },
+        {
+          "query": "What are the alerting threshold configurations for latency and error rates?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h4"
+            ],
+            "missing_ids": [
+              "v3-vec-v4"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h4",
+              "v3-vec-v4",
+              "v3-hyb-h2",
+              "v3-bm25-k2",
+              "v3-vec-v2",
+              "v3-bm25-k3",
+              "v3-bm25-k1",
+              "v3-bm25-k4",
+              "v3-hyb-h3",
+              "v3-vec-v1"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 4394.857978
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v4"
+          ]
+        }
+      ],
+      "notes": [
+        "BM25 (K-class): cited=2/2 (1.00), retrieved=2/2 (1.00)",
+        "Vector (V-class): cited=0/4 (0.00), retrieved=4/4 (1.00)",
+        "Hybrid (H-class): cited=4/4 (1.00), retrieved=4/4 (1.00)",
+        "Lane contribution (retrieved) — BM25: true, Vector: true, Hybrid: true",
+        "Lane contribution (cited) — BM25: true, Vector: true, Hybrid: true"
+      ]
+    },
+    {
+      "category": "cat4",
+      "mode": "V1",
+      "passed": true,
+      "metrics": {
+        "skipped": true
+      },
+      "queries": [],
+      "notes": [
+        "Skipped: V1 does not support living state"
+      ]
+    },
+    {
+      "category": "cat5",
+      "mode": "V4.1",
+      "passed": true,
+      "metrics": {
+        "chains_intact": 10,
+        "total_verified": 10,
+        "max_verified_depth": 50,
+        "latency_at_depth_50": 3,
+        "latency_slope_per_depth": 0,
+        "all_intact_at_20": true,
+        "depth_points": "[{\"depth\":5,\"latency_ms\":3,\"chain_intact\":true},{\"depth\":10,\"latency_ms\":2,\"chain_intact\":true},{\"depth\":15,\"latency_ms\":3,\"chain_intact\":true},{\"depth\":20,\"latency_ms\":2,\"chain_intact\":true},{\"depth\":25,\"latency_ms\":5,\"chain_intact\":true},{\"depth\":30,\"latency_ms\":3,\"chain_intact\":true},{\"depth\":35,\"latency_ms\":2,\"chain_intact\":true},{\"depth\":40,\"latency_ms\":3,\"chain_intact\":true},{\"depth\":45,\"latency_ms\":3,\"chain_intact\":true},{\"depth\":50,\"latency_ms\":3,\"chain_intact\":true}]"
+      },
+      "queries": [],
+      "notes": [
+        "Max verified depth: 50",
+        "Latency slope: 0.00 ms/depth",
+        "Latency at depth 50: 3ms"
+      ]
+    },
+    {
+      "category": "cat6",
+      "mode": "V1",
+      "passed": true,
+      "metrics": {
+        "f1_fragility": 1,
+        "f2_fragility": 0,
+        "f3_fragility": 0,
+        "monotonic_order": true,
+        "all_zero": false,
+        "calibration_points": "[{\"scenario\":\"F1\",\"expected_range\":[0.8,1],\"actual\":1,\"in_range\":true},{\"scenario\":\"F2\",\"expected_range\":[0.3,0.7],\"actual\":0,\"in_range\":false},{\"scenario\":\"F3\",\"expected_range\":[0.1,0.5],\"actual\":0,\"in_range\":false}]"
+      },
+      "queries": [
+        {
+          "query": "What are the encryption standards for operational zones?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 2,
+            "precision": 1,
+            "recall": 1,
+            "found_ids": [
+              "v3-frag-f1a",
+              "v3-frag-f1b"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-frag-f1a",
+              "v3-frag-f1b",
+              "v3-frag-f3f",
+              "v3-frag-f2c",
+              "v3-frag-f2a",
+              "v3-frag-f3e",
+              "v3-frag-f2b",
+              "v3-frag-f3a",
+              "v3-frag-f3c",
+              "v3-frag-f2d"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 3724.420003
+          },
+          "notes": []
+        },
+        {
+          "query": "What are the network segmentation policies across operational zones?",
+          "metrics": {
+            "expected_found": 3,
+            "expected_total": 4,
+            "precision": 1,
+            "recall": 0.75,
+            "found_ids": [
+              "v3-frag-f2a",
+              "v3-frag-f2b",
+              "v3-frag-f2c"
+            ],
+            "missing_ids": [
+              "v3-frag-f2d"
+            ],
+            "retrieved_found": 4,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-frag-f2b",
+              "v3-frag-f2c",
+              "v3-frag-f2d",
+              "v3-frag-f2a",
+              "v3-frag-f3a",
+              "v3-frag-f3c",
+              "v3-frag-f3e",
+              "v3-frag-f3d",
+              "v3-frag-f3b",
+              "v3-frag-f3f"
+            ],
+            "fragility_score": 0,
+            "distinct_domains": 3,
+            "latency_ms": 4882.720683
+          },
+          "notes": [
+            "Missing expected docs: v3-frag-f2d"
+          ]
+        },
+        {
+          "query": "What are the incident response runbooks for all operational zones?",
+          "metrics": {
+            "expected_found": 3,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-frag-f3b",
+              "v3-frag-f3c",
+              "v3-frag-f3e"
+            ],
+            "missing_ids": [
+              "v3-frag-f3a",
+              "v3-frag-f3d",
+              "v3-frag-f3f"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-frag-f3e",
+              "v3-frag-f3a",
+              "v3-frag-f3c",
+              "v3-frag-f3d",
+              "v3-frag-f3b",
+              "v3-frag-f2b",
+              "v3-frag-f2d",
+              "v3-frag-f2a",
+              "v3-frag-f3f",
+              "v3-frag-f2c"
+            ],
+            "fragility_score": 0,
+            "distinct_domains": 3,
+            "latency_ms": 5059.11013
+          },
+          "notes": [
+            "Missing expected docs: v3-frag-f3a, v3-frag-f3d, v3-frag-f3f"
+          ]
+        }
+      ],
+      "notes": [
+        "F1 (Maximum (2 docs, 2 domains)): fragility=1.000 range=[0.8,1] OK",
+        "F2 (Moderate (4 docs, 3 domains)): fragility=0.000 range=[0.3,0.7] OUT OF RANGE",
+        "F3 (Low (6 docs, 4 domains)): fragility=0.000 range=[0.1,0.5] OUT OF RANGE",
+        "Monotonic ordering: F1 > F2 >= F3 — CORRECT"
+      ]
+    },
+    {
+      "category": "cat1",
+      "mode": "V3.1",
+      "passed": true,
+      "metrics": {
+        "avg_recall": 1,
+        "amendment_found": true,
+        "relation_expansion_active": true
+      },
+      "queries": [
+        {
+          "query": "What is the current data residency framework at Meridian? What are the geographic locality and sovereignty requirements?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 1,
+            "precision": 0.5,
+            "recall": 1,
+            "found_ids": [
+              "v3-rel-orig"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 1,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-rel-orig",
+              "v3-rel-support1",
+              "v3-rel-support2",
+              "v3-rel-amend",
+              "v3-rel-noise4",
+              "v3-rel-noise3",
+              "v3-rel-noise1",
+              "v3-rel-noise2"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 4062.848371
+          },
+          "notes": []
+        }
+      ],
+      "notes": [
+        "DETECTED: Relation expansion IS active — amendment found via supersedes edge"
+      ]
+    },
+    {
+      "category": "cat2",
+      "mode": "V3.1",
+      "passed": true,
+      "metrics": {
+        "avg_citation_recall": 0.3333333333333333,
+        "avg_retrieved_recall": 1,
+        "format_citation_recall": "{\"text/markdown\":1,\"application/json\":0.3333333333333333,\"application/x-yaml\":0,\"text/csv\":0.6666666666666666,\"text/plain (chat)\":0,\"text/plain (notes)\":0}",
+        "format_retrieved_recall": "{\"text/markdown\":1,\"application/json\":1,\"application/x-yaml\":1,\"text/csv\":1,\"text/plain (chat)\":1,\"text/plain (notes)\":1}",
+        "query_count": 3,
+        "tier1_pass": true,
+        "tier2_pass": true,
+        "tier1_recall": 1,
+        "tier2_csv_recall": 0.6666666666666666,
+        "tier2_json_recall": 0.3333333333333333,
+        "tier3_yaml_recall": 0,
+        "tier3_chat_recall": 0,
+        "tier3_notes_recall": 0,
+        "tier1_retrieved_recall": 1,
+        "tier2_csv_retrieved_recall": 1,
+        "tier2_json_retrieved_recall": 1
+      },
+      "queries": [
+        {
+          "query": "What are the rate limiting rules for the payment service? What are the request limits and burst allowances?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "found_ids": [
+              "v3-fmt-a-md",
+              "v3-fmt-a-json"
+            ],
+            "missing_ids": [
+              "v3-fmt-a-yaml",
+              "v3-fmt-a-csv",
+              "v3-fmt-a-chat",
+              "v3-fmt-a-notes"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-fmt-a-md",
+              "v3-fmt-a-json",
+              "v3-fmt-a-notes",
+              "v3-fmt-a-csv",
+              "v3-fmt-a-chat",
+              "v3-fmt-a-yaml",
+              "v3-fmt-c-md",
+              "v3-fmt-c-csv",
+              "v3-fmt-c-chat",
+              "v3-fmt-c-yaml"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2696.468985
+          },
+          "notes": [
+            "Missing expected docs: v3-fmt-a-yaml, v3-fmt-a-csv, v3-fmt-a-chat, v3-fmt-a-notes"
+          ]
+        },
+        {
+          "query": "What is the database backup schedule? How often are full backups and WAL archives taken?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "found_ids": [
+              "v3-fmt-b-md",
+              "v3-fmt-b-csv"
+            ],
+            "missing_ids": [
+              "v3-fmt-b-json",
+              "v3-fmt-b-yaml",
+              "v3-fmt-b-chat",
+              "v3-fmt-b-notes"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-fmt-b-md",
+              "v3-fmt-b-json",
+              "v3-fmt-b-csv",
+              "v3-fmt-b-chat",
+              "v3-fmt-b-notes",
+              "v3-fmt-b-yaml",
+              "v3-fmt-a-chat",
+              "v3-fmt-c-md",
+              "v3-fmt-a-md",
+              "v3-fmt-a-notes"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 1272.134615
+          },
+          "notes": [
+            "Missing expected docs: v3-fmt-b-json, v3-fmt-b-yaml, v3-fmt-b-chat, v3-fmt-b-notes"
+          ]
+        },
+        {
+          "query": "What are the alerting threshold configurations? What latency and error rate thresholds trigger alerts?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "found_ids": [
+              "v3-fmt-c-md",
+              "v3-fmt-c-csv"
+            ],
+            "missing_ids": [
+              "v3-fmt-c-json",
+              "v3-fmt-c-yaml",
+              "v3-fmt-c-chat",
+              "v3-fmt-c-notes"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-fmt-c-md",
+              "v3-fmt-c-notes",
+              "v3-fmt-c-json",
+              "v3-fmt-c-chat",
+              "v3-fmt-c-csv",
+              "v3-fmt-c-yaml",
+              "v3-fmt-a-json",
+              "v3-fmt-a-chat",
+              "v3-fmt-a-md",
+              "v3-fmt-a-csv"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2953.01023
+          },
+          "notes": [
+            "Missing expected docs: v3-fmt-c-json, v3-fmt-c-yaml, v3-fmt-c-chat, v3-fmt-c-notes"
+          ]
+        }
+      ],
+      "notes": [
+        "text/markdown: cited=3/3 (1.00), retrieved=3/3 (1.00)",
+        "application/json: cited=1/3 (0.33), retrieved=3/3 (1.00)",
+        "application/x-yaml: cited=0/3 (0.00), retrieved=3/3 (1.00)",
+        "text/csv: cited=2/3 (0.67), retrieved=3/3 (1.00)",
+        "text/plain (chat): cited=0/3 (0.00), retrieved=3/3 (1.00)",
+        "text/plain (notes): cited=0/3 (0.00), retrieved=3/3 (1.00)",
+        "Tier 1 (markdown): recall=1.00 PASS",
+        "Tier 2 (csv=0.67, json=0.33): PASS",
+        "Tier 3 baseline (yaml=0.00, chat=0.00, notes=0.00)",
+        "Retrieved recall — markdown=1.00, csv=1.00, json=1.00"
+      ]
+    },
+    {
+      "category": "cat3",
+      "mode": "V3.1",
+      "passed": true,
+      "metrics": {
+        "combined_citation_recall": 0.6666666666666666,
+        "combined_retrieved_recall": 1,
+        "bm25_citation_recall": 1,
+        "vector_citation_recall": 0,
+        "hybrid_citation_recall": 1,
+        "bm25_retrieved_recall": 1,
+        "vector_retrieved_recall": 1,
+        "hybrid_retrieved_recall": 1,
+        "bm25_found": 2,
+        "vector_found": 0,
+        "hybrid_found": 4,
+        "lane_bm25_retrieved": true,
+        "lane_vector_retrieved": true,
+        "lane_hybrid_retrieved": true,
+        "lane_bm25_cited": true,
+        "lane_vector_cited": true,
+        "lane_hybrid_cited": true
+      },
+      "queries": [
+        {
+          "query": "What is the XK7-Bravo protocol for FIPS-140-3 HSM validation?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 1,
+            "precision": 0.5,
+            "recall": 1,
+            "found_ids": [
+              "v3-bm25-k1"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 1,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-bm25-k1",
+              "v3-vec-v1",
+              "v3-vec-v4",
+              "v3-hyb-h4",
+              "v3-hyb-h2",
+              "v3-bm25-k2",
+              "v3-vec-v2",
+              "v3-bm25-k3",
+              "v3-hyb-h3",
+              "v3-hyb-h1"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2115.73541
+          },
+          "notes": []
+        },
+        {
+          "query": "What does runbook RB-2025-0417 say about ZetaQueue99thPctLatency alert response?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 1,
+            "precision": 0.5,
+            "recall": 1,
+            "found_ids": [
+              "v3-bm25-k2"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 1,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-bm25-k2",
+              "v3-hyb-h4",
+              "v3-vec-v4",
+              "v3-bm25-k1",
+              "v3-hyb-h2",
+              "v3-vec-v2",
+              "v3-vec-v1",
+              "v3-bm25-k3",
+              "v3-hyb-h3",
+              "v3-bm25-k4"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 4913.981607
+          },
+          "notes": []
+        },
+        {
+          "query": "What is the API key rotation policy at Meridian?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h1"
+            ],
+            "missing_ids": [
+              "v3-vec-v1"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h1",
+              "v3-bm25-k3",
+              "v3-hyb-h3",
+              "v3-bm25-k1",
+              "v3-hyb-h2",
+              "v3-hyb-h4",
+              "v3-vec-v2",
+              "v3-vec-v1",
+              "v3-vec-v3",
+              "v3-bm25-k2"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2888.387788
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v1"
+          ]
+        },
+        {
+          "query": "What is the incident response playbook and severity classification?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h2"
+            ],
+            "missing_ids": [
+              "v3-vec-v2"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h2",
+              "v3-vec-v4",
+              "v3-vec-v2",
+              "v3-hyb-h4",
+              "v3-bm25-k1",
+              "v3-bm25-k2",
+              "v3-bm25-k4",
+              "v3-hyb-h3",
+              "v3-bm25-k3",
+              "v3-vec-v3"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 3295.185791
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v2"
+          ]
+        },
+        {
+          "query": "What is the database backup strategy and recovery objectives?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h3"
+            ],
+            "missing_ids": [
+              "v3-vec-v3"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h3",
+              "v3-vec-v3",
+              "v3-vec-v2",
+              "v3-hyb-h1",
+              "v3-hyb-h2",
+              "v3-vec-v1",
+              "v3-bm25-k2",
+              "v3-vec-v4",
+              "v3-bm25-k4",
+              "v3-bm25-k3"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 3588.511274
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v3"
+          ]
+        },
+        {
+          "query": "What are the alerting threshold configurations for latency and error rates?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h4"
+            ],
+            "missing_ids": [
+              "v3-vec-v4"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h4",
+              "v3-vec-v4",
+              "v3-hyb-h2",
+              "v3-bm25-k2",
+              "v3-vec-v2",
+              "v3-bm25-k3",
+              "v3-bm25-k1",
+              "v3-bm25-k4",
+              "v3-hyb-h3",
+              "v3-vec-v1"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2129.826771
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v4"
+          ]
+        }
+      ],
+      "notes": [
+        "BM25 (K-class): cited=2/2 (1.00), retrieved=2/2 (1.00)",
+        "Vector (V-class): cited=0/4 (0.00), retrieved=4/4 (1.00)",
+        "Hybrid (H-class): cited=4/4 (1.00), retrieved=4/4 (1.00)",
+        "Lane contribution (retrieved) — BM25: true, Vector: true, Hybrid: true",
+        "Lane contribution (cited) — BM25: true, Vector: true, Hybrid: true"
+      ]
+    },
+    {
+      "category": "cat4",
+      "mode": "V3.1",
+      "passed": true,
+      "metrics": {
+        "accuracy": 1,
+        "correct": 12,
+        "total": 12,
+        "pattern_results": "{\"patternA\":{\"correct\":4,\"total\":4,\"details\":[]},\"patternB\":{\"correct\":4,\"total\":4,\"details\":[]},\"patternC\":{\"correct\":4,\"total\":4,\"details\":[]}}"
+      },
+      "queries": [],
+      "notes": []
+    },
+    {
+      "category": "cat6",
+      "mode": "V3.1",
+      "passed": true,
+      "metrics": {
+        "f1_fragility": 1,
+        "f2_fragility": 0,
+        "f3_fragility": 0,
+        "monotonic_order": true,
+        "all_zero": false,
+        "calibration_points": "[{\"scenario\":\"F1\",\"expected_range\":[0.8,1],\"actual\":1,\"in_range\":true},{\"scenario\":\"F2\",\"expected_range\":[0.3,0.7],\"actual\":0,\"in_range\":false},{\"scenario\":\"F3\",\"expected_range\":[0.1,0.5],\"actual\":0,\"in_range\":false}]"
+      },
+      "queries": [
+        {
+          "query": "What are the encryption standards for operational zones?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 2,
+            "precision": 1,
+            "recall": 1,
+            "found_ids": [
+              "v3-frag-f1a",
+              "v3-frag-f1b"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-frag-f1a",
+              "v3-frag-f1b",
+              "v3-frag-f3f",
+              "v3-frag-f2c",
+              "v3-frag-f2a",
+              "v3-frag-f3e",
+              "v3-frag-f2b",
+              "v3-frag-f3a",
+              "v3-frag-f3c",
+              "v3-frag-f2d"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2771.382761
+          },
+          "notes": []
+        },
+        {
+          "query": "What are the network segmentation policies across operational zones?",
+          "metrics": {
+            "expected_found": 3,
+            "expected_total": 4,
+            "precision": 1,
+            "recall": 0.75,
+            "found_ids": [
+              "v3-frag-f2a",
+              "v3-frag-f2b",
+              "v3-frag-f2c"
+            ],
+            "missing_ids": [
+              "v3-frag-f2d"
+            ],
+            "retrieved_found": 4,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-frag-f2b",
+              "v3-frag-f2c",
+              "v3-frag-f2d",
+              "v3-frag-f2a",
+              "v3-frag-f3a",
+              "v3-frag-f3c",
+              "v3-frag-f3e",
+              "v3-frag-f3d",
+              "v3-frag-f3b",
+              "v3-frag-f3f"
+            ],
+            "fragility_score": 0,
+            "distinct_domains": 3,
+            "latency_ms": 5020.660523
+          },
+          "notes": [
+            "Missing expected docs: v3-frag-f2d"
+          ]
+        },
+        {
+          "query": "What are the incident response runbooks for all operational zones?",
+          "metrics": {
+            "expected_found": 3,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-frag-f3b",
+              "v3-frag-f3c",
+              "v3-frag-f3e"
+            ],
+            "missing_ids": [
+              "v3-frag-f3a",
+              "v3-frag-f3d",
+              "v3-frag-f3f"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-frag-f3e",
+              "v3-frag-f3a",
+              "v3-frag-f3c",
+              "v3-frag-f3d",
+              "v3-frag-f3b",
+              "v3-frag-f2b",
+              "v3-frag-f2d",
+              "v3-frag-f2a",
+              "v3-frag-f3f",
+              "v3-frag-f2c"
+            ],
+            "fragility_score": 0,
+            "distinct_domains": 3,
+            "latency_ms": 6153.239327
+          },
+          "notes": [
+            "Missing expected docs: v3-frag-f3a, v3-frag-f3d, v3-frag-f3f"
+          ]
+        }
+      ],
+      "notes": [
+        "F1 (Maximum (2 docs, 2 domains)): fragility=1.000 range=[0.8,1] OK",
+        "F2 (Moderate (4 docs, 3 domains)): fragility=0.000 range=[0.3,0.7] OUT OF RANGE",
+        "F3 (Low (6 docs, 4 domains)): fragility=0.000 range=[0.1,0.5] OUT OF RANGE",
+        "Monotonic ordering: F1 > F2 >= F3 — CORRECT"
+      ]
+    },
+    {
+      "category": "cat1",
+      "mode": "V4.1",
+      "passed": true,
+      "metrics": {
+        "avg_recall": 1,
+        "amendment_found": true,
+        "relation_expansion_active": true
+      },
+      "queries": [
+        {
+          "query": "What is the current data residency framework at Meridian? What are the geographic locality and sovereignty requirements?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 1,
+            "precision": 0.5,
+            "recall": 1,
+            "found_ids": [
+              "v3-rel-orig"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 1,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-rel-orig",
+              "v3-rel-support1",
+              "v3-rel-support2",
+              "v3-rel-amend",
+              "v3-rel-noise4",
+              "v3-rel-noise3",
+              "v3-rel-noise1",
+              "v3-rel-noise2"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 3279.402152
+          },
+          "notes": []
+        }
+      ],
+      "notes": [
+        "DETECTED: Relation expansion IS active — amendment found via supersedes edge"
+      ]
+    },
+    {
+      "category": "cat2",
+      "mode": "V4.1",
+      "passed": true,
+      "metrics": {
+        "avg_citation_recall": 0.3333333333333333,
+        "avg_retrieved_recall": 1,
+        "format_citation_recall": "{\"text/markdown\":1,\"application/json\":0.3333333333333333,\"application/x-yaml\":0,\"text/csv\":0.6666666666666666,\"text/plain (chat)\":0,\"text/plain (notes)\":0}",
+        "format_retrieved_recall": "{\"text/markdown\":1,\"application/json\":1,\"application/x-yaml\":1,\"text/csv\":1,\"text/plain (chat)\":1,\"text/plain (notes)\":1}",
+        "query_count": 3,
+        "tier1_pass": true,
+        "tier2_pass": true,
+        "tier1_recall": 1,
+        "tier2_csv_recall": 0.6666666666666666,
+        "tier2_json_recall": 0.3333333333333333,
+        "tier3_yaml_recall": 0,
+        "tier3_chat_recall": 0,
+        "tier3_notes_recall": 0,
+        "tier1_retrieved_recall": 1,
+        "tier2_csv_retrieved_recall": 1,
+        "tier2_json_retrieved_recall": 1
+      },
+      "queries": [
+        {
+          "query": "What are the rate limiting rules for the payment service? What are the request limits and burst allowances?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "found_ids": [
+              "v3-fmt-a-md",
+              "v3-fmt-a-json"
+            ],
+            "missing_ids": [
+              "v3-fmt-a-yaml",
+              "v3-fmt-a-csv",
+              "v3-fmt-a-chat",
+              "v3-fmt-a-notes"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-fmt-a-md",
+              "v3-fmt-a-json",
+              "v3-fmt-a-notes",
+              "v3-fmt-a-csv",
+              "v3-fmt-a-chat",
+              "v3-fmt-a-yaml",
+              "v3-fmt-c-md",
+              "v3-fmt-c-csv",
+              "v3-fmt-c-chat",
+              "v3-fmt-c-yaml"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 1905.474062
+          },
+          "notes": [
+            "Missing expected docs: v3-fmt-a-yaml, v3-fmt-a-csv, v3-fmt-a-chat, v3-fmt-a-notes"
+          ]
+        },
+        {
+          "query": "What is the database backup schedule? How often are full backups and WAL archives taken?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "found_ids": [
+              "v3-fmt-b-md",
+              "v3-fmt-b-csv"
+            ],
+            "missing_ids": [
+              "v3-fmt-b-json",
+              "v3-fmt-b-yaml",
+              "v3-fmt-b-chat",
+              "v3-fmt-b-notes"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-fmt-b-md",
+              "v3-fmt-b-json",
+              "v3-fmt-b-csv",
+              "v3-fmt-b-chat",
+              "v3-fmt-b-notes",
+              "v3-fmt-b-yaml",
+              "v3-fmt-a-chat",
+              "v3-fmt-c-md",
+              "v3-fmt-a-md",
+              "v3-fmt-a-notes"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 1234.006024
+          },
+          "notes": [
+            "Missing expected docs: v3-fmt-b-json, v3-fmt-b-yaml, v3-fmt-b-chat, v3-fmt-b-notes"
+          ]
+        },
+        {
+          "query": "What are the alerting threshold configurations? What latency and error rate thresholds trigger alerts?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.3333333333333333,
+            "found_ids": [
+              "v3-fmt-c-md",
+              "v3-fmt-c-csv"
+            ],
+            "missing_ids": [
+              "v3-fmt-c-json",
+              "v3-fmt-c-yaml",
+              "v3-fmt-c-chat",
+              "v3-fmt-c-notes"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-fmt-c-md",
+              "v3-fmt-c-notes",
+              "v3-fmt-c-json",
+              "v3-fmt-c-chat",
+              "v3-fmt-c-csv",
+              "v3-fmt-c-yaml",
+              "v3-fmt-a-json",
+              "v3-fmt-a-chat",
+              "v3-fmt-a-md",
+              "v3-fmt-a-csv"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 3067.978376
+          },
+          "notes": [
+            "Missing expected docs: v3-fmt-c-json, v3-fmt-c-yaml, v3-fmt-c-chat, v3-fmt-c-notes"
+          ]
+        }
+      ],
+      "notes": [
+        "text/markdown: cited=3/3 (1.00), retrieved=3/3 (1.00)",
+        "application/json: cited=1/3 (0.33), retrieved=3/3 (1.00)",
+        "application/x-yaml: cited=0/3 (0.00), retrieved=3/3 (1.00)",
+        "text/csv: cited=2/3 (0.67), retrieved=3/3 (1.00)",
+        "text/plain (chat): cited=0/3 (0.00), retrieved=3/3 (1.00)",
+        "text/plain (notes): cited=0/3 (0.00), retrieved=3/3 (1.00)",
+        "Tier 1 (markdown): recall=1.00 PASS",
+        "Tier 2 (csv=0.67, json=0.33): PASS",
+        "Tier 3 baseline (yaml=0.00, chat=0.00, notes=0.00)",
+        "Retrieved recall — markdown=1.00, csv=1.00, json=1.00"
+      ]
+    },
+    {
+      "category": "cat3",
+      "mode": "V4.1",
+      "passed": true,
+      "metrics": {
+        "combined_citation_recall": 0.6666666666666666,
+        "combined_retrieved_recall": 1,
+        "bm25_citation_recall": 1,
+        "vector_citation_recall": 0,
+        "hybrid_citation_recall": 1,
+        "bm25_retrieved_recall": 1,
+        "vector_retrieved_recall": 1,
+        "hybrid_retrieved_recall": 1,
+        "bm25_found": 2,
+        "vector_found": 0,
+        "hybrid_found": 4,
+        "lane_bm25_retrieved": true,
+        "lane_vector_retrieved": true,
+        "lane_hybrid_retrieved": true,
+        "lane_bm25_cited": true,
+        "lane_vector_cited": true,
+        "lane_hybrid_cited": true
+      },
+      "queries": [
+        {
+          "query": "What is the XK7-Bravo protocol for FIPS-140-3 HSM validation?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 1,
+            "precision": 0.5,
+            "recall": 1,
+            "found_ids": [
+              "v3-bm25-k1"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 1,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-bm25-k1",
+              "v3-vec-v1",
+              "v3-vec-v4",
+              "v3-hyb-h4",
+              "v3-hyb-h2",
+              "v3-bm25-k2",
+              "v3-vec-v2",
+              "v3-bm25-k3",
+              "v3-hyb-h3",
+              "v3-hyb-h1"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2206.612474
+          },
+          "notes": []
+        },
+        {
+          "query": "What does runbook RB-2025-0417 say about ZetaQueue99thPctLatency alert response?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 1,
+            "precision": 0.5,
+            "recall": 1,
+            "found_ids": [
+              "v3-bm25-k2"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 1,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-bm25-k2",
+              "v3-hyb-h4",
+              "v3-vec-v4",
+              "v3-bm25-k1",
+              "v3-hyb-h2",
+              "v3-vec-v2",
+              "v3-vec-v1",
+              "v3-bm25-k3",
+              "v3-hyb-h3",
+              "v3-bm25-k4"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 3896.545469
+          },
+          "notes": []
+        },
+        {
+          "query": "What is the API key rotation policy at Meridian?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h1"
+            ],
+            "missing_ids": [
+              "v3-vec-v1"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h1",
+              "v3-bm25-k3",
+              "v3-hyb-h3",
+              "v3-bm25-k1",
+              "v3-hyb-h2",
+              "v3-hyb-h4",
+              "v3-vec-v2",
+              "v3-vec-v1",
+              "v3-vec-v3",
+              "v3-bm25-k2"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 1876.730584
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v1"
+          ]
+        },
+        {
+          "query": "What is the incident response playbook and severity classification?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h2"
+            ],
+            "missing_ids": [
+              "v3-vec-v2"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h2",
+              "v3-vec-v4",
+              "v3-vec-v2",
+              "v3-hyb-h4",
+              "v3-bm25-k1",
+              "v3-bm25-k2",
+              "v3-bm25-k4",
+              "v3-hyb-h3",
+              "v3-bm25-k3",
+              "v3-vec-v3"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 3697.813538
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v2"
+          ]
+        },
+        {
+          "query": "What is the database backup strategy and recovery objectives?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h3"
+            ],
+            "missing_ids": [
+              "v3-vec-v3"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h3",
+              "v3-vec-v3",
+              "v3-vec-v2",
+              "v3-hyb-h1",
+              "v3-hyb-h2",
+              "v3-vec-v1",
+              "v3-bm25-k2",
+              "v3-vec-v4",
+              "v3-bm25-k4",
+              "v3-bm25-k3"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 3201.642087
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v3"
+          ]
+        },
+        {
+          "query": "What are the alerting threshold configurations for latency and error rates?",
+          "metrics": {
+            "expected_found": 1,
+            "expected_total": 2,
+            "precision": 0.5,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-hyb-h4"
+            ],
+            "missing_ids": [
+              "v3-vec-v4"
+            ],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-hyb-h4",
+              "v3-vec-v4",
+              "v3-hyb-h2",
+              "v3-bm25-k2",
+              "v3-vec-v2",
+              "v3-bm25-k3",
+              "v3-bm25-k1",
+              "v3-bm25-k4",
+              "v3-hyb-h3",
+              "v3-vec-v1"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2005.932831
+          },
+          "notes": [
+            "Missing expected docs: v3-vec-v4"
+          ]
+        }
+      ],
+      "notes": [
+        "BM25 (K-class): cited=2/2 (1.00), retrieved=2/2 (1.00)",
+        "Vector (V-class): cited=0/4 (0.00), retrieved=4/4 (1.00)",
+        "Hybrid (H-class): cited=4/4 (1.00), retrieved=4/4 (1.00)",
+        "Lane contribution (retrieved) — BM25: true, Vector: true, Hybrid: true",
+        "Lane contribution (cited) — BM25: true, Vector: true, Hybrid: true"
+      ]
+    },
+    {
+      "category": "cat4",
+      "mode": "V4.1",
+      "passed": true,
+      "metrics": {
+        "accuracy": 1,
+        "correct": 12,
+        "total": 12,
+        "pattern_results": "{\"patternA\":{\"correct\":4,\"total\":4,\"details\":[]},\"patternB\":{\"correct\":4,\"total\":4,\"details\":[]},\"patternC\":{\"correct\":4,\"total\":4,\"details\":[]}}"
+      },
+      "queries": [],
+      "notes": []
+    },
+    {
+      "category": "cat6",
+      "mode": "V4.1",
+      "passed": true,
+      "metrics": {
+        "f1_fragility": 1,
+        "f2_fragility": 0,
+        "f3_fragility": 0,
+        "monotonic_order": true,
+        "all_zero": false,
+        "calibration_points": "[{\"scenario\":\"F1\",\"expected_range\":[0.8,1],\"actual\":1,\"in_range\":true},{\"scenario\":\"F2\",\"expected_range\":[0.3,0.7],\"actual\":0,\"in_range\":false},{\"scenario\":\"F3\",\"expected_range\":[0.1,0.5],\"actual\":0,\"in_range\":false}]"
+      },
+      "queries": [
+        {
+          "query": "What are the encryption standards for operational zones?",
+          "metrics": {
+            "expected_found": 2,
+            "expected_total": 2,
+            "precision": 1,
+            "recall": 1,
+            "found_ids": [
+              "v3-frag-f1a",
+              "v3-frag-f1b"
+            ],
+            "missing_ids": [],
+            "retrieved_found": 2,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-frag-f1a",
+              "v3-frag-f1b",
+              "v3-frag-f3f",
+              "v3-frag-f2c",
+              "v3-frag-f2a",
+              "v3-frag-f3e",
+              "v3-frag-f2b",
+              "v3-frag-f3a",
+              "v3-frag-f3c",
+              "v3-frag-f2d"
+            ],
+            "fragility_score": 1,
+            "distinct_domains": 2,
+            "latency_ms": 2642.608395
+          },
+          "notes": []
+        },
+        {
+          "query": "What are the network segmentation policies across operational zones?",
+          "metrics": {
+            "expected_found": 3,
+            "expected_total": 4,
+            "precision": 1,
+            "recall": 0.75,
+            "found_ids": [
+              "v3-frag-f2a",
+              "v3-frag-f2b",
+              "v3-frag-f2c"
+            ],
+            "missing_ids": [
+              "v3-frag-f2d"
+            ],
+            "retrieved_found": 4,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-frag-f2b",
+              "v3-frag-f2c",
+              "v3-frag-f2d",
+              "v3-frag-f2a",
+              "v3-frag-f3a",
+              "v3-frag-f3c",
+              "v3-frag-f3e",
+              "v3-frag-f3d",
+              "v3-frag-f3b",
+              "v3-frag-f3f"
+            ],
+            "fragility_score": 0,
+            "distinct_domains": 3,
+            "latency_ms": 4033.242674
+          },
+          "notes": [
+            "Missing expected docs: v3-frag-f2d"
+          ]
+        },
+        {
+          "query": "What are the incident response runbooks for all operational zones?",
+          "metrics": {
+            "expected_found": 3,
+            "expected_total": 6,
+            "precision": 1,
+            "recall": 0.5,
+            "found_ids": [
+              "v3-frag-f3b",
+              "v3-frag-f3c",
+              "v3-frag-f3e"
+            ],
+            "missing_ids": [
+              "v3-frag-f3a",
+              "v3-frag-f3d",
+              "v3-frag-f3f"
+            ],
+            "retrieved_found": 6,
+            "retrieved_recall": 1,
+            "retrieved_ids": [
+              "v3-frag-f3e",
+              "v3-frag-f3a",
+              "v3-frag-f3c",
+              "v3-frag-f3d",
+              "v3-frag-f3b",
+              "v3-frag-f2b",
+              "v3-frag-f2d",
+              "v3-frag-f2a",
+              "v3-frag-f3f",
+              "v3-frag-f2c"
+            ],
+            "fragility_score": 0,
+            "distinct_domains": 3,
+            "latency_ms": 5274.014315
+          },
+          "notes": [
+            "Missing expected docs: v3-frag-f3a, v3-frag-f3d, v3-frag-f3f"
+          ]
+        }
+      ],
+      "notes": [
+        "F1 (Maximum (2 docs, 2 domains)): fragility=1.000 range=[0.8,1] OK",
+        "F2 (Moderate (4 docs, 3 domains)): fragility=0.000 range=[0.3,0.7] OUT OF RANGE",
+        "F3 (Low (6 docs, 4 domains)): fragility=0.000 range=[0.1,0.5] OUT OF RANGE",
+        "Monotonic ordering: F1 > F2 >= F3 — CORRECT"
+      ]
+    }
+  ],
+  "summary": {
+    "total_passed": 16,
+    "total_categories": 16,
+    "duration_s": "227.2"
+  }
+}

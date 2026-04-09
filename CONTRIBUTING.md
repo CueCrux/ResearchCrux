@@ -31,7 +31,7 @@ The `protocol/scitt-compat/` directory contains artifacts for IETF SCITT integra
 
 ### Evidence and benchmark contributions
 
-- **Independent benchmark runs** using the [AuditCrux](https://github.com/CueCrux/AuditCrux) test suite
+- **Independent benchmark runs** using the audit test suite (see [audit-source/](audit-source/))
 - **Regulatory mapping updates** — corrections or additions to `evidence/regulatory-mapping.md` as the EU AI Act, DORA, and other frameworks evolve
 
 ## How to contribute

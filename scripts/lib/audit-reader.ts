@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync, existsSync } from "fs";
 import { join, basename } from "path";
 
-// --- Types matching AuditCrux result JSON ---
+// --- Types matching canonical audit result JSON (from audit-source/) ---
 
 export interface QueryResult {
   query: string;
@@ -79,7 +79,7 @@ function deriveEmbedding(filename: string): string {
 export function readAuditCruxResults(auditCruxDir: string): AuditRun[] {
   const resultsDir = join(auditCruxDir, "results");
   if (!existsSync(resultsDir)) {
-    console.warn(`AuditCrux results directory not found: ${resultsDir}`);
+    console.warn(`Audit results directory not found: ${resultsDir}`);
     return [];
   }
 

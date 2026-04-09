@@ -2,7 +2,7 @@
 /**
  * Generates the proof gallery: example receipts, redacted packs, and JSON schemas.
  *
- * Reads:  AuditCrux canonical results (for receipt chain examples)
+ * Reads:  Synthetic example data (no external dependencies)
  * Writes: proof-gallery/examples/*.json, proof-gallery/redacted/*.json,
  *         proof-gallery/schema/*.json, proof-gallery/README.md
  */

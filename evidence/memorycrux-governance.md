@@ -48,7 +48,7 @@
 
 Every change to scoring, methodology, fixtures, or the standard MUST be recorded in the appropriate changelog:
 
-- **AuditCrux METHODOLOGY.md:** Version header updated, change described.
+- **[audit-source/benchmarks/memorycrux/METHODOLOGY.md](../audit-source/benchmarks/memorycrux/METHODOLOGY.md):** Version header updated, change described.
 - **ResearchCrux CHANGELOG.md:** Entry with date, description, council sign-off status.
 - **Standard document:** Changelog table at end of document.
 
@@ -69,7 +69,7 @@ Enable third parties to independently verify benchmark results and earn a rerun 
 ### Process
 
 1. **Request:** Third party submits a rerun request via GitHub issue on ResearchCrux.
-2. **Setup:** Third party clones AuditCrux, installs harness, obtains API keys.
+2. **Setup:** Third party obtains the benchmark harness (see [audit-source/benchmarks/memorycrux](../audit-source/benchmarks/memorycrux/)), installs dependencies, obtains API keys.
 3. **Execution:** Run the full matrix on published fixtures using the published harness version.
 4. **Submission:** Submit results (summary.json files) to the council.
 5. **Verification:** Council compares results against published medians.

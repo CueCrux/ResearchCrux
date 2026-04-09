@@ -3,7 +3,7 @@
 **Version:** 1.0
 **Date:** March 2026
 **Authors:** CueCrux Engineering
-**Benchmark Suite:** [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) (MIT, reproducible)
+**Benchmark Suite:** [audit-source/](../audit-source/) (MIT, reproducible)
 
 ---
 
@@ -35,7 +35,7 @@ These four failure modes share a property: they are invisible to standard benchm
 
 ## 2. Benchmark Methodology
 
-The benchmark programme consists of three suites, each testing retrieval quality under progressively harder conditions. The full methodology is documented in the [AuditCrux METHODOLOGY.md](https://github.com/CueCrux/AuditCrux/blob/main/METHODOLOGY.md). This section summarises the design.
+The benchmark programme consists of three suites, each testing retrieval quality under progressively harder conditions. The full methodology is documented in [METHODOLOGY.md](../audit-source/METHODOLOGY.md). This section summarises the design.
 
 ### 2.1 Suite Architecture
 
@@ -79,7 +79,7 @@ The benchmark reports both metrics. Pass/fail criteria use retrieved recall for 
 
 ## 3. Results
 
-All results reference canonical runs stored in the [AuditCrux results/ directory](https://github.com/CueCrux/AuditCrux/tree/main/results). Every metric cited below can be independently verified by re-running the suite against an identically configured engine instance.
+All results reference canonical runs stored in the [audit-source/results/ directory](../audit-source/results/). Every metric cited below can be independently verified by re-running the suite against an identically configured engine instance.
 
 ### 3.1 Supersession Accuracy
 
@@ -148,7 +148,7 @@ The BM25 vs vector lane decomposition (also v3 run e782fbd0) confirms that the h
 
 ## 5. Known Limitations
 
-**Embedding space.** Two canonical run sets are published. The primary runs use OpenAI `text-embedding-3-small` at 768 dimensions. Supplementary runs using the production embedding provider (EmbedderCrux, `nomic-embed-text-v1.5`, 768 dimensions) are published in AuditCrux `results/` with run IDs `a86b1733` (v1), `5b125495` (v2), `8dd5efff` (v3). The supplementary runs confirm all primary results: 40/40 categories passed with identical recall and ranking accuracy. Corpus degradation slope is -0.010 per 1K docs (nomic) vs -0.020 (OpenAI) — nomic degrades at half the rate, likely due to more distinctive embeddings under noise pressure. The embedding cache is keyed by provider to prevent cross-contamination.
+**Embedding space.** Two canonical run sets are published. The primary runs use OpenAI `text-embedding-3-small` at 768 dimensions. Supplementary runs using the production embedding provider (EmbedderCrux, `nomic-embed-text-v1.5`, 768 dimensions) are published in `audit-source/results/` with run IDs `a86b1733` (v1), `5b125495` (v2), `8dd5efff` (v3). The supplementary runs confirm all primary results: 40/40 categories passed with identical recall and ranking accuracy. Corpus degradation slope is -0.010 per 1K docs (nomic) vs -0.020 (OpenAI) — nomic degrades at half the rate, likely due to more distinctive embeddings under noise pressure. The embedding cache is keyed by provider to prevent cross-contamination.
 
 **Relation expansion.** Relation-based candidate expansion is implemented behind a `FEATURE_RELATION_EXPANSION` flag. With the flag enabled, the pipeline fetches documents connected by `supersedes`, `derived_from`, and `elaborates` relation edges to retrieved candidates, adding them to the scoring pool. This closes the cross-format supersession gap documented in v2 Cat 1 results. The feature flag defaults to false for backward compatibility; the v3-relation-expansion canonical run (run `e26bf4ed`) documents behaviour with the flag enabled.
 
@@ -185,7 +185,7 @@ DORA requires financial entities to maintain a comprehensive ICT risk management
 
 ## 7. Reproducibility
 
-The benchmark suite is published at [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) under MIT license.
+The benchmark suite methodology and results are included in [audit-source/](../audit-source/) under MIT license.
 
 ### Canonical Runs
 
@@ -205,9 +205,10 @@ The canonical runs were executed on CueCrux-Data-1: Intel i9-13900, 192GB DDR5 E
 
 ### Commands
 
+Methodology and canonical results are in [audit-source/](../audit-source/). To re-run audits:
+
 ```bash
-git clone https://github.com/CueCrux/AuditCrux.git
-cd AuditCrux
+# Obtain the benchmark harness and configure with Engine credentials
 npm install
 cp .env.example .env  # configure with Engine credentials
 npm run audit:v1       # ~10 min

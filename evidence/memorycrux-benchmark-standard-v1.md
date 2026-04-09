@@ -5,7 +5,7 @@
 **License:** CC BY 4.0
 **Canonical location:** [ResearchCrux/evidence/memorycrux-benchmark-standard-v1.md](https://github.com/CueCrux/ResearchCrux/blob/main/evidence/memorycrux-benchmark-standard-v1.md)
 **Governance:** [memorycrux-governance.md](memorycrux-governance.md)
-**Implementation:** [AuditCrux/benchmarks/memorycrux](https://github.com/CueCrux/AuditCrux/tree/main/benchmarks/memorycrux)
+**Implementation:** [audit-source/benchmarks/memorycrux](../audit-source/benchmarks/memorycrux/)
 
 ---
 
@@ -242,7 +242,7 @@ Cells excluded due to harness bugs MUST NOT be scored as 0% — they should appe
 
 ## 8. Failure Handling and Exclusion Rules
 
-Failure handling rules are codified in [METHODOLOGY.md § Failure Handling Rulebook](https://github.com/CueCrux/AuditCrux/blob/main/benchmarks/memorycrux/METHODOLOGY.md#failure-handling-rulebook).
+Failure handling rules are codified in [METHODOLOGY.md § Failure Handling Rulebook](../audit-source/benchmarks/memorycrux/METHODOLOGY.md#failure-handling-rulebook).
 
 ### 8.1 Cell Dispositions
 
@@ -255,7 +255,7 @@ Failure handling rules are codified in [METHODOLOGY.md § Failure Handling Ruleb
 ### 8.2 Exclusion Authority
 
 - Harness maintainers MAY exclude cells under the Failure Handling Rulebook rules.
-- Exclusions MUST be recorded in [EXCLUSIONS.md](https://github.com/CueCrux/AuditCrux/blob/main/benchmarks/memorycrux/EXCLUSIONS.md).
+- Exclusions MUST be recorded in [EXCLUSIONS.md](../audit-source/benchmarks/memorycrux/EXCLUSIONS.md).
 - Methodology changes to exclusion rules REQUIRE benchmark council sign-off (see Governance).
 
 ---
@@ -264,7 +264,7 @@ Failure handling rules are codified in [METHODOLOGY.md § Failure Handling Ruleb
 
 ### 9.1 Public Fixtures
 
-All `scenario.json` and `corpus.json` files for published projects are public and available in the AuditCrux repository. This enables reproduction and scrutiny.
+All `scenario.json` and `corpus.json` files for published projects are public and available in the [audit-source/benchmarks/memorycrux](../audit-source/benchmarks/memorycrux/) directory. This enables reproduction and scrutiny.
 
 ### 9.2 Holdout Fixtures (RECOMMENDED)
 
@@ -379,7 +379,7 @@ Pricing MUST be updated when providers change rates. The pricing version MUST be
 - **EXCLUSIONS.md:** Exclusion register
 - **Governance charter:** [memorycrux-governance.md](memorycrux-governance.md)
 - **Proof packs:** [memorycrux-proof-packs/](memorycrux-proof-packs/)
-- **Implementation:** [AuditCrux/benchmarks/memorycrux](https://github.com/CueCrux/AuditCrux/tree/main/benchmarks/memorycrux)
+- **Implementation:** [audit-source/benchmarks/memorycrux](../audit-source/benchmarks/memorycrux/)
 - **Cost analysis:** [memorycrux-cost-analysis.md](memorycrux-cost-analysis.md)
 
 ---

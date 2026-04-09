@@ -15,9 +15,9 @@ Proof packs bundle the evidence behind each headline claim. Each pack contains:
 
 ## Verification
 
-Each proof pack references run IDs from [AuditCrux](https://github.com/CueCrux/AuditCrux). To verify:
+Each proof pack references run IDs from the benchmark suite. To verify:
 
-1. Clone AuditCrux
+1. See [audit-source/benchmarks/memorycrux/](../../audit-source/benchmarks/memorycrux/) for methodology and results
 2. Locate the run directory: `benchmarks/memorycrux/results/mc-bench-{run-id}/`
 3. Compare `summary.json` against the pack's `claim.json`
 

@@ -4,7 +4,7 @@
 
 **Standard:** MemoryCrux Benchmark Standard v1.0
 **Generated:** 2026-03-27
-**Source:** [AuditCrux](https://github.com/CueCrux/AuditCrux) benchmarks/memorycrux/
+**Source:** [audit-source/benchmarks/memorycrux](../../../audit-source/benchmarks/memorycrux/)
 
 ## Evidence Summary
 

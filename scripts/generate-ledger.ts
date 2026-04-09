@@ -1,8 +1,8 @@
 #!/usr/bin/env tsx
 /**
- * Generates the benchmark ledger from AuditCrux canonical results.
+ * Generates the benchmark ledger from canonical audit results.
  *
- * Reads:  ../AuditCrux/results/*.json
+ * Reads:  audit-source/results/*.json
  * Writes: evidence/ledger/README.md, evidence/ledger/run-*.md,
  *         evidence/ledger/changelog.md, evidence/ledger/latest.json
  */
@@ -14,14 +14,14 @@ import { mdTable, mdSection, formatDate, formatDuration, formatNumber } from "./
 
 function main() {
   const ROOT = resolve(import.meta.dirname, "..");
-  const AUDIT_CRUX_DIR = resolve(ROOT, "../AuditCrux");
+  const AUDIT_CRUX_DIR = resolve(ROOT, "audit-source");
   const LEDGER_DIR = join(ROOT, "evidence", "ledger");
 
   mkdirSync(LEDGER_DIR, { recursive: true });
 
   const runs = readAuditCruxResults(AUDIT_CRUX_DIR);
   if (runs.length === 0) {
-    console.error("No AuditCrux results found. Ensure ../AuditCrux/results/ contains canonical JSON files.");
+    console.error("No audit results found. Ensure audit-source/results/ contains canonical JSON files.");
     process.exit(1);
   }
 
@@ -71,7 +71,7 @@ function generateRunPage(
   lines.push(`| **Date** | ${formatDate(run.startedAt)} |`);
   lines.push(`| **Duration** | ${formatDuration(summary.durationMs)} |`);
   lines.push(`| **Pass Rate** | **${summary.passRate}** |`);
-  lines.push(`| **Source** | \`AuditCrux/results/${run.sourceFile}\` |`);
+  lines.push(`| **Source** | \`audit-source/results/${run.sourceFile}\` |`);
   lines.push("");
 
   // Pass/fail matrix
@@ -151,7 +151,7 @@ function generateRunPage(
 
   lines.push("---");
   lines.push("");
-  lines.push(`*Generated from [AuditCrux](https://github.com/CueCrux/AuditCrux) canonical results.*`);
+  lines.push(`*Generated from canonical audit results (see [audit-source](../../audit-source/)).*`);
 
   return lines.join("\n");
 }
@@ -163,7 +163,7 @@ function generateLedgerIndex(runs: AuditRun[]): string {
   lines.push("");
   lines.push("Living index of all canonical audit runs. Each run page contains pass/fail matrix, per-category metrics, and query-level details.");
   lines.push("");
-  lines.push("Evidence is generated from [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) (MIT) canonical results.");
+  lines.push("Evidence is generated from canonical audit results included in [audit-source/](../../audit-source/) (MIT).");
   lines.push("");
 
   // Summary stats

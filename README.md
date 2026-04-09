@@ -22,10 +22,10 @@ ResearchCrux is the **public evidence and protocol layer** for the CueCrux platf
 | SCITT Application Profile | v0.2 (Pre-submission Review) |
 | Receipt Schema | 1.1 (llmModel + llmRequestId hash-bound) |
 | Benchmark Phase | 7.4 (12/12 x 5, 2026-03-24) |
-| Audit Source | [AuditCrux](https://github.com/CueCrux/AuditCrux) -- runs `037b303a` through `fabf5dc8` |
+| Audit Source | [audit-source/](audit-source/) -- runs `037b303a` through `fabf5dc8` |
 | Config Manifest | 6.7 + schema 1.1 |
 
-> **Source of truth:** Benchmark status is mirrored from [AuditCrux](https://github.com/CueCrux/AuditCrux), which is the operational source of truth for all quality metrics. ResearchCrux publishes the evidence; AuditCrux produces it.
+> **Source of truth:** Benchmark methodology and canonical results are included in [audit-source/](audit-source/) (mirrored from AuditCrux, MIT licensed). ResearchCrux publishes the evidence; the audit suite produces it.
 
 ---
 
@@ -69,7 +69,7 @@ npm run proof:generate    # proof gallery only
 npm run contracts:generate # API/MCP contract docs only
 ```
 
-The benchmark suite itself is published separately at [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) (MIT).
+The benchmark suite methodology and canonical results are included in [audit-source/](audit-source/) (MIT).
 
 ---
 
@@ -129,4 +129,5 @@ CC BY 4.0. See [LICENSE](LICENSE).
 
 - Platform overview: [CueCrux](https://github.com/CueCrux)
 - Crux Manifesto v2.3: [manifesto/Crux-Manifesto-v2.3.md](manifesto/Crux-Manifesto-v2.3.md)
-- Related repos: [Engine](https://github.com/CueCrux/Engine) (retrieval implementation), [AuditCrux](https://github.com/CueCrux/AuditCrux) (benchmark suite), [CoreCrux](https://github.com/CueCrux/CoreCrux) (provenance spine)
+- Related repos: [Engine](https://github.com/CueCrux/Engine) (retrieval implementation), [CoreCrux](https://github.com/CueCrux/CoreCrux) (provenance spine)
+- Audit suite: [audit-source/](audit-source/) (methodology, results, benchmarks — mirrored from AuditCrux, MIT)

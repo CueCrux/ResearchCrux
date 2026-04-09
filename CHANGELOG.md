@@ -11,7 +11,7 @@ This file tracks changes to protocol specifications, benchmark evidence, and pub
 - **MemoryCrux Benchmark Standard v1.0 published:** Normative spec for arms, scoring, controls, anti-gaming, reproducibility, and deprecation policy. ([standard](evidence/memorycrux-benchmark-standard-v1.md))
 - **Governance charter published:** Benchmark council (2 internal + 1 external), decision authority, external rerun program, amendment process. ([charter](evidence/memorycrux-governance.md))
 - **METRICS.md promoted:** Status changed from DRAFT to Published v1.0 (no formula changes).
-- **Scoring bug fixes (AuditCrux):** UNSAFE logic escape, constraint hit rate inflation, S_gate null for non-Beta projects, brittle isKillVariant detection. All with unit tests.
+- **Scoring bug fixes (audit suite):** UNSAFE logic escape, constraint hit rate inflation, S_gate null for non-Beta projects, brittle isKillVariant detection. All with unit tests.
 - **Failure handling rulebook:** Codified in METHODOLOGY.md with 8 failure types, retry rules, and cell dispositions.
 - **Exclusion register:** EXCLUSIONS.md created with template and seeded with Delta mini-T3 exclusion.
 - **Reproducibility tooling:** BLAKE3 fixture hashing, run manifest metadata, integrity verification.
@@ -25,7 +25,7 @@ This file tracks changes to protocol specifications, benchmark evidence, and pub
 - **Test vector added:** `vector-llm-metadata.json` (schema 1.1 test vector).
 - **SCITT integration doc:** Added reviewer checklist and interop status summary. Benchmark references aligned to Phase 7.4.
 - **Version matrix added** to README for protocol/benchmark/schema cross-referencing.
-- **Source-of-truth note added:** ResearchCrux publishes evidence; AuditCrux produces it.
+- **Source-of-truth note added:** ResearchCrux publishes evidence; the audit suite produces it. Audit methodology and results now included in `audit-source/`.
 - **Category count:** v4 suite now 12 categories (Cat 12v2 retired from canonical suite). Legacy v1-v3 suites unchanged (40/40).
 
 ## 2026-03-22 -- Phase 7.3 (Initial Publication)
