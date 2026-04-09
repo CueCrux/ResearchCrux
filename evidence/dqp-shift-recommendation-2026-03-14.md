@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-14
 **Status:** Recommendation — informed by v4 isolation benchmarks and platform doc cross-reference
-**Depends on:** `dqp-findings.md`, `embedding-comparison.md`, v4 isolation probes (AuditCrux RESULTS.md)
+**Depends on:** `dqp-findings.md`, `embedding-comparison.md`, v4 isolation probes ([audit-source/RESULTS.md](../audit-source/RESULTS.md))
 
 ---
 
@@ -136,7 +136,7 @@ The DQP plan positions proposition extraction as Premium (team/enterprise). Use 
 | RAG Pack 03: Embeddings & Ingestion | `PlanCrux/docs/master-plan/RAG-Pack-03-Embeddings-Ingestion.md` |
 | Embedding Comparison | `ResearchCrux/evidence/embedding-comparison.md` |
 | DQP Benchmark Findings | `ResearchCrux/evidence/dqp-findings.md` |
-| v4 Isolation Results | `AuditCrux/RESULTS.md` (v4 DQP Isolation Probes section) |
+| v4 Isolation Results | [`audit-source/RESULTS.md`](../audit-source/RESULTS.md) (v4 DQP Isolation Probes section) |
 | Corpus Classifier | `Engine/src/dqp/corpus-classifier.ts` |
 | Retrieval Service | `Engine/src/services/retrieval.ts` |
 | Quality Routes | `Engine/src/routes/quality.ts` |

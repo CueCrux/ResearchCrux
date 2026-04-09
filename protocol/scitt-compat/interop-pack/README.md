@@ -300,7 +300,7 @@ This recomputes the canonical payload, hashes it with BLAKE3, and compares again
 | Protected header (alg, ct, kid, CWT Claims) | Verified by `crown-verify --cose` above |
 | Ed25519 signature | Verified above: `cose:valid` |
 | Standalone verification CLI | `crown-verify`, zero CueCrux dependencies |
-| COSE_Sign1 in audit pipeline | AuditCrux Cat 3 verifies every envelope: structure, signature, header, payload integrity |
+| COSE_Sign1 in audit pipeline | Audit Cat 3 verifies every envelope: structure, signature, header, payload integrity |
 | LLM metadata binding (schema 1.1) | `llmModel` and `llmRequestId` hash-bound in canonical payload |
 | Receipt chain (parentSnapId) | Depth 50, flat latency. 12/12 × 5 audit passes (Phase 7.4) |
 

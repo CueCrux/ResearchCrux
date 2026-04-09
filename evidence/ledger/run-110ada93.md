@@ -8,7 +8,7 @@
 | **Date** | 2026-03-10 |
 | **Duration** | 9m 18s |
 | **Pass Rate** | **12/12** |
-| **Source** | `AuditCrux/results/v1-canonical.json` |
+| **Source** | `audit-source/results/v1-canonical.json` |
 
 ## Results by Category
 
@@ -216,4 +216,4 @@
 
 ---
 
-*Generated from [AuditCrux](https://github.com/CueCrux/AuditCrux) canonical results.*
+*Generated from canonical audit results (see [audit-source](../../audit-source/)).*

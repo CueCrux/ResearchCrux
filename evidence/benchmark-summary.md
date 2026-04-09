@@ -1,6 +1,6 @@
 # Benchmark Summary — Reference Card
 
-**Suite:** [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) (MIT, open source)
+**Suite:** [Audit Source](../audit-source/) (MIT, open source)
 **Date:** March 2026
 **Engine:** CueCrux Engine on CueCrux-Data-1 (i9-13900, 192GB DDR5, NVMe RAID-1)
 
@@ -127,7 +127,7 @@ Both retrieval lanes contribute. V-class (semantic-only) docs are retrieved but 
 
 ## Full Results
 
-- Raw output files: [AuditCrux/results/](https://github.com/CueCrux/AuditCrux/tree/main/results)
-- Methodology: [AuditCrux/METHODOLOGY.md](https://github.com/CueCrux/AuditCrux/blob/main/METHODOLOGY.md)
-- Detailed results: [AuditCrux/RESULTS.md](https://github.com/CueCrux/AuditCrux/blob/main/RESULTS.md)
+- Raw output files: [audit-source/results/](../audit-source/results/)
+- Methodology: [METHODOLOGY.md](../audit-source/METHODOLOGY.md)
+- Detailed results: [RESULTS.md](../audit-source/RESULTS.md)
 - Whitepaper: [Retrieval Quality Benchmark v1](../whitepapers/retrieval-quality-benchmark-v1.md)

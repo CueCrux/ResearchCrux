@@ -1,0 +1,1359 @@
+{
+  "runId": "c85daff7",
+  "startedAt": "2026-03-11T02:03:50.973Z",
+  "finishedAt": "2026-03-11T02:24:35.343Z",
+  "host": "unknown",
+  "modes": {
+    "V1": {
+      "cat1": {
+        "category": "cat1",
+        "mode": "V1",
+        "passed": true,
+        "metrics": {
+          "avg_recall": 0.8333333333333334,
+          "avg_precision": 0.4444444444444444,
+          "avg_ranking_accuracy": 0.9,
+          "query_count": 6,
+          "latency_ms": 4134.411440333333
+        },
+        "queries": [
+          {
+            "query": "What is the current data classification policy at Meridian?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-ss-a4"
+              ],
+              "missing_ids": [
+                "v2-ss-a2"
+              ],
+              "ranking_correct": 1,
+              "ranking_total": 2,
+              "ranking_accuracy": 0.5,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 8024.092337
+            },
+            "notes": [
+              "Missing expected docs: v2-ss-a2",
+              "Ranking: v2-ss-a2 not in citations (expected above v2-ss-a1)",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What is the platform SLA availability target?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-c2"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 4452.570954
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "How many replicas does payment-service run in production?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.3333333333333333,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-b4"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 1345.532025
+            },
+            "notes": []
+          },
+          {
+            "query": "What is the current incident response playbook?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-d5"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 2,
+              "ranking_total": 2,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 2647.784598
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What encryption standard is required for restricted data?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.3333333333333333,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-ss-a2"
+              ],
+              "missing_ids": [
+                "v2-ss-a4"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 2378.519694
+            },
+            "notes": [
+              "Missing expected docs: v2-ss-a4"
+            ]
+          },
+          {
+            "query": "What is the evidence collection procedure for security incidents?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-d5"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 5957.969034
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          }
+        ],
+        "notes": [
+          "Missing expected docs: v2-ss-a2",
+          "Ranking: v2-ss-a2 not in citations (expected above v2-ss-a1)",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-ss-a4",
+          "Fragility 0 outside expected range [0.3, 1]"
+        ]
+      },
+      "cat2": {
+        "category": "cat2",
+        "mode": "V1",
+        "passed": true,
+        "metrics": {
+          "avg_recall": 0.6666666666666666,
+          "avg_precision": 0.6166666666666666,
+          "chain_recalls": "[0.5833333333333333,0.5,1,0.75,0.5]",
+          "query_count": 10,
+          "latency_ms": 5276.6569894
+        },
+        "queries": [
+          {
+            "query": "Why did payment-service SLA breach occur in October and how was it fixed?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 3,
+              "precision": 0.6666666666666666,
+              "recall": 0.6666666666666666,
+              "found_ids": [
+                "v2-cc-1a",
+                "v2-cc-1d"
+              ],
+              "missing_ids": [
+                "v2-cc-1b"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 3,
+              "latency_ms": 4932.82074
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-1b",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What is the connection pool sizing recommendation for payment-service?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-1d"
+              ],
+              "missing_ids": [
+                "v2-cc-1c"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 3949.541024
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-1c"
+            ]
+          },
+          {
+            "query": "What happened with the credential leak incident INC-2025-1247?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-2b"
+              ],
+              "missing_ids": [
+                "v2-cc-2a"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 7654.034176
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-2a",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What security controls were implemented after the credential exposure?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-2b"
+              ],
+              "missing_ids": [
+                "v2-cc-2d"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 5626.917702
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-2d"
+            ]
+          },
+          {
+            "query": "What was the outcome of the Redis 6 to Redis 7 migration?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "v2-cc-3a",
+                "v2-cc-3e"
+              ],
+              "missing_ids": [],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 4143.069005
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "How was the database audit trail finding F-2025-001 remediated?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "v2-cc-4a",
+                "v2-cc-4c"
+              ],
+              "missing_ids": [],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 7417.845785
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What caused the user-service latency degradation and what was the fix?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-5c"
+              ],
+              "missing_ids": [
+                "v2-cc-5a"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 3744.99772
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-5a",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What is the N+1 query pattern issue in user-service?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-cc-5c"
+              ],
+              "missing_ids": [],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 4106.847243
+            },
+            "notes": []
+          },
+          {
+            "query": "What security changes were made at Meridian in 2025?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-2b"
+              ],
+              "missing_ids": [
+                "v2-cc-2d"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 7877.886918
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-2d"
+            ]
+          },
+          {
+            "query": "What performance improvements were achieved in the platform this year?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-5e"
+              ],
+              "missing_ids": [
+                "v2-cc-5c"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 3312.609581
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-5c"
+            ]
+          }
+        ],
+        "notes": [
+          "Missing expected docs: v2-cc-1b",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-1c",
+          "Missing expected docs: v2-cc-2a",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-2d",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-5a",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-2d",
+          "Missing expected docs: v2-cc-5c"
+        ]
+      },
+      "cat3": {
+        "category": "cat3",
+        "mode": "V1",
+        "passed": true,
+        "metrics": {
+          "scale_points": "[{\"corpusSize\":550,\"precision5\":0.43333333333333335,\"recall5\":0.7,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":2757.593364,\"latencyP95\":8849.895229},{\"corpusSize\":1000,\"precision5\":0.43333333333333335,\"recall5\":0.7,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":2727.505859,\"latencyP95\":8850.683989},{\"corpusSize\":2500,\"precision5\":0.34444444444444444,\"recall5\":0.5333333333333333,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1941.95704,\"latencyP95\":12736.770596},{\"corpusSize\":5000,\"precision5\":0.23333333333333334,\"recall5\":0.3333333333333333,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1907.974862,\"latencyP95\":5817.968924},{\"corpusSize\":10000,\"precision5\":0.2,\"recall5\":0.3333333333333333,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":2087.823913,\"latencyP95\":3584.242321},{\"corpusSize\":25000,\"precision5\":0.2,\"recall5\":0.3333333333333333,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1656.246732,\"latencyP95\":4474.394584}]",
+          "degradation_slope_per_1k": -0.00954328561690525,
+          "baseline_precision5": 0.43333333333333335,
+          "final_precision5": 0.2,
+          "baseline_recall5": 0.7,
+          "final_recall5": 0.3333333333333333
+        },
+        "queries": [],
+        "notes": [
+          "Degradation slope: -0.009543 precision@5 per 1K docs",
+          "Precision@5: 0.433 (550 docs) -> 0.200 (25000 docs)"
+        ]
+      },
+      "cat4": {
+        "category": "cat4",
+        "mode": "V1",
+        "passed": true,
+        "metrics": {
+          "skipped": true
+        },
+        "queries": [],
+        "notes": [
+          "Skipped: V1 does not support temporal reconstruction"
+        ]
+      }
+    },
+    "V3.1": {
+      "cat1": {
+        "category": "cat1",
+        "mode": "V3.1",
+        "passed": true,
+        "metrics": {
+          "avg_recall": 0.75,
+          "avg_precision": 0.38888888888888884,
+          "avg_ranking_accuracy": 0.9,
+          "query_count": 6,
+          "latency_ms": 3032.264135666667
+        },
+        "queries": [
+          {
+            "query": "What is the current data classification policy at Meridian?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-ss-a4"
+              ],
+              "missing_ids": [
+                "v2-ss-a2"
+              ],
+              "ranking_correct": 1,
+              "ranking_total": 2,
+              "ranking_accuracy": 0.5,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 4944.569076
+            },
+            "notes": [
+              "Missing expected docs: v2-ss-a2",
+              "Ranking: v2-ss-a2 not in citations (expected above v2-ss-a1)",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What is the platform SLA availability target?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-c2"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 1752.280905
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "How many replicas does payment-service run in production?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.3333333333333333,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-b4"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 1141.632077
+            },
+            "notes": []
+          },
+          {
+            "query": "What is the current incident response playbook?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-d5"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 2,
+              "ranking_total": 2,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 3573.490958
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What encryption standard is required for restricted data?",
+            "metrics": {
+              "expected_found": 0,
+              "expected_total": 2,
+              "precision": 0,
+              "recall": 0,
+              "found_ids": [],
+              "missing_ids": [
+                "v2-ss-a4",
+                "v2-ss-a2"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 1625.848055
+            },
+            "notes": [
+              "Missing expected docs: v2-ss-a4, v2-ss-a2"
+            ]
+          },
+          {
+            "query": "What is the evidence collection procedure for security incidents?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-d5"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 5155.763743
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          }
+        ],
+        "notes": [
+          "Missing expected docs: v2-ss-a2",
+          "Ranking: v2-ss-a2 not in citations (expected above v2-ss-a1)",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-ss-a4, v2-ss-a2",
+          "Fragility 0 outside expected range [0.3, 1]"
+        ]
+      },
+      "cat2": {
+        "category": "cat2",
+        "mode": "V3.1",
+        "passed": true,
+        "metrics": {
+          "avg_recall": 0.6666666666666666,
+          "avg_precision": 0.6166666666666666,
+          "chain_recalls": "[0.5833333333333333,0.5,1,0.75,0.5]",
+          "query_count": 10,
+          "latency_ms": 5077.202362499999
+        },
+        "queries": [
+          {
+            "query": "Why did payment-service SLA breach occur in October and how was it fixed?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 3,
+              "precision": 0.6666666666666666,
+              "recall": 0.6666666666666666,
+              "found_ids": [
+                "v2-cc-1a",
+                "v2-cc-1d"
+              ],
+              "missing_ids": [
+                "v2-cc-1b"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 3,
+              "latency_ms": 4903.378302
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-1b",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What is the connection pool sizing recommendation for payment-service?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-1d"
+              ],
+              "missing_ids": [
+                "v2-cc-1c"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 5089.41652
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-1c"
+            ]
+          },
+          {
+            "query": "What happened with the credential leak incident INC-2025-1247?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-2b"
+              ],
+              "missing_ids": [
+                "v2-cc-2a"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 4507.856122
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-2a",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What security controls were implemented after the credential exposure?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-2b"
+              ],
+              "missing_ids": [
+                "v2-cc-2d"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 7816.753434
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-2d"
+            ]
+          },
+          {
+            "query": "What was the outcome of the Redis 6 to Redis 7 migration?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "v2-cc-3a",
+                "v2-cc-3e"
+              ],
+              "missing_ids": [],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 4577.873142
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "How was the database audit trail finding F-2025-001 remediated?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "v2-cc-4a",
+                "v2-cc-4c"
+              ],
+              "missing_ids": [],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 6960.361647
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What caused the user-service latency degradation and what was the fix?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-5c"
+              ],
+              "missing_ids": [
+                "v2-cc-5a"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 5097.523464
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-5a",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What is the N+1 query pattern issue in user-service?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-cc-5c"
+              ],
+              "missing_ids": [],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 3471.231622
+            },
+            "notes": []
+          },
+          {
+            "query": "What security changes were made at Meridian in 2025?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-2b"
+              ],
+              "missing_ids": [
+                "v2-cc-2d"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 5904.371837
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-2d"
+            ]
+          },
+          {
+            "query": "What performance improvements were achieved in the platform this year?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-5e"
+              ],
+              "missing_ids": [
+                "v2-cc-5c"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 2443.257535
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-5c"
+            ]
+          }
+        ],
+        "notes": [
+          "Missing expected docs: v2-cc-1b",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-1c",
+          "Missing expected docs: v2-cc-2a",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-2d",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-5a",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-2d",
+          "Missing expected docs: v2-cc-5c"
+        ]
+      },
+      "cat3": {
+        "category": "cat3",
+        "mode": "V3.1",
+        "passed": true,
+        "metrics": {
+          "scale_points": "[{\"corpusSize\":550,\"precision5\":0.43333333333333335,\"recall5\":0.7,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":2430.676865,\"latencyP95\":5479.490181},{\"corpusSize\":1000,\"precision5\":0.43333333333333335,\"recall5\":0.7,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":2304.616732,\"latencyP95\":5468.454722},{\"corpusSize\":2500,\"precision5\":0.36666666666666664,\"recall5\":0.6,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1753.152432,\"latencyP95\":6011.542477},{\"corpusSize\":5000,\"precision5\":0.23333333333333334,\"recall5\":0.4,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1659.824552,\"latencyP95\":3695.915079},{\"corpusSize\":10000,\"precision5\":0.3,\"recall5\":0.4666666666666667,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1395.904973,\"latencyP95\":4695.301947},{\"corpusSize\":25000,\"precision5\":0.13333333333333333,\"recall5\":0.2,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1272.808233,\"latencyP95\":4885.842878}]",
+          "degradation_slope_per_1k": -0.01226993865030675,
+          "baseline_precision5": 0.43333333333333335,
+          "final_precision5": 0.13333333333333333,
+          "baseline_recall5": 0.7,
+          "final_recall5": 0.2
+        },
+        "queries": [],
+        "notes": [
+          "Degradation slope: -0.012270 precision@5 per 1K docs",
+          "Precision@5: 0.433 (550 docs) -> 0.133 (25000 docs)"
+        ]
+      },
+      "cat4": {
+        "category": "cat4",
+        "mode": "V3.1",
+        "passed": true,
+        "metrics": {
+          "reconstruction_accuracy": 0.9662921348314607,
+          "correct": 172,
+          "total": 178,
+          "receipts_generated": 3,
+          "chains_verified": 3,
+          "chains_intact": 3,
+          "receipts_signed": 0,
+          "db_chain_intact": true
+        },
+        "queries": [],
+        "notes": [
+          "T0+30d: v2-tr-e1 expected=active actual=superseded",
+          "T0+30d: v2-tr-d1 expected=contested actual=superseded",
+          "T0+75d: v2-tr-d1 expected=contested actual=superseded",
+          "T0+120d: v2-tr-a5 expected=active actual=superseded",
+          "T0+180d: v2-tr-d6 expected=active actual=missing",
+          "T0+270d: v2-tr-d8 expected=active actual=missing"
+        ]
+      }
+    },
+    "V4.1": {
+      "cat1": {
+        "category": "cat1",
+        "mode": "V4.1",
+        "passed": true,
+        "metrics": {
+          "avg_recall": 0.75,
+          "avg_precision": 0.38888888888888884,
+          "avg_ranking_accuracy": 0.9,
+          "query_count": 6,
+          "latency_ms": 2344.6905736666663
+        },
+        "queries": [
+          {
+            "query": "What is the current data classification policy at Meridian?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-ss-a4"
+              ],
+              "missing_ids": [
+                "v2-ss-a2"
+              ],
+              "ranking_correct": 1,
+              "ranking_total": 2,
+              "ranking_accuracy": 0.5,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 3544.966742
+            },
+            "notes": [
+              "Missing expected docs: v2-ss-a2",
+              "Ranking: v2-ss-a2 not in citations (expected above v2-ss-a1)",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What is the platform SLA availability target?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-c2"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 1910.021296
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "How many replicas does payment-service run in production?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.3333333333333333,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-b4"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 931.553829
+            },
+            "notes": []
+          },
+          {
+            "query": "What is the current incident response playbook?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-d5"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 2,
+              "ranking_total": 2,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 3060.626547
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What encryption standard is required for restricted data?",
+            "metrics": {
+              "expected_found": 0,
+              "expected_total": 2,
+              "precision": 0,
+              "recall": 0,
+              "found_ids": [],
+              "missing_ids": [
+                "v2-ss-a4",
+                "v2-ss-a2"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 1269.059381
+            },
+            "notes": [
+              "Missing expected docs: v2-ss-a4, v2-ss-a2"
+            ]
+          },
+          {
+            "query": "What is the evidence collection procedure for security incidents?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-ss-d5"
+              ],
+              "missing_ids": [],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 3351.915647
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          }
+        ],
+        "notes": [
+          "Missing expected docs: v2-ss-a2",
+          "Ranking: v2-ss-a2 not in citations (expected above v2-ss-a1)",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-ss-a4, v2-ss-a2",
+          "Fragility 0 outside expected range [0.3, 1]"
+        ]
+      },
+      "cat2": {
+        "category": "cat2",
+        "mode": "V4.1",
+        "passed": true,
+        "metrics": {
+          "avg_recall": 0.6166666666666666,
+          "avg_precision": 0.5666666666666667,
+          "chain_recalls": "[0.5833333333333333,0.5,0.75,0.75,0.5]",
+          "query_count": 10,
+          "latency_ms": 5140.5486310999995
+        },
+        "queries": [
+          {
+            "query": "Why did payment-service SLA breach occur in October and how was it fixed?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 3,
+              "precision": 0.6666666666666666,
+              "recall": 0.6666666666666666,
+              "found_ids": [
+                "v2-cc-1a",
+                "v2-cc-1d"
+              ],
+              "missing_ids": [
+                "v2-cc-1b"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 3,
+              "latency_ms": 4163.976566
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-1b",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What is the connection pool sizing recommendation for payment-service?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-1d"
+              ],
+              "missing_ids": [
+                "v2-cc-1c"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 3156.552819
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-1c"
+            ]
+          },
+          {
+            "query": "What happened with the credential leak incident INC-2025-1247?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-2b"
+              ],
+              "missing_ids": [
+                "v2-cc-2a"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 5998.161037
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-2a",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What security controls were implemented after the credential exposure?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-2b"
+              ],
+              "missing_ids": [
+                "v2-cc-2d"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 9405.014456
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-2d"
+            ]
+          },
+          {
+            "query": "What was the outcome of the Redis 6 to Redis 7 migration?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-3e"
+              ],
+              "missing_ids": [
+                "v2-cc-3a"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 4071.50691
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-3a",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "How was the database audit trail finding F-2025-001 remediated?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "v2-cc-4a",
+                "v2-cc-4c"
+              ],
+              "missing_ids": [],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 6053.669327
+            },
+            "notes": [
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What caused the user-service latency degradation and what was the fix?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-5c"
+              ],
+              "missing_ids": [
+                "v2-cc-5a"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": false,
+              "distinct_domains": 2,
+              "latency_ms": 3925.05684
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-5a",
+              "Fragility 0 outside expected range [0.3, 1]"
+            ]
+          },
+          {
+            "query": "What is the N+1 query pattern issue in user-service?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "v2-cc-5c"
+              ],
+              "missing_ids": [],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 4852.112393
+            },
+            "notes": []
+          },
+          {
+            "query": "What security changes were made at Meridian in 2025?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-2b"
+              ],
+              "missing_ids": [
+                "v2-cc-2d"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 6380.328788
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-2d"
+            ]
+          },
+          {
+            "query": "What performance improvements were achieved in the platform this year?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 2,
+              "precision": 0.5,
+              "recall": 0.5,
+              "found_ids": [
+                "v2-cc-5e"
+              ],
+              "missing_ids": [
+                "v2-cc-5c"
+              ],
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 3399.107175
+            },
+            "notes": [
+              "Missing expected docs: v2-cc-5c"
+            ]
+          }
+        ],
+        "notes": [
+          "Missing expected docs: v2-cc-1b",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-1c",
+          "Missing expected docs: v2-cc-2a",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-2d",
+          "Missing expected docs: v2-cc-3a",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-5a",
+          "Fragility 0 outside expected range [0.3, 1]",
+          "Missing expected docs: v2-cc-2d",
+          "Missing expected docs: v2-cc-5c"
+        ]
+      },
+      "cat3": {
+        "category": "cat3",
+        "mode": "V4.1",
+        "passed": true,
+        "metrics": {
+          "scale_points": "[{\"corpusSize\":550,\"precision5\":0.43333333333333335,\"recall5\":0.7,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":2069.421712,\"latencyP95\":6090.067995},{\"corpusSize\":1000,\"precision5\":0.43333333333333335,\"recall5\":0.7,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":2144.965646,\"latencyP95\":4317.516462},{\"corpusSize\":2500,\"precision5\":0.4,\"recall5\":0.6333333333333333,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1685.058013,\"latencyP95\":4427.811993},{\"corpusSize\":5000,\"precision5\":0.3,\"recall5\":0.4666666666666667,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1403.425784,\"latencyP95\":4948.372324},{\"corpusSize\":10000,\"precision5\":0.3,\"recall5\":0.4666666666666667,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1262.74275,\"latencyP95\":4770.392287},{\"corpusSize\":25000,\"precision5\":0.23333333333333334,\"recall5\":0.36666666666666664,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":0,\"fragilityProbeCount\":5,\"latencyP50\":1524.504863,\"latencyP95\":3445.544908}]",
+          "degradation_slope_per_1k": -0.0081799591002045,
+          "baseline_precision5": 0.43333333333333335,
+          "final_precision5": 0.23333333333333334,
+          "baseline_recall5": 0.7,
+          "final_recall5": 0.36666666666666664
+        },
+        "queries": [],
+        "notes": [
+          "Degradation slope: -0.008180 precision@5 per 1K docs",
+          "Precision@5: 0.433 (550 docs) -> 0.233 (25000 docs)"
+        ]
+      },
+      "cat4": {
+        "category": "cat4",
+        "mode": "V4.1",
+        "passed": true,
+        "metrics": {
+          "reconstruction_accuracy": 0.9662921348314607,
+          "correct": 172,
+          "total": 178,
+          "receipts_generated": 3,
+          "chains_verified": 3,
+          "chains_intact": 3,
+          "receipts_signed": 0,
+          "db_chain_intact": true
+        },
+        "queries": [],
+        "notes": [
+          "T0+30d: v2-tr-e1 expected=active actual=superseded",
+          "T0+30d: v2-tr-d1 expected=contested actual=superseded",
+          "T0+75d: v2-tr-d1 expected=contested actual=superseded",
+          "T0+120d: v2-tr-a5 expected=active actual=superseded",
+          "T0+180d: v2-tr-d6 expected=active actual=missing",
+          "T0+270d: v2-tr-d8 expected=active actual=missing"
+        ]
+      }
+    }
+  },
+  "comparison": {
+    "supersession_improvement_v41_vs_v1": "recall 0.833 -> 0.750",
+    "causal_completeness_improvement": "avg_recall 0.667 -> 0.617",
+    "degradation_slope_v1": -0.00954328561690525,
+    "degradation_slope_v41": -0.0081799591002045
+  }
+}

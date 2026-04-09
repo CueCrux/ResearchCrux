@@ -173,7 +173,7 @@ This section explicitly states what is not yet implemented, not yet demonstrated
 
 ### Implemented and verified
 
-- **Receipt hash chain.** `parentSnapId` chain integrity verified to depth 50 with flat latency (~3ms). See [AuditCrux Cat 5](https://github.com/CueCrux/AuditCrux) results.
+- **Receipt hash chain.** `parentSnapId` chain integrity verified to depth 50 with flat latency (~3ms). See [Audit Cat 5](../../audit-source/RESULTS.md) results.
 
 - **Ed25519 signing via Vault Transit.** Production signing with key rotation, public key embedding, and offline verification. Signing queue with 90-day expiry for transient Vault unavailability.
 

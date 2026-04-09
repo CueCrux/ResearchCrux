@@ -1,7 +1,7 @@
 # MemoryCrux — Cost Analysis: Tool-Mediated Memory vs Context-Stuffing
 
 **Date:** 2026-03-27
-**Source:** [AuditCrux/benchmarks/memorycrux](https://github.com/CueCrux/AuditCrux/tree/main/benchmarks/memorycrux) — Delta project (3,346 docs, 2M+ tokens, 3 models, 5 arms)
+**Source:** [audit-source/benchmarks/memorycrux](../audit-source/benchmarks/memorycrux/) — Delta project (3,346 docs, 2M+ tokens, 3 models, 5 arms)
 **Pricing source:** Crux Platform Pricing Alignment Matrix v1.1 (23 March 2026)
 
 ---
@@ -92,4 +92,4 @@ A Pro subscriber with $100/mo LLM budget running GPT-5.4 T3 gets ~79 sessions/mo
 - Subscription costs from Crux Platform Pricing Alignment Matrix v1.1 (GBP→USD at ~1.27)
 - VaultCrux per-operation variable costs (~$0.01–0.05/session) excluded from LLM cost comparisons as negligible
 
-**Full technical details:** [AuditCrux Delta Summary](https://github.com/CueCrux/AuditCrux/tree/main/benchmarks/memorycrux/results/delta-summary.md) | [Benchmark README](https://github.com/CueCrux/AuditCrux/tree/main/benchmarks/memorycrux/README.md) | [Methodology](https://github.com/CueCrux/AuditCrux/tree/main/benchmarks/memorycrux/METHODOLOGY.md)
+**Full technical details:** [Benchmark README](../audit-source/benchmarks/memorycrux/README.md) | [Methodology](../audit-source/benchmarks/memorycrux/METHODOLOGY.md) | [Results](../audit-source/benchmarks/memorycrux/RESULTS.md)

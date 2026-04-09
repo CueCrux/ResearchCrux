@@ -65,7 +65,7 @@ EmbedderCrux with `nomic-embed-text-v1.5` is the production embedding provider. 
 
 ## Data Sources
 
-All results from [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) canonical runs:
+All results from [audit-source](../audit-source/) canonical runs:
 
 - `results/v1-canonical.json` (OpenAI) vs `results/v1-nomic-canonical.json`
 - `results/v2-canonical.json` (OpenAI) vs `results/v2-nomic-canonical.json`
@@ -73,4 +73,4 @@ All results from [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) canon
 
 ---
 
-*Generated from AuditCrux canonical results.*
+*Generated from canonical audit results (see [audit-source](../audit-source/)).*

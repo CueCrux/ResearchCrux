@@ -13,7 +13,7 @@
 | gpt-5.4 | 28% | 8% | **100%** | 80% | **100%** |
 | gpt-5.4-mini | 20% | 40% | 96% | 72% | 0%* |
 
-*GPT-5.4-mini T3 excluded (tool integration failure --- see [Exclusion Register](https://github.com/CueCrux/AuditCrux/blob/main/benchmarks/memorycrux/EXCLUSIONS.md)).
+*GPT-5.4-mini T3 excluded (tool integration failure --- see [Exclusion Register](../../../audit-source/benchmarks/memorycrux/EXCLUSIONS.md)).
 
 **Key finding:** Context-stuffing (C2) is worse than bare (C0) for Sonnet and GPT-5.4 at this scale --- models drown in noise. Tool-mediated arms consistently outperform by 50-90 percentage points on core recall.
 

@@ -1,0 +1,505 @@
+{
+  "runId": "a86b1733",
+  "startedAt": "2026-03-12T01:02:36.924Z",
+  "finishedAt": "2026-03-12T01:12:32.518Z",
+  "host": "unknown",
+  "modes": {
+    "V1": {
+      "cat1": {
+        "category": "cat1",
+        "mode": "V1",
+        "passed": true,
+        "metrics": {
+          "recall": 1,
+          "precision": 1,
+          "ranking_accuracy": 1,
+          "mises_accuracy": 1,
+          "fragility_in_range": true,
+          "latency_ms": 3130.515908
+        },
+        "queries": [
+          {
+            "query": "What is the current recommended approach for data pipeline configuration?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "audit-ss-b",
+                "audit-ss-c"
+              ],
+              "missing_ids": [],
+              "retrieved_found": 2,
+              "retrieved_recall": 1,
+              "retrieved_ids": [
+                "audit-ss-b",
+                "audit-ss-a",
+                "audit-ss-c"
+              ],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "mises_expected_found": 2,
+              "mises_expected_total": 2,
+              "mises_accuracy": 1,
+              "mises_actual": [
+                "audit-ss-c",
+                "audit-ss-b"
+              ],
+              "fragility_score": 1,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 3130.515908
+            },
+            "notes": []
+          }
+        ],
+        "notes": []
+      },
+      "cat2": {
+        "category": "cat2",
+        "mode": "V1",
+        "passed": true,
+        "metrics": {
+          "avg_recall": 1,
+          "avg_precision": 0.75,
+          "causal_chain_query_recall": 1,
+          "latency_ms": 2903.2903260000003
+        },
+        "queries": [
+          {
+            "query": "Why did the latency incident occur?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "audit-cc-c"
+              ],
+              "missing_ids": [],
+              "retrieved_found": 1,
+              "retrieved_recall": 1,
+              "retrieved_ids": [
+                "audit-cc-c",
+                "audit-cc-a",
+                "audit-cc-b"
+              ],
+              "ranking_correct": 0,
+              "ranking_total": 0,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 3009.86047
+            },
+            "notes": []
+          },
+          {
+            "query": "What caused the settlement processing outage and what was the root regulatory constraint?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "audit-cc-c",
+                "audit-cc-a"
+              ],
+              "missing_ids": [],
+              "retrieved_found": 2,
+              "retrieved_recall": 1,
+              "retrieved_ids": [
+                "audit-cc-c",
+                "audit-cc-a",
+                "audit-cc-b"
+              ],
+              "ranking_correct": 0,
+              "ranking_total": 0,
+              "ranking_accuracy": 1,
+              "fragility_score": 1,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 2796.720182
+            },
+            "notes": []
+          }
+        ],
+        "notes": []
+      },
+      "cat3": {
+        "category": "cat3",
+        "mode": "V1",
+        "passed": true,
+        "metrics": {
+          "scale_points": "[{\"corpusSize\":100,\"precision5\":0.5,\"recall5\":0.95,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2985.102069,\"latencyP95\":3992.464201},{\"corpusSize\":1000,\"precision5\":0.5,\"recall5\":0.95,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2591.388194,\"latencyP95\":3430.588462},{\"corpusSize\":5000,\"precision5\":0.4833333333333334,\"recall5\":0.95,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2571.496187,\"latencyP95\":3516.150967},{\"corpusSize\":10000,\"precision5\":0.4,\"recall5\":0.75,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2238.435296,\"latencyP95\":3103.718897}]",
+          "degradation_slope_per_1k": -0.010101010101010098,
+          "baseline_precision5": 0.5,
+          "final_precision5": 0.4,
+          "baseline_recall5": 0.95,
+          "final_recall5": 0.75,
+          "baseline_fragility_probe": 1,
+          "final_fragility_probe": 1
+        },
+        "queries": [],
+        "notes": [
+          "Degradation slope: -0.010101 precision@5 per 1K docs",
+          "Precision@5: 0.500 (100 docs) → 0.400 (10000 docs)",
+          "Fragility probe mean: 1.000 (100 docs) → 1.000 (10000 docs) — stable with scale"
+        ]
+      },
+      "cat4": {
+        "category": "cat4",
+        "mode": "V1",
+        "passed": true,
+        "metrics": {
+          "skipped": true
+        },
+        "queries": [],
+        "notes": [
+          "Skipped: V1 does not support temporal reconstruction"
+        ]
+      }
+    },
+    "V3.1": {
+      "cat1": {
+        "category": "cat1",
+        "mode": "V3.1",
+        "passed": true,
+        "metrics": {
+          "recall": 1,
+          "precision": 1,
+          "ranking_accuracy": 1,
+          "mises_accuracy": 1,
+          "fragility_in_range": true,
+          "latency_ms": 1766.4951
+        },
+        "queries": [
+          {
+            "query": "What is the current recommended approach for data pipeline configuration?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "audit-ss-b",
+                "audit-ss-c"
+              ],
+              "missing_ids": [],
+              "retrieved_found": 2,
+              "retrieved_recall": 1,
+              "retrieved_ids": [
+                "audit-ss-b",
+                "audit-ss-a",
+                "audit-ss-c"
+              ],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "mises_expected_found": 2,
+              "mises_expected_total": 2,
+              "mises_accuracy": 1,
+              "mises_actual": [
+                "audit-ss-c",
+                "audit-ss-b"
+              ],
+              "fragility_score": 1,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 1766.4951
+            },
+            "notes": []
+          }
+        ],
+        "notes": []
+      },
+      "cat2": {
+        "category": "cat2",
+        "mode": "V3.1",
+        "passed": true,
+        "metrics": {
+          "avg_recall": 1,
+          "avg_precision": 0.75,
+          "causal_chain_query_recall": 1,
+          "latency_ms": 2873.163744
+        },
+        "queries": [
+          {
+            "query": "Why did the latency incident occur?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "audit-cc-c"
+              ],
+              "missing_ids": [],
+              "retrieved_found": 1,
+              "retrieved_recall": 1,
+              "retrieved_ids": [
+                "audit-cc-c",
+                "audit-cc-a",
+                "audit-cc-b"
+              ],
+              "ranking_correct": 0,
+              "ranking_total": 0,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 2723.359775
+            },
+            "notes": []
+          },
+          {
+            "query": "What caused the settlement processing outage and what was the root regulatory constraint?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "audit-cc-c",
+                "audit-cc-a"
+              ],
+              "missing_ids": [],
+              "retrieved_found": 2,
+              "retrieved_recall": 1,
+              "retrieved_ids": [
+                "audit-cc-c",
+                "audit-cc-a",
+                "audit-cc-b"
+              ],
+              "ranking_correct": 0,
+              "ranking_total": 0,
+              "ranking_accuracy": 1,
+              "fragility_score": 1,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 3022.967713
+            },
+            "notes": []
+          }
+        ],
+        "notes": []
+      },
+      "cat3": {
+        "category": "cat3",
+        "mode": "V3.1",
+        "passed": true,
+        "metrics": {
+          "scale_points": "[{\"corpusSize\":100,\"precision5\":0.5,\"recall5\":0.95,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2743.536451,\"latencyP95\":3916.550987},{\"corpusSize\":1000,\"precision5\":0.5,\"recall5\":0.95,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2439.751601,\"latencyP95\":3058.00771},{\"corpusSize\":5000,\"precision5\":0.4833333333333334,\"recall5\":0.95,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2460.32912,\"latencyP95\":3116.19518},{\"corpusSize\":10000,\"precision5\":0.4,\"recall5\":0.75,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2517.811562,\"latencyP95\":3081.461843}]",
+          "degradation_slope_per_1k": -0.010101010101010098,
+          "baseline_precision5": 0.5,
+          "final_precision5": 0.4,
+          "baseline_recall5": 0.95,
+          "final_recall5": 0.75,
+          "baseline_fragility_probe": 1,
+          "final_fragility_probe": 1
+        },
+        "queries": [],
+        "notes": [
+          "Degradation slope: -0.010101 precision@5 per 1K docs",
+          "Precision@5: 0.500 (100 docs) → 0.400 (10000 docs)",
+          "Fragility probe mean: 1.000 (100 docs) → 1.000 (10000 docs) — stable with scale"
+        ]
+      },
+      "cat4": {
+        "category": "cat4",
+        "mode": "V3.1",
+        "passed": true,
+        "metrics": {
+          "reconstruction_accuracy": 1,
+          "correct": 54,
+          "total": 54,
+          "receipts_generated": 3,
+          "chains_verified": 3,
+          "chains_intact": 3,
+          "receipts_signed": 0,
+          "db_chain_intact": true,
+          "knowledge_cursor_present": 3
+        },
+        "queries": [],
+        "notes": [
+          "V3.1 and V4.1 produce identical Cat 4 results: both query artifact_living_state directly. V4.1 differentiation will come from decision_causal_chain projection and temporal reconstruction API when deployed."
+        ]
+      }
+    },
+    "V4.1": {
+      "cat1": {
+        "category": "cat1",
+        "mode": "V4.1",
+        "passed": true,
+        "metrics": {
+          "recall": 1,
+          "precision": 1,
+          "ranking_accuracy": 1,
+          "mises_accuracy": 1,
+          "fragility_in_range": true,
+          "latency_ms": 1856.915387
+        },
+        "queries": [
+          {
+            "query": "What is the current recommended approach for data pipeline configuration?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "audit-ss-b",
+                "audit-ss-c"
+              ],
+              "missing_ids": [],
+              "retrieved_found": 2,
+              "retrieved_recall": 1,
+              "retrieved_ids": [
+                "audit-ss-b",
+                "audit-ss-a",
+                "audit-ss-c"
+              ],
+              "ranking_correct": 1,
+              "ranking_total": 1,
+              "ranking_accuracy": 1,
+              "mises_expected_found": 2,
+              "mises_expected_total": 2,
+              "mises_accuracy": 1,
+              "mises_actual": [
+                "audit-ss-c",
+                "audit-ss-b"
+              ],
+              "fragility_score": 1,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 1856.915387
+            },
+            "notes": []
+          }
+        ],
+        "notes": []
+      },
+      "cat2": {
+        "category": "cat2",
+        "mode": "V4.1",
+        "passed": true,
+        "metrics": {
+          "avg_recall": 1,
+          "avg_precision": 0.75,
+          "causal_chain_query_recall": 1,
+          "latency_ms": 3725.7563455
+        },
+        "queries": [
+          {
+            "query": "Why did the latency incident occur?",
+            "metrics": {
+              "expected_found": 1,
+              "expected_total": 1,
+              "precision": 0.5,
+              "recall": 1,
+              "found_ids": [
+                "audit-cc-c"
+              ],
+              "missing_ids": [],
+              "retrieved_found": 1,
+              "retrieved_recall": 1,
+              "retrieved_ids": [
+                "audit-cc-c",
+                "audit-cc-a",
+                "audit-cc-b"
+              ],
+              "ranking_correct": 0,
+              "ranking_total": 0,
+              "ranking_accuracy": 1,
+              "fragility_score": 0,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 2395.362707
+            },
+            "notes": []
+          },
+          {
+            "query": "What caused the settlement processing outage and what was the root regulatory constraint?",
+            "metrics": {
+              "expected_found": 2,
+              "expected_total": 2,
+              "precision": 1,
+              "recall": 1,
+              "found_ids": [
+                "audit-cc-c",
+                "audit-cc-a"
+              ],
+              "missing_ids": [],
+              "retrieved_found": 2,
+              "retrieved_recall": 1,
+              "retrieved_ids": [
+                "audit-cc-c",
+                "audit-cc-a",
+                "audit-cc-b"
+              ],
+              "ranking_correct": 0,
+              "ranking_total": 0,
+              "ranking_accuracy": 1,
+              "fragility_score": 1,
+              "fragility_in_range": true,
+              "distinct_domains": 2,
+              "latency_ms": 5056.149984
+            },
+            "notes": []
+          }
+        ],
+        "notes": []
+      },
+      "cat3": {
+        "category": "cat3",
+        "mode": "V4.1",
+        "passed": true,
+        "metrics": {
+          "scale_points": "[{\"corpusSize\":100,\"precision5\":0.5,\"recall5\":0.95,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2722.593014,\"latencyP95\":3613.04493},{\"corpusSize\":1000,\"precision5\":0.5,\"recall5\":0.95,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":3,\"latencyP50\":2656.568739,\"latencyP95\":4802.890542},{\"corpusSize\":5000,\"precision5\":0.4833333333333334,\"recall5\":0.95,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2826.368937,\"latencyP95\":4281.999506},{\"corpusSize\":10000,\"precision5\":0.4,\"recall5\":0.75,\"misesJaccard\":1,\"fragilityMean\":0,\"fragilityProbeMean\":1,\"fragilityProbeCount\":4,\"latencyP50\":2887.961697,\"latencyP95\":5471.130688}]",
+          "degradation_slope_per_1k": -0.010101010101010098,
+          "baseline_precision5": 0.5,
+          "final_precision5": 0.4,
+          "baseline_recall5": 0.95,
+          "final_recall5": 0.75,
+          "baseline_fragility_probe": 1,
+          "final_fragility_probe": 1
+        },
+        "queries": [],
+        "notes": [
+          "Degradation slope: -0.010101 precision@5 per 1K docs",
+          "Precision@5: 0.500 (100 docs) → 0.400 (10000 docs)",
+          "Fragility probe mean: 1.000 (100 docs) → 1.000 (10000 docs) — stable with scale"
+        ]
+      },
+      "cat4": {
+        "category": "cat4",
+        "mode": "V4.1",
+        "passed": true,
+        "metrics": {
+          "reconstruction_accuracy": 1,
+          "correct": 54,
+          "total": 54,
+          "receipts_generated": 3,
+          "chains_verified": 3,
+          "chains_intact": 3,
+          "receipts_signed": 0,
+          "db_chain_intact": true,
+          "knowledge_cursor_present": 3
+        },
+        "queries": [],
+        "notes": [
+          "knowledge_state_cursor present in 3/3 receipts (CoreCrux event lineage active)",
+          "Temporal reconstruction endpoint not yet deployed (404) — Cat 4 uses artifact_living_state DB query as proxy"
+        ]
+      }
+    }
+  },
+  "comparison": {
+    "supersession_improvement_v41_vs_v1": "recall 1.000 → 1.000, ranking 1.000 → 1.000",
+    "causal_completeness_improvement": "avg_recall 1.000 → 1.000",
+    "degradation_slope_v1": -0.010101010101010098,
+    "degradation_slope_v41": -0.010101010101010098
+  }
+}

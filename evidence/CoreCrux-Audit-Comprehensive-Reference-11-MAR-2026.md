@@ -799,9 +799,11 @@ Results identical across V1, V3.1, V4.1 (except Cat 4 skipped for V1, Cat 5 runs
 
 ### 10.3 Running the Audits
 
+Audit methodology and results are included in [audit-source/](../audit-source/).
+
 ```bash
-git clone https://github.com/CueCrux/AuditCrux.git
-cd AuditCrux
+# Canonical results and methodology are in ResearchCrux/audit-source/
+# To run audits, obtain the benchmark harness and configure:
 npm install
 cp .env.example .env  # configure with Engine credentials
 

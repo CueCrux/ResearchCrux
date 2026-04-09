@@ -79,7 +79,7 @@ DQP creates ~27% more chunks via semantic splitting. 7 chunks excluded by qualit
 
 This finding demonstrates that advanced retrieval techniques do not automatically improve quality. The CueCrux production system uses baseline retrieval (R0) because it produces measurably better results. Publishing negative results is part of our commitment to evidence-based engineering.
 
-The benchmark suite is open source at [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) (MIT). These results can be independently reproduced.
+The benchmark suite is included in [audit-source/](../audit-source/) (MIT). These results can be independently reproduced.
 
 ---
 

@@ -2,7 +2,7 @@
 
 Living index of all canonical audit runs. Each run page contains pass/fail matrix, per-category metrics, and query-level details.
 
-Evidence is generated from [CueCrux/AuditCrux](https://github.com/CueCrux/AuditCrux) (MIT) canonical results.
+Evidence is generated from canonical audit results included in [audit-source/](../../audit-source/) (MIT).
 
 **20 canonical runs** | **96/96 categories passed (v1-v3)** | **v4: 12/12 x 5 (Phase 7.4)** | [Changelog](changelog.md) | [Latest (JSON)](latest.json)
 
